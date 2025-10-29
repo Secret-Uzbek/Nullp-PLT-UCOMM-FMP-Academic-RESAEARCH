@@ -1,0 +1,56 @@
+@book{Mandelbrot1982,
+  author    = {Benoit B. Mandelbrot},
+  title     = {The Fractal Geometry of Nature},
+  publisher = {W. H. Freeman},
+  year      = {1982},
+  address   = {San Francisco}
+}
+
+@book{vonBertalanffy1968,
+  author    = {Ludwig von Bertalanffy},
+  title     = {General System Theory: Foundations, Development, Applications},
+  publisher = {George Braziller},
+  year      = {1968},
+  address   = {New York}
+}
+
+@book{Prigogine1984,
+  author    = {Ilya Prigogine and Isabelle Stengers},
+  title     = {Order Out of Chaos: Man’s New Dialogue with Nature},
+  publisher = {Bantam Books},
+  year      = {1984},
+  address   = {New York}
+}
+
+@article{ZawackiRichter2019,
+  author  = {Olaf Zawacki-Richter and Victoria I. Mar{\'i}n and Mary Bond and Franziska Gouverneur},
+  title   = {Systematic review of research on artificial intelligence in higher education},
+  journal = {International Journal of Educational Technology in Higher Education},
+  year    = {2019},
+  volume  = {16},
+  number  = {1},
+  pages   = {1--27},
+  doi     = {10.1186/s41239-019-0171-0}
+}
+
+@article{XuOuyang2022,
+  author  = {Bo Xu and Fei Ouyang},
+  title   = {Artificial Intelligence in STEM Education: Systematic Review and Future Directions},
+  journal = {Education and Information Technologies},
+  year    = {2022},
+  volume  = {27},
+  number  = {5},
+  pages   = {6025--6053},
+  doi     = {10.1007/s10639-021-10866-4}
+}
+
+@article{Tuomi2018,
+  author  = {Ilkka Tuomi},
+  title   = {The ethics of artificial intelligence in education: Promises and perils},
+  journal = {European Journal of Education},
+  year    = {2018},
+  volume  = {53},
+  number  = {3},
+  pages   = {420--431},
+  doi     = {10.1111/ejed.12310}
+}

@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Хроники Белламара — All‑in‑One</title>
+  <meta name="description" content="Интерактивная многослойная террапедия "Хроники Белламара" — фрактальная вселенная. Мультиязычная, доступная и адаптивная версия." />
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#7dd3fc;--muted:#94a3b8;--glass:rgba(255,255,255,0.03)}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:#e6eef6;background:linear-gradient(180deg,#031022 0%,#071728 60%);}
+    header{display:flex;align-items:center;gap:1rem;padding:1rem;box-shadow:0 2px 10px rgba(0,0,0,0.4);}
+    .logo{display:flex;align-items:center;gap:.75rem}
+    .logo .mark{width:48px;height:48px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:700;color:#022;}
+    nav{display:flex;gap:.5rem;flex-wrap:wrap}
+    button, .lang, .mode{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--accent);padding:.45rem .7rem;border-radius:8px;cursor:pointer}
+    main{display:grid;grid-template-columns:360px 1fr 360px;gap:1rem;padding:1rem;align-items:start}
+    @media(max-width:1000px){main{grid-template-columns:1fr;}
+      aside.right, nav{display:none}
+    }
+    aside.left{background:var(--card);padding:1rem;border-radius:12px;box-shadow:0 6px 30px rgba(2,6,23,0.6);min-height:60vh}
+    section.center{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:1rem;border-radius:12px;min-height:60vh}
+    aside.right{background:var(--card);padding:1rem;border-radius:12px;min-height:60vh}
+    .chapter-item{padding:.6rem;border-radius:8px;margin-bottom:.4rem;border:1px solid rgba(255,255,255,0.02);cursor:pointer}
+    .chapter-item:hover{background:var(--glass)}
+    h1,h2,h3{margin:.2rem 0;color:#dff6ff}
+    p{color:var(--muted)}
+    .controls{display:flex;gap:.5rem;align-items:center}
+    .fractal-canvas{width:100%;height:320px;background:linear-gradient(180deg,#02111a,#041826);border-radius:8px;display:block}
+    /* accessibility helpers */
+    .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+    /* low literacy grid */
+    .icons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+    .icon-card{background:rgba(255,255,255,0.02);padding:.6rem;border-radius:10px;text-align:center}
+    .t-audio{display:flex;gap:.5rem;margin-top:.5rem}
+    .citation-list{max-height:220px;overflow:auto;padding:.5rem;border-radius:8px;background:rgba(0,0,0,0.12)}
+    footer{padding:1rem;text-align:center;color:var(--muted);font-size:.85rem}
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <div class="logo">
+      <div class="mark" aria-hidden="true">⟡</div>
+      <div>
+        <div style="font-weight:700">Хроники Белламара</div>
+        <div style="font-size:.8rem;color:var(--muted)">All‑in‑One — фрактальная террапедия</div>
+      </div>
+    </div>
+    <nav aria-label="Основная навига">
+      <button id="nav-terra">Terra Core</button>
+      <button id="nav-chronicle">Chronicle Navigator</button>
+      <button id="nav-meta">Meta‑Fractal</button>
+      <button id="nav-combine">All‑in‑One</button>
+    </nav>
+    <div style="margin-left:auto" class="controls">
+      <select id="lang" class="lang" aria-label="Выбор языка">
+        <option value="ru">Русский</option>
+        <option value="en">English</option>
+        <option value="uz">Ўзбекча</option>
+        <option value="ug">Uyghur</option>
+        <option value="de">Deutsch</option>
+      </select>
+      <button id="btn-a11y" class="mode" title="Режим доступности">A11Y</button>
+      <button id="download-md" class="mode">Скачать MD</button>
+    </div>
+  </header>
+
+  <main>
+    <aside class="left" aria-labelledby="left-heading">
+      <h2 id="left-heading">Навигатор</h2>
+      <div id="chapters-list" role="list">
+        <!-- chapters injected -->
+      </div>
+      <hr/>
+      <h3>Режимы чтения</h3>
+      <div class="icons-grid" id="mode-icons">
+        <div class="icon-card" tabindex="0" role="button" data-mode="full">Полный</div>
+        <div class="icon-card" tabindex="0" role="button" data-mode="short">Короткий</div>
+        <div class="icon-card" tabindex="0" role="button" data-mode="kids">Для детей</div>
+        <div class="icon-card" tabindex="0" role="button" data-mode="lowlit">Для неграмотных</div>
+        <div class="icon-card" tabindex="0" role="button" data-mode="sign">Жестовый</div>
+        <div class="icon-card" tabindex="0" role="button" data-mode="audio">Аудио‑трансляция</div>
+      </div>
+    </aside>
+
+    <section class="center" id="viewer" tabindex="0" role="main">
+      <h1 id="title">All‑in‑One: Рождение фракталов</h1>
+      <p id="subtitle">Интерактивный модуль объединяет визуальную карту (Terra Core), древо хроник и мета‑фрактал.</p>
+
+      <canvas id="fractal" class="fractal-canvas" aria-label="Визуализация фракталов"></canvas>
+
+      <article id="content-area" style="margin-top:1rem">
+        <!-- dynamic content -->
+      </article>
+
+      <div class="t-audio">
+        <button id="tts-play">▶ Чтение вслух</button>
+        <button id="tts-pause">⏸ Пауза</button>
+        <button id="sign-open">🖐 Открыть жестовый блок</button>
+      </div>
+
+      <div style="margin-top:1rem">
+        <h3>Поддерживаемые цитаты (APA 7 — динамично)</h3>
+        <div class="citation-list" id="citations">
+          <div>[APA7 Placeholder] Источники будут расширяться динамически.</div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="right" aria-labelledby="right-heading">
+      <h2 id="right-heading">Meta‑Fractal</h2>
+      <p>Здесь собираются перекрёстки тем, артефактов и времён.</p>
+      <div id="meta-list"></div>
+      <hr/>
+      <h3>Доступность</h3>
+      <ul>
+        <li>Текст → речь (Web Speech API)</li>
+        <li>Субтитры и жестовый модуль (замещённый видео + транскрипция)</li>
+        <li>Низкопороговый режим (иконки + короткие фразы)</li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer>
+    <small>© Хроники Белламара — интерактивная террапедия. Версия: live‑all‑in‑one. Создано для демонстрации. Контент расширяется.</small>
+  </footer>
+
+  <!-- Embedded Markdown content for download and fallback -->
+  <script id="md-source" type="text/plain">
+# Хроники Белламара — Рождение фракталов
+
+**All‑in‑One** — визуальная и текстовая вселенная.
+
+## Секции
+
+### От Алтая до империй
+- [ФАКТ] Происхождение тюркских племён ...
+
+### Уйгурский каганат
+- [ФАКТ] Уйгурский каганат (744–840) ...
+
+[Источники — APA7 динамично]
+  </script>
+
+  <script>
+    // === Simple data model (extensible) ===
+    const LANG = {ru:'Русский',en:'English',uz:'Oʻzbek',ug:'Uyghur',de:'Deutsch'};
+    const chapters = [
+      {id:0,title:{ru:'Рождение фракталов',en:'Genesis of Fractals'},summary:{ru:'От Алтая до империй — Концентрат архетипов',en:'From Altai to empires'},sections:[{slug:'altai',title:{ru:'От Алтая до империй',en:'From Altai to empires'},text:{ru:`[ФАКТ] Тюркские племена зародились в Алтае (археология, лингвистика).\n[ФМП-ИНТЕРПРЕТАЦИЯ] Стремя как технология мобильной власти.`}}]},
+      {id:1,title:{ru:'Книга Первая: Корни',en:'Book One: Roots'},summary:{ru:'Корни личной и народной истории',en:'Roots of personal and collective history'},sections:[{slug:'kuldja',title:{ru:'Кульджа, 1949',en:'Kulja, 1949'},text:{ru:'[СЕМЕЙНОЕ ПРЕДАНИЕ] Рождение Абдулхамита...'}}]}
+    ];
+
+    // citations store (dynamic, can be extended via UI or APIs)
+    const citations = [
+      {id:'apa1',text:'Golden, P. B. (1992). *An Introduction to the History of the Turkic Peoples*. Princeton University Press.'}
+    ];
+
+    // === DOM population ===
+    const chaptersList = document.getElementById('chapters-list');
+    const contentArea = document.getElementById('content-area');
+    const citationsBox = document.getElementById('citations');
+
+    function renderChapters(lang='ru'){
+      chaptersList.innerHTML='';
+      chapters.forEach(ch=>{
+        const el = document.createElement('div'); el.className='chapter-item'; el.tabIndex=0;
+        el.innerHTML=`<strong>${ch.title[lang]||ch.title.ru}</strong><div style="font-size:.85rem;color:var(--muted)">${ch.summary[lang]||ch.summary.ru}</div>`;
+        el.onclick = ()=>openChapter(ch.id,lang);
+        el.onkeypress = (e)=>{ if(e.key==='Enter') openChapter(ch.id,lang)};
+        chaptersList.appendChild(el);
+      });
+    }
+
+    function openChapter(id,lang='ru'){
+      const ch = chapters.find(c=>c.id===id);
+      if(!ch) return;
+      contentArea.innerHTML = `<h2>${ch.title[lang]||ch.title.ru}</h2><p>${ch.summary[lang]||ch.summary.ru}</p>`;
+      ch.sections.forEach(sec=>{
+        const secEl = document.createElement('section');
+        secEl.style.marginTop='1rem';
+        secEl.innerHTML = `<h3>${sec.title[lang]||sec.title.ru}</h3><pre style="white-space:pre-wrap;color:var(--muted)">${(sec.text[lang]||sec.text.ru)}</pre>`;
+        contentArea.appendChild(secEl);
+      });
+      updateCitations();
+    }
+
+    function updateCitations(){
+      citationsBox.innerHTML='';
+      citations.forEach(c=>{
+        const d = document.createElement('div'); d.textContent = c.text; citationsBox.appendChild(d);
+      });
+    }
+
+    // initial render
+    renderChapters('ru');
+    openChapter(0,'ru');
+    updateCitations();
+
+    // language switch
+    document.getElementById('lang').addEventListener('change', (e)=>{
+      const l = e.target.value; renderChapters(l); openChapter(0,l);
+    });
+
+    // download markdown
+    document.getElementById('download-md').addEventListener('click', ()=>{
+      const md = document.getElementById('md-source').textContent;
+      const blob = new Blob([md],{type:'text/markdown;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href=url;a.download='chronicles-bellamar.md';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+    });
+
+    // accessibility toggle
+    document.getElementById('btn-a11y').addEventListener('click', ()=>{
+      document.body.classList.toggle('a11y');
+      alert('A11Y режим включён: активированы подсказки, увеличен контраст и включена TTS кнопка.');
+    });
+
+    // mode icons
+    document.getElementById('mode-icons').addEventListener('click',(e)=>{
+      const card = e.target.closest('.icon-card'); if(!card) return; const mode = card.dataset.mode; applyMode(mode);
+    });
+
+    function applyMode(mode){
+      if(mode==='kids'){
+        // show simplified content
+        contentArea.innerHTML = `<h2>Для детей</h2><p>Истории про коней, мастеров и великие города — в ярких образах и картинках.</p>`;
+      } else if(mode==='lowlit'){
+        contentArea.innerHTML = `<h2>Низкопороговый режим</h2><p>Короткие фразы, значки, звук и видео‑жесты.</p>`;
+      } else if(mode==='sign'){
+        // placeholder for sign language module
+        contentArea.innerHTML = `<h2>Жестовый модуль</h2><p>Видео с переводом (плейсхолдер). Нажмите «Открыть жестовый блок» для демо.</p>`;
+      } else if(mode==='audio'){
+        startTTS(contentArea.innerText || '');
+      } else {
+        openChapter(0,document.getElementById('lang').value);
+      }
+    }
+
+    // TTS (Web Speech API)
+    let synth = window.speechSynthesis; let utter;
+    function startTTS(text){ if(!synth) return alert('TTS не поддерживается в этом браузере.'); utter = new SpeechSynthesisUtterance(text); utter.lang = document.getElementById('lang').value==='ru'?'ru-RU':'en-US'; synth.cancel(); synth.speak(utter); }
+    document.getElementById('tts-play').addEventListener('click', ()=> startTTS(contentArea.innerText));
+    document.getElementById('tts-pause').addEventListener('click', ()=>{ if(synth) synth.cancel(); });
+    document.getElementById('sign-open').addEventListener('click', ()=>{ alert('Открытие жестового блока — в следующей версии будет интеграция с библиотекой ASL/Uz/UG sign videos.'); });
+
+    // === Fractal canvas (simple demo rendering) ===
+    const canvas = document.getElementById('fractal'); const ctx = canvas.getContext('2d');
+    function resizeCanvas(){ canvas.width = canvas.clientWidth * devicePixelRatio; canvas.height = canvas.clientHeight * devicePixelRatio; ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0); drawFractal(); }
+    window.addEventListener('resize', resizeCanvas);
+
+    function drawFractal(){
+      const w = canvas.clientWidth; const h = canvas.clientHeight; ctx.clearRect(0,0,w,h);
+      // background
+      const g = ctx.createLinearGradient(0,0,w,h); g.addColorStop(0,'#012'); g.addColorStop(1,'#013'); ctx.fillStyle = g; ctx.fillRect(0,0,w,h);
+      // simple recursive circles demo (fractal-like)
+      function circle(x,y,r,depth){ ctx.beginPath(); ctx.strokeStyle = `rgba(125,211,252,${0.12 + depth*0.06})`; ctx.lineWidth = Math.max(0.5,2-depth*0.3); ctx.arc(x,y,r,0,Math.PI*2); ctx.stroke(); if(depth<=0) return; const n = 3; for(let i=0;i<n;i++){ const ang = i*(Math.PI*2/n); const nx = x + Math.cos(ang)*(r*0.7); const ny = y + Math.sin(ang)*(r*0.7); circle(nx,ny,r*0.5,depth-1); } }
+      circle(w/2,h/2,Math.min(w,h)*0.2,4);
+    }
+    resizeCanvas();
+
+    // === Meta list demo ===
+    const meta = document.getElementById('meta-list'); meta.innerHTML = '<ul><li>Артефакты: стремя, дамасская сталь, риштанская керамика</li><li>Темы: миграции, письмоводство, фракталы памяти</li></ul>';
+
+    // === Extensibility hooks (developer API) ===
+    window.ChroniclesBellamar = {
+      addCitation(c){ citations.push(c); updateCitations(); },
+      addChapter(ch){ chapters.push(ch); renderChapters(document.getElementById('lang').value); },
+      openChapter
+    };
+
+    // small keyboard accessibility
+    document.addEventListener('keydown',(e)=>{ if(e.key==='?' ){ alert('Помощь: используйте навигацию слева, переключайте язык и режим чтения.'); } });
+
+  </script>
+</body>
+</html>

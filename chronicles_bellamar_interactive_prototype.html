@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Хроники Белламара — Interactive Prototype</title>
+  <meta name="description" content="Интерактивная, многоязычная и доступная прототип-террапедия 'Хроники Белламара' (RU/EN/UZ/UY/DE)." />
+  <style>
+    :root{--bg:#fbfbfb;--card:#fff;--muted:#666;--accent:#0066cc}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.5;background:var(--bg);color:#111;margin:0}
+    header{background:linear-gradient(90deg,#042a4b,#075985);color:#fff;padding:1rem}
+    .container{display:flex;gap:1rem;padding:1rem}
+    nav{width:260px;flex:0 0 260px}
+    nav .menu{position:sticky;top:1rem;background:var(--card);padding:1rem;border-radius:12px;box-shadow:0 6px 18px rgba(2,15,35,0.06)}
+    main{flex:1}
+    .card{background:var(--card);padding:1rem;border-radius:10px;box-shadow:0 6px 18px rgba(2,15,35,0.06);margin-bottom:1rem}
+    .lang-switch{display:flex;gap:.5rem}
+    .lang-switch button{background:transparent;border:1px solid rgba(255,255,255,.15);color:#fff;padding:.35rem .6rem;border-radius:6px;cursor:pointer}
+    .controls{display:flex;gap:.5rem;align-items:center}
+    .voice{font-weight:700;color:var(--accent)}
+    .cites{font-size:.9rem;color:var(--muted)}
+    .fractal-links{margin-top:.5rem}
+    .access{display:flex;gap:.5rem;align-items:center;margin-top:.5rem}
+    .btn{background:var(--accent);color:#fff;padding:.45rem .6rem;border-radius:8px;border:0;cursor:pointer}
+    .small{font-size:.9rem;padding:.25rem .4rem}
+    @media(max-width:900px){nav{display:none}.container{padding:.6rem}}
+    .high-contrast{background:#000;color:#fff}
+    .sr-only{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+    .sign-placeholder{background:#eee;border-radius:8px;padding:1rem;text-align:center;color:#666}
+    .toggle{display:inline-flex;align-items:center;gap:.4rem}
+  </style>
+</head>
+<body>
+  <header>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem">
+      <div>
+        <h1 style="margin:.2rem 0">Хроники Белламара <small style="opacity:.85">/ Chronicles Bellamar</small></h1>
+        <div class="cites">Многоуровневая террапедия — фракты истории, артефакты, биография. (Prototype)</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem">
+        <div class="lang-switch" role="tablist" aria-label="Языки">
+          <button onclick="setLang('ru')" id="lang-ru">RU</button>
+          <button onclick="setLang('en')" id="lang-en">EN</button>
+          <button onclick="setLang('uz')" id="lang-uz">UZ</button>
+          <button onclick="setLang('ug')" id="lang-ug">UY</button>
+          <button onclick="setLang('de')" id="lang-de">DE</button>
+        </div>
+        <div class="controls">
+          <button class="btn small" onclick="ttsPlay()" aria-label="Play text to speech">▶ TTS</button>
+          <button class="btn small" onclick="ttsStop()" aria-label="Stop TTS">■ Stop</button>
+          <div class="access">
+            <label class="toggle"><input type="checkbox" id="hcToggle" onchange="toggleContrast(this.checked)"> High contrast</label>
+            <label class="toggle"><input type="checkbox" id="bigText" onchange="adjustFont(this.checked)"> Large text</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav aria-label="Навигация">
+      <div class="menu">
+        <strong>Разделы</strong>
+        <ul style="padding-left:1rem">
+          <li><a href="#cosmogony">I. Космогония и архетипы</a></li>
+          <li><a href="#material">II. Материальная культура</a></li>
+          <li><a href="#history">III. История народов (фрактал)</a></li>
+          <li><a href="#bio">IV. Личная биография</a></li>
+          <li><a href="#meta">V. Метарефлексия / ФМП</a></li>
+          <li><a href="#accessibility">Доступность</a></li>
+          <li><a href="#bibliography">Библиография</a></li>
+        </ul>
+        <div style="margin-top:.6rem">
+          <small class="cites">Прото-версия. Контент расширяемый, интерактивный, модульный.</small>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Cosmogony Section -->
+      <section id="cosmogony" class="card" aria-labelledby="cosmoTitle">
+        <h2 id="cosmoTitle">I. Космогония и архетипы / Cosmogony & Archetypes</h2>
+        <p class="cites">Модифицированный многоголосый фрагмент: академический / эпический / артефакт / личный</p>
+
+        <article aria-label="Academic voice" class="card" style="background:linear-gradient(#ffffff,#f6fbff)">
+          <h3>[Академический / Academic]</h3>
+          <div id="cosmo-academic">
+            <p>[ФАКТ] Реконструкция космогоний служит сравнительному анализу: пантеоны, мифы о сотворении, и первичные артефакты отражают структурные паттерны ранних обществ.</p>
+            <p>Принцип фрактальной само-подобности в ФМП: микро-миф (семейное предание) ↔ макро-миф (пантеон) — повторяющийся паттерн в пространстве и времени.</p>
+          </div>
+        </article>
+
+        <article aria-label="Epic voice" class="card">
+          <h3>[Эпический / Epic]</h3>
+          <div id="cosmo-epic">
+            <p>Степь дышала. Звёзды падали, и из их искр родились юрты. Истории шли по швам коверной дороги, где каждая петля — легенда, а каждый шов — имя.</p>
+          </div>
+        </article>
+
+        <article aria-label="Artifact voice" class="card">
+          <h3>[Голос артефакта / Artifact]</h3>
+          <div id="cosmo-artifact">
+            <p>Я — стремя. Я помню руку, которая впервые обвила меня, и как человек, ещё не уверенный, стал единым с лошадью. Я — точка опоры для движения цивилизаций.</p>
+          </div>
+        </article>
+
+        <article aria-label="Personal voice" class="card">
+          <h3>[Личный / Personal]</h3>
+          <div id="cosmo-personal">
+            <p>Я родился под знаком Навруза. Моя жизнь — петля между миграцией деда и великими дорогами шелка. В этих петлях — вся моя семейная карта.</p>
+          </div>
+        </article>
+
+        <div class="fractal-links">
+          <strong>Фрактальные ссылки:</strong>
+          <a href="#material" style="margin-left:.5rem">II. Материальная культура</a>
+          <a href="#history" style="margin-left:.5rem">III. История народов</a>
+        </div>
+      </section>
+
+      <!-- Material Culture -->
+      <section id="material" class="card" aria-labelledby="matTitle">
+        <h2 id="matTitle">II. Материальная культура как код цивилизации</h2>
+
+        <div class="card">
+          <h3>Стремя / The Stirrup</h3>
+          <p>[Академический] Технология стремени изменила баланс сил и мобильность армии. (Prototype text — citations are managed in Bibliography panel.)</p>
+          <p>[Эпический] Железо поёт, и всадник становится ветром.</p>
+          <p>[Механика / Technical note] Простая U-форма из кованого железа; опоры для ноги; в ранних вариантах — род пластин. В интерактивной версии — 3D-модель и разрез с аннотациями.</p>
+        </div>
+
+        <div class="card">
+          <h3>Дамасская сталь Ферганы / Damask steel of Fergana</h3>
+          <p>[Академический] Миф о дамасской стали связан с технологической школой в центрально-азиатском кузнечестве; прототипы и технологические приёмы требуют долгой металловедческой реконструкции.</p>
+          <p>[Артефакт] Мой узор — карта неба и памяти кузнеца.</p>
+        </div>
+
+        <div class="card">
+          <h3>Риштанская керамика / Rishtan ceramics</h3>
+          <p>Керамика как носитель эстетики и технологии: глазурь, минералы, температурные профили, формы амфор и горшков — всё это кодирует хозяйственную сеть региона.</p>
+        </div>
+
+      </section>
+
+      <!-- History section -->
+      <section id="history" class="card" aria-labelledby="histTitle">
+        <h2 id="histTitle">III. История народов через фрактальную призму</h2>
+        <p>[Snapshot] Модель дает многослойные карты — от Орхонских надписей до советских архивов. Каждая запись помечается по эпистемологическому уровню: [ФАКТ] [СЕМЕЙНОЕ ПРЕДАНИЕ] [КУЛЬТУРНЫЙ КОД] [ФМП-ИНТЕРПРЕТАЦИЯ].</p>
+
+        <div class="card">
+          <h3>Уйгурский каганат (744–840)</h3>
+          <p>[Академический] Сильная письменная традиция, роль манихейства и буддизма в элитной культуре, администрация письмоводителей — ключевые реальности. (See bibliography for sources.)</p>
+        </div>
+
+      </section>
+
+      <!-- Biography -->
+      <section id="bio" class="card" aria-labelledby="bioTitle">
+        <h2 id="bioTitle">IV. Личная биография — микрокосм</h2>
+        <p>[Факт] Рождение: 22.03.1977, Ташкент — основная точка входа.</p>
+        <p>[Метка] Каждое семейное событие связывается с параллелью в истории — «фрактальные рифмы» отображаются в интерактивных временных шкалах.</p>
+      </section>
+
+      <!-- Meta / FMP -->
+      <section id="meta" class="card" aria-labelledby="metaTitle">
+        <h2 id="metaTitle">V. Метарефлексия: ФМП</h2>
+        <p>ФМП — методологическая рамка: фрактальные модели, рекурсивность и эмерджентность. В интерактивной версии реализуем визуальные графы, отражающие паттерны повторения.</p>
+      </section>
+
+      <!-- Accessibility -->
+      <section id="accessibility" class="card" aria-labelledby="accTitle">
+        <h2 id="accTitle">Доступность / Accessibility</h2>
+        <ul>
+          <li>WCAG 2.1 AA — базовые соответствия (контраст, структура, клавиатурная навигация).</li>
+          <li>Text-to-speech (Web Speech API) для каждого текстового блока.</li>
+          <li>Субтитры и транскрипты: авто-генерация + ручная коррекция (placeholder для sign-language videos).</li>
+          <li>Упрощённый режим: визуальные карточки и диаграммы с пиктограммами для минимально грамотных пользователей.</li>
+          <li>Многоязычность: RU / EN / UZ / UY / DE — переключение перевода для каждого блока.</li>
+        </ul>
+
+        <div class="card sign-placeholder">
+          <strong>Sign language / Қол ёрдами: </strong>
+          <p>Здесь появляется окно с видео переводом на жестовый язык (placeholder — интеграция с CDN/AV сервисом — future).</p>
+        </div>
+
+      </section>
+
+      <!-- Bibliography panel (dynamic) -->
+      <section id="bibliography" class="card" aria-labelledby="bibTitle">
+        <h2 id="bibTitle">Библиография (начальная подборка)</h2>
+        <p>Примечание: интерактивная библиотека — живой объект. Ниже — стартовый набор источников; система позволяет добавлять и синхронизировать новые ссылки.</p>
+        <ol id="bibList">
+          <li>Anthony, D. W. — <em>The Horse, the Wheel, and Language</em> (Princeton University Press, 2007).</li>
+          <li>Golden, P. B. — <em>An Introduction to the History of the Turkic Peoples</em> (1992).</li>
+          <li>Primary sources: Divan Lughat al-Turk (Mahmud al-Kashgari); Kutadgu Bilig (Yusuf Balasaguni).</li>
+          <li>Gaunitz, C. et al. "Ancient genomes revisit the ancestry of domestic and..." (Science, 2018) — genomic context for Botai horses.</li>
+          <li>WCAG 2.1 guidelines (W3C).</li>
+        </ol>
+        <p class="cites">(Полный список APA/APA7 создаётся и поддерживается в отдельной базе — экспорт доступен.)</p>
+      </section>
+
+    </main>
+  </div>
+
+  <footer style="padding:1rem;text-align:center;font-size:.9rem;color:var(--muted)">
+    Prototype — Interactive Chronices Bellamar. Designed for extensibility, accessibility and multi-voice narratives.
+  </footer>
+
+  <script>
+    // Simple multilingual content store (prototype). Full system would load JSON L10n files per language.
+    const L = {
+      ru: {name:'Русский'},
+      en: {name:'English'},
+      uz: {name:'O\'zbek'},
+      ug: {name:'Uyghur'},
+      de: {name:'Deutsch'}
+    };
+    let currentLang = 'ru';
+
+    function setLang(lang){
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      // For prototype we only change labels on header; full translations would replace innerText in blocks
+      document.getElementById('lang-ru').style.opacity = lang==='ru'?1:0.6;
+      document.getElementById('lang-en').style.opacity = lang==='en'?1:0.6;
+      document.getElementById('lang-uz').style.opacity = lang==='uz'?1:0.6;
+      document.getElementById('lang-ug').style.opacity = lang==='ug'?1:0.6;
+      document.getElementById('lang-de').style.opacity = lang==='de'?1:0.6;
+      // TODO: dynamically load translations
+      console.log('Language set to',lang);
+    }
+
+    // Simple TTS (Web Speech API). Uses currentLanguage mapping for voice selection.
+    let synth = window.speechSynthesis;
+    let utter;
+    function ttsPlay(){
+      ttsStop();
+      const text = Array.from(document.querySelectorAll('main .card'))
+        .map(el => el.innerText).slice(0,6).join('\n\n');
+      utter = new SpeechSynthesisUtterance(text);
+      utter.lang = (currentLang==='en')?'en-US':(currentLang==='de')?'de-DE':'ru-RU';
+      synth.speak(utter);
+    }
+    function ttsStop(){ if(synth && synth.speaking) synth.cancel(); }
+
+    function toggleContrast(on){ document.body.classList.toggle('high-contrast', on); }
+    function adjustFont(big){ document.body.style.fontSize = big ? '18px' : '16px'; }
+
+    // Download visible content as Markdown (basic):
+    function downloadMarkdown(){
+      let md = '# Хроники Белламара — экспорт\n\n';
+      document.querySelectorAll('main h2').forEach(h => { md += '## '+h.innerText+'\n\n';
+        let card = h.parentElement.querySelectorAll('.card');
+      });
+      const blob = new Blob([md], {type:'text/markdown'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href=url; a.download='chronicles-bellamar.md'; a.click(); URL.revokeObjectURL(url);
+    }
+
+    // Initial
+    setLang('ru');
+
+    // Accessibility: basic keyboard nav for nav menu
+    document.addEventListener('keydown', (e) => {
+      if(e.key==='/' && e.ctrlKey){ document.querySelector('nav a')?.focus(); e.preventDefault(); }
+    });
+
+  </script>
+</body>
+</html>

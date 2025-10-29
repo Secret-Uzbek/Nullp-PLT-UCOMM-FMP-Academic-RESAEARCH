@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Хроники Белламара — интерактивная террапедия</title>
+  <style>
+    :root{--bg:#fff;--fg:#111;--accent:#0066cc;--muted:#666}
+    [data-contrast="high"]{--bg:#000;--fg:#fff;--accent:#ff0}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;line-height:1.5;margin:0;background:var(--bg);color:var(--fg)}
+    .wrap{max-width:1100px;margin:0 auto;padding:1rem}
+    header{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;border-bottom:1px solid #ddd;padding:0.5rem 0}
+    .brand{font-weight:700;font-size:1.2rem}
+    nav a{margin-right:0.6rem;color:var(--accent);text-decoration:none}
+    .controls{margin-left:auto;display:flex;gap:0.5rem;align-items:center}
+    button{background:#eee;border:1px solid #ccc;padding:0.35rem 0.6rem;border-radius:6px;cursor:pointer}
+    button[aria-pressed="true"]{outline:2px solid var(--accent)}
+    main{padding:1rem 0}
+    h1,h2{margin:0.3rem 0}
+    .chapter{padding:0.6rem;border-radius:6px}
+    .chapter .section{margin:0.8rem 0;padding:0.6rem;border-left:3px solid #eee}
+    .fractal-links a{margin-right:0.5rem}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .access-tools{display:flex;gap:0.5rem}
+    .search{padding:0.5rem;border:1px solid #ccc;border-radius:6px;width:240px}
+    footer{border-top:1px solid #ddd;padding:1rem 0;margin-top:1rem;color:var(--muted)}
+    @media (max-width:640px){.search{width:100%}}
+  </style>
+</head>
+<body>
+  <a href="#main" class="sr-only">Перейти к содержанию</a>
+  <div class="wrap" id="root"></div>
+
+  <!-- React & ReactDOM UMD (we will not rely on react-router to keep this single-file and robust) -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script>
+  (function(){
+    const React = window.React;
+    const ReactDOM = window.ReactDOM;
+    const {useState,useEffect,useRef} = React;
+
+    // --- Data (starter sample) ---
+    const chapters = [
+      {
+        title: 'Пролог: Фрактальная история',
+        sections: [
+          {
+            subtitle: 'От Алтая до империй',
+            content: [
+              '[ФАКТ] Тюркские племена образовались на Алтае в I тыс. до н.э.',
+              '[ФМП-ИНТЕРПРЕТАЦИЯ] Стремя как технологическая революция отражает структуру власти и мобильности степей.'
+            ],
+            fractalLinks: [1,2]
+          },
+          {
+            subtitle: 'Уйгурский каганат и письмоводители',
+            content: [
+              '[ФАКТ] Уйгурский каганат (744-840) развивал манихейство и буддизм [Golden 1992, Mackerras 1990, Tekin 1968]',
+              '[КУЛЬТУРНЫЙ КОД] Письмоводители — носители культурной памяти степей'
+            ],
+            fractalLinks: [0,3]
+          }
+        ]
+      },
+      {
+        title: 'Книга Первая: Корни',
+        sections: [
+          { subtitle: 'Кульджа, 1949', content: ['[СЕМЕЙНОЕ ПРЕДАНИЕ] Рождение Абдулхамита в Кульдже, дед — табачная фабрика...'], fractalLinks: [0] },
+          { subtitle: 'Дорога, 1955', content: ['[ФАКТ] Миграция семьи из Кульджи в СССР'], fractalLinks: [0,2] }
+        ]
+      }
+    ];
+
+    const BIBLIO = [
+      {id:1, text:'Golden, P.B. An Introduction to the History of the Turkic Peoples. 1992.', url:'https://example.com/golden1992'},
+      {id:2, text:'Mackerras, C. The Uighur Empire. 1990.', url:'https://example.com/mackerras1990'},
+      {id:3, text:'Tekin, T. Orkhon Inscriptions. 1968.', url:'https://example.com/tekin1968'},
+      {id:99, text:'MyTashkent — локальные материалы (пример)', url:'https://mytashkent.uz/'},
+      {id:100, text:'Bellamar — блог автора', url:'https://bellamar.livejournal.com/'}
+    ];
+
+    // --- Simple i18n dictionary for UI strings ---
+    const DICT = {
+      ru:{chapters:'Главы', bibliography:'Библиография', select:'Выбрать', search:'Поиск', download:'Скачать', tts:'Озвучить', back:'Назад', lang:'Язык'},
+      en:{chapters:'Chapters', bibliography:'Bibliography', select:'Select', search:'Search', download:'Download', tts:'Listen', back:'Back', lang:'Language'},
+      uz:{chapters:'Boblar', bibliography:'Bibliografiya', select:'Tanlash', search:'Qidirish', download:'Yuklab olish', tts:'Ovoz', back:'Orqaga', lang:'Til'},
+      ug:{chapters:'بابلار', bibliography:'مۇنبەر', select:'تاللاڭ', search:'ئىزدەش', download:'چۈشۈرۈش', tts:'اۋاز', back:'ئاۋالقىسى', lang:'تىل'},
+      de:{chapters:'Kapitel', bibliography:'Bibliographie', select:'Wählen', search:'Suche', download:'Herunterladen', tts:'Vorlesen', back:'Zurück', lang:'Sprache'}
+    };
+
+    function useHashRoute(defaultRoute){
+      const [route,setRoute] = useState(parseHash() || defaultRoute);
+      useEffect(()=>{
+        function onHash(){ setRoute(parseHash()||defaultRoute); }
+        window.addEventListener('hashchange',onHash);
+        return ()=>window.removeEventListener('hashchange',onHash);
+      },[]);
+      return [route,function navigate(to){ window.location.hash = to; }];
+      function parseHash(){ if(!location.hash) return null; return location.hash.replace('#',''); }
+    }
+
+    // Accessibility: simple TTS using Web Speech API
+    function speak(text, lang='ru-RU'){ if(!('speechSynthesis' in window)) return alert('TTS не поддерживается'); const u = new SpeechSynthesisUtterance(text); u.lang = lang; speechSynthesis.cancel(); speechSynthesis.speak(u); }
+
+    // Download helper
+    function downloadText(filename, text){ const blob = new Blob([text],{type:'text/markdown;charset=utf-8'}); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href=url; a.download = filename; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url); }
+
+    // --- Components ---
+    function FractalLinks({links,onNavigate,dict}){
+      if(!links||links.length===0) return null;
+      return React.createElement('div',{className:'fractal-links',style:{marginTop:'0.6rem'}},
+        React.createElement('strong',null,dict.chapters+': '),
+        links.map(l=>React.createElement('button',{key:l, onClick:()=>onNavigate('chapter-'+l), 'aria-label':`Перейти к главе ${l+1}`}, `Глава ${l+1}`))
+      );
+    }
+
+    function Bibliography({dict}){
+      return React.createElement('div',{style:{padding:'1rem'}},
+        React.createElement('h1',null,dict.bibliography),
+        React.createElement('ul',null, BIBLIO.map(s=>React.createElement('li',{key:s.id}, React.createElement('a',{href:s.url,target:'_blank',rel:'noopener'}, s.text))))
+      );
+    }
+
+    function Chapter({id,onNavigate,dict}){
+      const num = parseInt(id,10);
+      const chap = chapters[num];
+      if(!chap) return React.createElement('div',null,'Глава не найдена');
+      return React.createElement('article',{className:'chapter', 'aria-labelledby':`h-${num}`},
+        React.createElement('h1',{id:`h-${num}`}, chap.title),
+        chap.sections.map((sec,idx)=>React.createElement('section',{key:idx,className:'section'},
+          React.createElement('h2',null, sec.subtitle),
+          sec.content.map((p,i)=>React.createElement('p',{key:i}, p)),
+          React.createElement(FractalLinks,{links:sec.fractalLinks,onNavigate: onNavigate, dict})
+        ))
+      );
+    }
+
+    function App(){
+      const [route,navigate] = useHashRoute('home');
+      const [lang,setLang] = useState(localStorage.getItem('cb-lang')||'ru');
+      const dict = DICT[lang]||DICT.ru;
+      const [contrast,setContrast] = useState(false);
+      const [large,setLarge] = useState(false);
+      useEffect(()=>{ document.documentElement.setAttribute('data-contrast', contrast? 'high':''); document.documentElement.style.fontSize = large? '120%':'100%'; },[contrast,large]);
+
+      // search
+      const [q,setQ] = useState('');
+      const searchResults = React.useMemo(()=>{
+        if(!q) return null;
+        const hits = [];
+        chapters.forEach((c,ci)=>{ c.sections.forEach((s,si)=>{ s.content.forEach(txt=>{ if(txt.toLowerCase().includes(q.toLowerCase())) hits.push({ci,si,txt,sTitle:s.subtitle}); }) }); });
+        return hits;
+      },[q]);
+
+      function renderMain(){
+        if(route.startsWith('chapter-')){
+          const id = route.split('-')[1];
+          return React.createElement(Chapter,{id,onNavigate:navigate,dict});
+        }
+        if(route==='bibliography') return React.createElement(Bibliography,{dict});
+        if(route==='search'){
+          return React.createElement('div',null,
+            React.createElement('h1',null,dict.search),
+            React.createElement('input',{className:'search',placeholder:dict.search,value:q,onChange:e=>setQ(e.target.value)}),
+            searchResults && React.createElement('div',null,React.createElement('h2',null,'Результаты'), searchResults.map((r,i)=>React.createElement('div',{key:i}, React.createElement('a',{href:'#',onClick:()=>navigate('chapter-'+r.ci)}, `Глава ${r.ci+1} — ${r.sTitle}`), React.createElement('p',null,r.txt))))
+          );
+        }
+        return React.createElement('div',null, React.createElement('h1',null,'Хроники Белламара'), React.createElement('p',null,'Интерактивная террапедия — выберите главу слева или через навигацию.'));
+      }
+
+      return React.createElement('div',null,
+        React.createElement('header',{role:'banner'},
+          React.createElement('div',{className:'brand'},'Хроники Белламара'),
+          React.createElement('nav',null,
+            React.createElement('span',null, dict.chapters+': '),
+            chapters.map((c,i)=>React.createElement('a',{key:i,href:'#chapter-'+i,onClick:(e)=>{e.preventDefault();navigate('chapter-'+i);}}, c.title)) ,
+            React.createElement('a',{href:'#bibliography',onClick:(e)=>{e.preventDefault();navigate('bibliography');}}, dict.bibliography)
+          ),
+          React.createElement('div',{className:'controls'},
+            React.createElement('label',{htmlFor:'langSelect',className:'sr-only'},dict.lang),
+            React.createElement('select',{id:'langSelect',value:lang,onChange:e=>{ setLang(e.target.value); localStorage.setItem('cb-lang', e.target.value); }},
+              React.createElement('option',{value:'ru'},'RU'),
+              React.createElement('option',{value:'en'},'EN'),
+              React.createElement('option',{value:'uz'},'UZ'),
+              React.createElement('option',{value:'ug'},'UY'),
+              React.createElement('option',{value:'de'},'DE')
+            ),
+            React.createElement('div',{className:'access-tools'},
+              React.createElement('button',{onClick:()=>setContrast(c=>!c), 'aria-pressed':contrast}, 'Высокий контраст'),
+              React.createElement('button',{onClick:()=>setLarge(l=>!l),'aria-pressed':large}, 'Увеличить текст'),
+              React.createElement('button',{onClick:()=>{ const el = document.querySelector('#root'); if(el) el.focus(); }}, 'Кнопка фокуса')
+            )
+          )
+        ),
+        React.createElement('main',{id:'main',role:'main'},
+          React.createElement('div',null,
+            renderMain()
+          )
+        ),
+        React.createElement('footer',null, React.createElement('div',null, '© Хроники Белламара — рабочая версия. Ссылки: ', React.createElement('a',{href:'https://mytashkent.uz/',target:'_blank',rel:'noopener'},'mytashkent.uz'), ' — ', React.createElement('a',{href:'https://bellamar.livejournal.com/',target:'_blank',rel:'noopener'},'bellamar.livejournal.com')))
+      );
+    }
+
+    // render
+    const root = document.getElementById('root');
+    ReactDOM.createRoot(root).render(React.createElement(App));
+
+  })();
+  </script>
+</body>
+</html>

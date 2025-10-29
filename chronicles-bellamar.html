@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Хроники Белламара — Interactive Prototype</title>
+<meta name="description" content="Хроники Белламара — мультиязычная интерактивная террапедия (прототип). RU / EN / UZ / UY / DE. Доступность: TTS, high-contrast, large text, ARIA." />
+<style>
+  :root{
+    --bg:#fbfbfb; --fg:#111; --accent:#2b6cb0; --muted:#666;
+    --card-bg:#fff; --radius:12px; --gap:1rem;
+    --max-width:1100px;
+  }
+  html,body{height:100%; margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial; background:var(--bg); color:var(--fg);}
+  .container{max-width:var(--max-width); margin:0 auto; padding:1rem;}
+  header{display:flex; gap:1rem; align-items:center; justify-content:space-between; margin-bottom:1rem;}
+  .brand{display:flex; gap:0.75rem; align-items:center;}
+  .logo{width:46px;height:46px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#9f7aea);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+  nav {display:flex; gap:.5rem; flex-wrap:wrap;}
+  .lang-btn{padding:.4rem .6rem;border-radius:6px;border:1px solid #ddd;background:white;cursor:pointer}
+  .controls{display:flex; gap:.5rem; align-items:center;}
+  main{display:grid; grid-template-columns: 1fr 340px; gap:1rem;}
+  @media(max-width:900px){ main{grid-template-columns:1fr;} .toc{order:2} }
+  .card{background:var(--card-bg); padding:1rem; border-radius:var(--radius); box-shadow:0 6px 18px rgba(10,10,10,0.06);}
+  .section-title{display:flex; justify-content:space-between; align-items:center;}
+  .voices{display:flex; gap:.5rem; margin-top:.75rem; flex-wrap:wrap;}
+  .voice-btn{padding:.3rem .5rem;border-radius:6px;border:1px solid #eee;background:#fafafa; cursor:pointer; font-size:.95rem}
+  .fractal-links{margin-top:1rem}
+  .toc{position:sticky; top:1rem;}
+  footer{margin-top:2rem; padding:1rem 0; color:var(--muted); font-size:.9rem;}
+  .muted{color:var(--muted)}
+  .big{font-size:1.15rem}
+  .high-contrast{background:black; color:yellow}
+  .large-text{font-size:1.25rem}
+  .simple-mode{font-family:Georgia,serif}
+  .btn{padding:.5rem .8rem;border-radius:8px;border:0;background:var(--accent);color:white;cursor:pointer}
+  .secondary{background:#eee;color:var(--fg)}
+  .bib-list{max-height:40vh; overflow:auto; padding:.5rem; border-radius:8px; background:#fafafa;}
+  .export{margin-left: .5rem}
+  /* accessibility focus */
+  :focus{outline:3px solid #ffd54f; outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="container" id="app">
+  <header>
+    <div class="brand">
+      <div class="logo" aria-hidden="true">Б</div>
+      <div>
+        <div style="font-weight:700">Хроники Белламара</div>
+        <div class="muted" style="font-size:.85rem">Fractal Meta-Science Narrative — prototype</div>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:.6rem; align-items:center;">
+      <nav aria-label="Main navigation" id="nav">
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="uz">UZ</button>
+        <button class="lang-btn" data-lang="ug">UY</button>
+        <button class="lang-btn" data-lang="de">DE</button>
+      </nav>
+
+      <div class="controls">
+        <button id="tts-play" class="btn" title="Play text (TTS)">▶️</button>
+        <button id="tts-stop" class="secondary" title="Stop TTS">■</button>
+        <button id="contrast" class="secondary" title="Toggle high contrast">Contrast</button>
+        <button id="size" class="secondary" title="Toggle large text">A+</button>
+        <button id="simple" class="secondary" title="Simple/Illustrated mode">Simple</button>
+        <button id="export-md" class="secondary export" title="Export current view to Markdown">Export MD</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section aria-labelledby="content" id="content-area">
+      <!-- Sections populated by JS -->
+    </section>
+
+    <aside class="toc card" id="sidebar" aria-label="Sidebar">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;">
+        <strong>Навигация / Navigation</strong>
+        <span class="muted small" id="lang-indicator">RU</span>
+      </div>
+
+      <div id="toc-list">
+        <!-- TOC injected -->
+      </div>
+
+      <hr style="margin:.75rem 0"/>
+
+      <div>
+        <strong>Библиография / Bibliography (APA7)</strong>
+        <div class="bib-list" id="bib">
+          <!-- Bibliography entries -->
+        </div>
+        <div style="margin-top:.5rem">
+          <button id="more-bib" class="secondary" style="width:100%;">Добавить источники / Add sources</button>
+        </div>
+      </div>
+
+    </aside>
+  </main>
+
+  <footer class="muted">
+    Прототип — интерактивная платформа "Хроники Белламара". Текст — демонстрационный. Для полного проекта требуется подключение внешних библиотек, автоматический импорт источников и медиа. &nbsp;|&nbsp; <span id="status">Готово</span>
+  </footer>
+</div>
+
+<script>
+/* ========== Data: multilingual skeleton content ========== */
+const CONTENT = {
+  ru: {
+    title: "Хроники Белламара",
+    sections: [
+      { id:'cosmo', title:'I. Космогония и архетипы', blocks: [
+        {mode:'academic', heading:'[ФАКТ] Космогония: археологические и мифологические слои', text:
+`[ФАКТ] Мифы о сотворении мира фиксируются в самых ранних письменных и устных источниках — от Вед, Эпоним до орхонских рунических фрагментов. [ФМП-ИНТЕРПРЕТАЦИЯ] В модели ФМП архетип "яйцо / древо" воспроизводится рекурсивно: микропоследовательности повторяют макроструктуры.`},
+        {mode:'epic', heading:'Эпическое', text:'Степь плачет и поёт; небо даёт имя ветру; яйцо мироздания раскололось — и в трещинах появились города.'},
+        {mode:'artifact', heading:'Голос артефакта — Яйцо', text:'Я — скорлупа, в моей трещине — первая карта дорог. Кому я открою путь?'},
+      ]},
+      { id:'material', title:'II. Материальная культура как код цивилизации', blocks: [
+        {mode:'academic', heading:'Стремя и металлургия', text:'[ФАКТ] Стремя как технологическая инновация радикально изменила мобильность общества; дамасская сталь, ферганские кузницы — ключевые элементы материальной культуры.'},
+        {mode:'artifact', heading:'Голос: Стремя', text:'Я — стремя из Алтая. До меня всадник был гостем, после — хозяином горизонта.'},
+      ]},
+      { id:'history', title:'III. История народов (фрактальная призма)', blocks: [
+        {mode:'academic', heading:'Уйгурские каганаты и письмоводители', text:'[ФАКТ] Уйгурский каганат (744–840) создал письменные традиции и бюрократические практики; письмоводители переводили администрирование кочевых структур в оседлые имперские формы.'},
+        {mode:'epic', heading:'Эпическое', text:'Орду-Балык стоит на ветру. Камни шепчут имена тех, кто считал слова сокровищем.'},
+        {mode:'personal', heading:'Личный голос', text:'[СЕМЕЙНОЕ ПРЕДАНИЕ] Мой дед рассказывал о табачной фабрике в Кульдже; в его памяти — оттенки старого мира.'},
+      ]},
+      { id:'bio', title:'IV. Личная биография как микрокосм', blocks: [
+        {mode:'personal', heading:'Рождение и корни', text:'[ФАКТ] Абдурашид Абдукаримов — родился 22.03.1977 в Ташкенте. [ФМП-ИНТЕРПРЕТАЦИЯ] Личная биография как голограмма эпохи.'},
+        {mode:'epic', heading:'Эпическое', text:'Маленький город, большая память — каждая трещина кирпича хранит имя.'},
+      ]},
+      { id:'meta', title:'V. Метарефлексия и ФМП', blocks: [
+        {mode:'academic', heading:'Фрактальная Метанаучная Парадигма (ФМП)', text:'ФМП — методологический набор: фрактальная само-подобность, рекурсивная со-конструкция, эмерджентная интеграция. Применение: организация текста как террапедии.'},
+        {mode:'artifact', heading:'Голос: Книга', text:'Я — книга, и в каждой моей строке отражается целый мир.'},
+      ]},
+    ]
+  },
+
+  en: {
+    title: "Chronicles Bellamar",
+    sections: [
+      { id:'cosmo', title:'I. Cosmogony and Archetypes', blocks: [
+        {mode:'academic', heading:'[FACT] Cosmogony: archaeological & mythic layers', text:
+`[FACT] Creation myths appear in the earliest textual and oral sources — from Vedic hymns to rune-fragments. [FMP-INTERPRETATION] In FMP, the 'egg/tree' archetype repeats recursively: micro-patterns mirror macro-structures.`},
+        {mode:'epic', heading:'Epic', text:'The steppe breathes and sings; the sky names the wind; the cosmic egg broke and cities spilled out.'},
+        {mode:'artifact', heading:'Artifact Voice — The Egg', text:'I am a shell; in my crack is the first map of roads. Whom will I lead?'},
+      ]},
+      { id:'material', title:'II. Material Culture as Civilization Code', blocks: [
+        {mode:'academic', heading:'Stirrup & metallurgy', text:'[FACT] The stirrup was a mobility revolution; Damascus steel and Fergana forges are core elements of material culture.'},
+        {mode:'artifact', heading:'Voice: Stirrup', text:'I am the stirrup forged in Altai. Before me the rider was guest; after me — master of horizon.'},
+      ]},
+      { id:'history', title:'III. Peoples in Fractal Prism', blocks: [
+        {mode:'academic', heading:'Uighur Khaganates & scribes', text:'[FACT] The Uighur Khaganate (744–840) developed scripts and bureaucratic practices; scribes translated nomadic administration into imperial forms.'},
+        {mode:'epic', heading:'Epic', text:'Ordu-Balyk stands to the wind. Stones whisper names of those who treasured words.'},
+        {mode:'personal', heading:'Personal voice', text:'[FAMILY TRADITION] My grandfather spoke of a tobacco factory in Kuldja; in his memory — shades of an old world.'},
+      ]},
+      { id:'bio', title:'IV. Personal Biography as Microcosm', blocks: [
+        {mode:'personal', heading:'Birth and roots', text:'[FACT] Abdurashid Abdukarimov — born 22.03.1977, Tashkent. [FMP-INTERPRETATION] Biography as hologram of an epoch.'},
+      ]},
+      { id:'meta', title:'V. Metareflection & FMP', blocks: [
+        {mode:'academic', heading:'Fractal Meta-Scientific Paradigm (FMP)', text:'FMP is a methodological set: fractal self-similarity, recursive co-construction, emergent integration. Use: organize the text as a terrapedia.'},
+      ]},
+    ]
+  },
+
+  uz: {
+    title: "Bellamar Xronikalari",
+    sections: [
+      { id:'cosmo', title:'I. Kosmogoniya va arxetiplar', blocks:[
+        {mode:'academic', heading:'[FAKT] Kosmogoniya', text:'[FAKT] Dunyo yaratish haqidagi miflar qadimgi matn va og‘zaki manbalarda saqlanadi. [FMP-TALQINI] FMPda "tuxum/daraxt" arxetipi rekursiv takrorlanadi.'},
+        {mode:'epic', heading:'Epos', text:'Dasht nafas oladi; osmon shamolga ism beradi; tuxum yorilib, shaharlar paydo bo‘ldi.'}
+      ]},
+      { id:'material', title:'II. Madaniy material — sivilizatsiya kodi', blocks:[
+        {mode:'academic', heading:'Tirman va metallurgiya', text:'[FAKT] Tirman — harakat inqilobi; Damashq po‘lat va Farg‘ona kuymalari moddiy madaniyat asosini tashkil qiladi.'}
+      ]},
+    ]
+  },
+
+  ug: { /* Uyghur (simplified samples) */
+    title: "بېللامار خىروهىنىكلىرى",
+    sections: [
+      { id:'cosmo', title:'I. خالىق بۆلۈش ۋە ئالخەتلەر', blocks:[
+        {mode:'academic', heading:'[فەكتى] خالىق بۆلۈش', text:'[فەكتى] خالىق بۆلۈش مىتىرىكلىرى ئەڭ ئالدىنقى يېزىق ۋە ئاۋازلىق مەنبەلەردە كۆرۈلدى. [FMP] "توخۇم/دەرەخ" ئالخەتلىك قالتىسلىقنى تەكرارلايدۇ.'}
+      ]}
+    ]
+  },
+
+  de: {
+    title: "Chroniken Bellamar",
+    sections: [
+      { id:'cosmo', title:'I. Kosmogonie und Archetypen', blocks:[
+        {mode:'academic', heading:'[FAKT] Kosmogonie: archäologische & mythische Schichten', text:'[FAKT] Schöpfungsmythen sind in frühen Texten und Mündlichen Überlieferungen verzeichnet. [FMP-INTERPRETATION] Im FMP wiederholt sich das Archetyp "Ei/Baum" rekursiv.'}
+      ]}
+    ]
+  }
+};
+
+/* ========== Bibliography (APA7) ========== */
+const BIBLIOGRAPHY = [
+  "Anthony, D. W. (2007). The Horse, the Wheel, and Language: How Bronze-Age Riders from the Eurasian Steppes Shaped the Modern World. Princeton University Press.",
+  "Golden, P. B. (1992). An Introduction to the History of the Turkic Peoples. Otto Harrassowitz.",
+  "Kramer, S. N. (1963). The Sumerians: Their History, Culture, and Character. University of Chicago Press.",
+  "Postgate, J. N. (1992). Early Mesopotamia: Society and Economy at the Dawn of History. Routledge.",
+  "Van de Mieroop, M. (2007). A History of the Ancient Near East. Blackwell.",
+  "Cooper, J. S. (2001). Sumerian and Akkadian Tablets in the British Museum. British Museum Press.",
+  "Shaw, I. (2000). The Oxford History of Ancient Egypt. Oxford University Press.",
+  "Wilkinson, T. A. H. (2003). The Complete Temples of Ancient Egypt. Thames & Hudson.",
+  "Kemp, B. (2006). Ancient Egypt: Anatomy of a Civilization. Routledge.",
+  "Possehl, G. L. (2002). The Indus Civilization: A Contemporary Perspective. Rowman & Littlefield.",
+  "Kenoyer, J. M. (1998). Ancient Cities of the Indus Valley Civilization. Oxford University Press.",
+  "Thapar, R. (2002). Early India: From the Origins to AD 1300. University of California Press.",
+  "Keightley, D. (1978). Sources of Shang History: The Oracle-Bone Inscriptions of Bronze Age China. University of California Press.",
+  "Bagley, R. (1999). Shang Archaeology. In The Cambridge History of Ancient China. Cambridge University Press.",
+  "Evans, A. (1949). The Palace of Minos. London: Macmillan.",
+  "Chadwick, J. (1976). The Mycenaean World. Cambridge University Press.",
+  "Cline, E. H. (2014). 1177 B.C.: The Year Civilization Collapsed. Princeton University Press.",
+  "Mallory, J. P. (1999). The Origins of the Indo-Europeans: Language, Archaeology, and Myth. Thames & Hudson.",
+  "Liverani, M. (1998). International Relations in the Ancient Near East. Palgrave.",
+  "Benecke, N. (2005). Archaeozoology of early horse domestication. Journal articles and edited volumes.",
+  "Outram, A. K., et al. (2009). The Earliest Horse Harnessing and Riding Evidence From Botai. Antiquity / Science articles.",
+  "Millward, J. (2007). Eurasian Crossroads: A History of Xinjiang. Columbia University Press.",
+  "Mackerras, C. (1990). The Uighur Empire 744–840. In various historical compendia.",
+  "Tekin, T. (1968). Orkhon Inscriptions. Indiana University Publications.",
+  "Golden, P. B. (2011). Central Asia in World History. Oxford University Press.",
+  "Brodie, N. (2010). Metallurgy and early steel techniques in Central Asia. (Collection).",
+  "Snodgrass, A. (1971). The Mycenaean World. Oxford University Press.",
+  "Castleden, R. (1990). The Knossos Labyrinth. Routledge.",
+  "W3C. (2018). Web Content Accessibility Guidelines (WCAG) 2.1. World Wide Web Consortium.",
+  "UNESCO. (2003). Convention for the Safeguarding of the Intangible Cultural Heritage.",
+  "Navoi, A. (15th c.). Guly va Navruz (selected translations)."
+];
+
+/* ========== UI logic ========== */
+const app = document.getElementById('app');
+const contentArea = document.getElementById('content-area');
+const tocList = document.getElementById('toc-list');
+const bibList = document.getElementById('bib');
+const langButtons = document.querySelectorAll('[data-lang]');
+const langIndicator = document.getElementById('lang-indicator');
+let currentLang = 'ru';
+let currentSectionId = null;
+
+/* render functions */
+function renderSidebarBib() {
+  bibList.innerHTML = '';
+  BIBLIOGRAPHY.forEach((b, i) => {
+    const li = document.createElement('div');
+    li.style.marginBottom='0.6rem';
+    li.innerHTML = `<div style="font-size:.95rem">${i+1}. ${escapeHtml(b)}</div>`;
+    bibList.appendChild(li);
+  });
+}
+
+function renderContent(lang) {
+  contentArea.innerHTML = ''; tocList.innerHTML='';
+  const page = CONTENT[lang] || CONTENT['ru'];
+  document.title = page.title + ' — Prototype';
+  document.querySelector('.brand div strong').textContent = page.title || 'Chronicles Bellamar';
+  langIndicator.textContent = lang.toUpperCase();
+
+  page.sections.forEach((sec, idx) => {
+    // add to TOC
+    const tocItem = document.createElement('div');
+    tocItem.innerHTML = `<a href="#${sec.id}" style="text-decoration:none;color:var(--accent)">${idx+1}. ${sec.title}</a>`;
+    tocList.appendChild(tocItem);
+
+    // create section card
+    const secCard = document.createElement('div');
+    secCard.className='card';
+    secCard.id = sec.id;
+    const header = document.createElement('div');
+    header.className='section-title';
+    header.innerHTML = `<h2 style="margin:0">${idx+1}. ${sec.title}</h2><div class="muted">Фрактал: ${idx+1}</div>`;
+    secCard.appendChild(header);
+
+    // blocks: multiple voices
+    sec.blocks.forEach((blk) => {
+      const block = document.createElement('div');
+      block.style.borderTop='1px dashed #eee'; block.style.marginTop='.75rem'; block.style.paddingTop='.6rem';
+      block.setAttribute('role','article');
+      block.innerHTML = `<div style="font-weight:600; margin-bottom:.25rem">${escapeHtml(blk.heading || '')}</div>
+        <div class="muted">${escapeHtml(blk.mode.toUpperCase())}</div>
+        <div class="big" style="margin-top:.4rem">${escapeHtml(blk.text)}</div>`;
+
+      // voice buttons
+      const voicesDiv = document.createElement('div');
+      voicesDiv.className='voices';
+      const playBtn = document.createElement('button'); playBtn.className='voice-btn'; playBtn.textContent='🔊 Прослушать';
+      playBtn.addEventListener('click', ()=> speak(blk.text, currentLang));
+      voicesDiv.appendChild(playBtn);
+
+      const copyBtn = document.createElement('button'); copyBtn.className='voice-btn secondary'; copyBtn.textContent='📋 Копировать';
+      copyBtn.addEventListener('click', ()=> { navigator.clipboard.writeText(blk.text); alert('Скопировано в буфер');});
+      voicesDiv.appendChild(copyBtn);
+
+      const simpleBtn = document.createElement('button'); simpleBtn.className='voice-btn'; simpleBtn.textContent='🧭 Фрактал-связи';
+      simpleBtn.addEventListener('click', ()=> alert('Связи: (демо) — см. боковую навигацию'));
+      voicesDiv.appendChild(simpleBtn);
+
+      block.appendChild(voicesDiv);
+      secCard.appendChild(block);
+    });
+
+    // fractal links placeholder
+    const fractal = document.createElement('div'); fractal.className='fractal-links muted';
+    fractal.innerHTML = `<div><em>Фрактальные связи:</em> см. смежные разделы — <a href="#meta">V</a>, <a href="#material">II</a></div>`;
+    secCard.appendChild(fractal);
+
+    contentArea.appendChild(secCard);
+  });
+}
+
+/* escape */
+function escapeHtml(s){ return (s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
+
+/* TTS */
+let synth = window.speechSynthesis;
+function speak(text, lang){
+  if(!synth){ alert('TTS не поддерживается в этом браузере'); return;}
+  synth.cancel();
+  const utter = new SpeechSynthesisUtterance(text);
+  // map lang to speech codes (best-effort)
+  const map = { ru:'ru-RU', en:'en-US', uz:'uz-UZ', ug:'ug-CN', de:'de-DE' };
+  utter.lang = map[lang] || 'ru-RU';
+  utter.rate = 1.0; utter.pitch = 1.0;
+  synth.speak(utter);
+}
+
+/* UI events */
+document.getElementById('tts-play').addEventListener('click', ()=> {
+  // read visible first big block
+  const first = document.querySelector('.card .big');
+  if(first) speak(first.textContent, currentLang);
+});
+document.getElementById('tts-stop').addEventListener('click', ()=> synth && synth.cancel());
+
+document.getElementById('contrast').addEventListener('click', ()=> {
+  document.body.classList.toggle('high-contrast');
+});
+document.getElementById('size').addEventListener('click', ()=> {
+  document.body.classList.toggle('large-text');
+});
+document.getElementById('simple').addEventListener('click', ()=> {
+  document.body.classList.toggle('simple-mode');
+});
+
+langButtons.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const lang = btn.getAttribute('data-lang');
+    currentLang = lang;
+    renderContent(lang);
+  });
+});
+
+/* export to markdown (basic) */
+document.getElementById('export-md').addEventListener('click', ()=>{
+  const page = CONTENT[currentLang] || CONTENT['ru'];
+  let md = `# ${page.title}\n\n`;
+  page.sections.forEach((s,si)=>{
+    md += `## ${si+1}. ${s.title}\n\n`;
+    s.blocks.forEach(b=>{
+      md += `### ${b.heading}\n\n`;
+      md += `${b.text}\n\n`;
+    });
+  });
+  const blob = new Blob([md], {type:'text/markdown;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href=url; a.download = `${page.title.replace(/\s+/g,'_')}.md`; a.click();
+  URL.revokeObjectURL(url);
+});
+
+/* add more sources (demo auto-append) */
+document.getElementById('more-bib').addEventListener('click', ()=>{
+  // append placeholder entries to simulate endless growth
+  BIBLIOGRAPHY.push("Additional Source (auto) — added " + new Date().toISOString());
+  renderSidebarBib();
+});
+
+/* initial render */
+renderSidebarBib();
+renderContent(currentLang);
+
+/* keyboard accessibility: quick nav (1-5) */
+window.addEventListener('keydown',(e)=>{
+  if(e.altKey && !e.shiftKey){
+    const num = parseInt(e.key,10);
+    if(num>=1 && num<=9){
+      const page = CONTENT[currentLang] || CONTENT['ru'];
+      const sec = page.sections[num-1];
+      if(sec) { location.hash = '#'+sec.id; }
+    }
+  }
+});
+
+/* placeholders: integrate external media (comments) */
+/*
+  TODOs for full system:
+  - connect to external bibliographic APIs (CrossRef, PubMed, WorldCat) to auto-expand APA7 entries
+  - implement sign-language video widgets (upload or CDN links), automated captions (WebVTT)
+  - add simplified audio-visual storytelling mode for low-literacy users (icons + audio + sequences)
+  - implement graph visualization for fractal links (d3.js)
+  - integrate server-side endpoint for continuous bibliographic ingestion and translation pipeline
+*/
+
+</script>
+</body>
+</html>
