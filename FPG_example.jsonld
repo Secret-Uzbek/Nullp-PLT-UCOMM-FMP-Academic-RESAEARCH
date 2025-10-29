@@ -1,0 +1,46 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "FractalProblemGraph",
+  "id": "FPG-TCPP-2025-001",
+  "nodes": [
+    {
+      "id": "n1",
+      "type": "assumption",
+      "text": "Problem decomposability across scales",
+      "supported_by": [
+        "literature:fractal_structures"
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "experiment",
+      "text": "Terra simulation run set A",
+      "supported_by": [
+        "log:simA"
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "claim",
+      "text": "Convergence to fractal attractor observed",
+      "supported_by": [
+        "n2",
+        "literature:fractal_dynamics"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "n1",
+      "to": "n2",
+      "confidence": 0.8,
+      "scale": "micro"
+    },
+    {
+      "from": "n2",
+      "to": "n3",
+      "confidence": 0.9,
+      "scale": "meso"
+    }
+  ]
+}

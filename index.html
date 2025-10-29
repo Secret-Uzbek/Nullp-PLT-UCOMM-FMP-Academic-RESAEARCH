@@ -1,443 +1,505 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>👥 Council of Memory - Круг великих умов</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdurashid Abdukarimov - Professional Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-      html,
-      body,
-      #root {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-      }
+        body { font-family: 'Inter', sans-serif; }
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-shadow { box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
-  </head>
-  <body class="min-h-screen">
-    <div id="root"></div>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Language Selector -->
+    <div class="fixed top-4 right-4 z-50 bg-white rounded-lg shadow-lg p-2">
+        <div class="flex space-x-2">
+            <button onclick="switchLanguage('uz')" class="lang-btn px-3 py-1 rounded text-sm font-medium transition-colors" data-lang="uz">O'zbek</button>
+            <button onclick="switchLanguage('ru')" class="lang-btn px-3 py-1 rounded text-sm font-medium transition-colors active" data-lang="ru">Русский</button>
+            <button onclick="switchLanguage('en')" class="lang-btn px-3 py-1 rounded text-sm font-medium transition-colors" data-lang="en">English</button>
+            <button onclick="switchLanguage('de')" class="lang-btn px-3 py-1 rounded text-sm font-medium transition-colors" data-lang="de">Deutsch</button>
+        </div>
+    </div>
 
-    <script type="module">
-      // Import React from CDN (matching component version)
-      import React, { useState, useEffect } from 'https://esm.sh/react@18.2.0';
-      import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client';
+    <!-- Uzbek Content -->
+    <div id="uz-content" class="lang-content">
+        <div class="gradient-bg text-white py-20">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h1 class="text-5xl font-bold mb-4">Abdurashid Abdukarimov</h1>
+                <p class="text-xl mb-8">Professional Tarjimon va Biznes Konsultanti</p>
+                <div class="flex justify-center space-x-6 text-lg">
+                    <span>📞 +998950833850</span>
+                    <span>📧 secret.uzbek@tutamail.com</span>
+                    <span>📍 Toshkent, Uzbekiston</span>
+                </div>
+            </div>
+        </div>
 
-      // Hatch client initialization with localStorage-based storage
-      const initHatchClient = async (useEffect, useState) => {
-          // Try to load stored state from JSON file, fallback to inline data
-          let initialStorage = {};
-          try {
-              const response = await fetch('./storedState.json');
-              initialStorage = await response.json();
-          } catch (error) {
-              console.warn('Could not load storedState.json, using inline data:', error);
-              // Fallback to inline stored state data for file:// URLs
-              initialStorage = {};
-          }
+        <div class="max-w-6xl mx-auto px-6 py-16">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Main Content -->
+                <div class="md:col-span-2 space-y-8">
+                    <section class="bg-white rounded-lg card-shadow p-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Professional Malumot</h2>
+                        <p class="text-gray-600 leading-relaxed">
+                            25 yildan ortiq professional tajribaga ega bo'lgan tajribali tarjimon va biznes konsultanti. 
+                            Nemis, ingliz, rus va uzbek tillarida mukammal bilimga ega. Xalqaro loyihalar va 
+                            diplomatik faoliyatda keng tajriba.
+                        </p>
+                    </section>
 
-          // Initialize localStorage with stored state
-          const STORAGE_PREFIX = 'hatch_component_';
-          Object.entries(initialStorage).forEach(([key, value]) => {
-              const storageKey = STORAGE_PREFIX + key;
-              if (!localStorage.getItem(storageKey)) {
-                  localStorage.setItem(storageKey, JSON.stringify(value));
-              }
-          });
+                    <section class="bg-white rounded-lg card-shadow p-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Asosiy Ish Tajribasi</h2>
+                        <div class="space-y-6">
+                            <div class="border-l-4 border-blue-500 pl-4">
+                                <h3 class="font-semibold text-lg">2017 - Hozir</h3>
+                                <p class="text-gray-600">Biznes Konsultant, Tarjimon, Uzbekiston bo'yicha Gid</p>
+                            </div>
+                            <div class="border-l-4 border-green-500 pl-4">
+                                <h3 class="font-semibold text-lg">2011 - 2017</h3>
+                                <p class="text-gray-600">Siyosiy va Iqtisodiy Masalalar bo'yicha Assistent, Shveysariya Elchixonasi</p>
+                            </div>
+                            <div class="border-l-4 border-purple-500 pl-4">
+                                <h3 class="font-semibold text-lg">1999 - 2001</h3>
+                                <p class="text-gray-600">Madaniy Dasturlar bo'yicha Assistent, Gyote Instituti</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
 
-          // Implement useStoredState hook compatible with Hatch
-          const useStoredState = (key, defaultValue) => {
-              const storageKey = STORAGE_PREFIX + key;
+                <!-- Sidebar -->
+                <div class="space-y-6">
+                    <div class="bg-white rounded-lg card-shadow p-6">
+                        <h3 class="text-lg font-semibold mb-4">Tillar</h3>
+                        <div class="space-y-3">
+                            <div><span class="font-medium">Nemis:</span> Mukammal</div>
+                            <div><span class="font-medium">Ingliz:</span> Yuqori daraja</div>
+                            <div><span class="font-medium">Rus:</span> Mukammal</div>
+                            <div><span class="font-medium">Uzbek:</span> Ona tili</div>
+                        </div>
+                    </div>
 
-              // Get initial value from localStorage or use default
-              const getStoredValue = () => {
-                  try {
-                      const item = localStorage.getItem(storageKey);
-                      return item ? JSON.parse(item) : defaultValue;
-                  } catch (error) {
-                      console.warn('Error reading from localStorage:', error);
-                      return defaultValue;
-                  }
-              };
+                    <div class="bg-white rounded-lg card-shadow p-6">
+                        <h3 class="text-lg font-semibold mb-4">Ta'lim</h3>
+                        <div class="space-y-3">
+                            <div>
+                                <p class="font-medium">Uzbekiston Jahon Tillari Universiteti</p>
+                                <p class="text-sm text-gray-600">Nemis filologiyasi (1999)</p>
+                            </div>
+                            <div>
+                                <p class="font-medium">Humboldt Universiteti, Berlin</p>
+                                <p class="text-sm text-gray-600">DSH sertifikati (1998)</p>
+                            </div>
+                        </div>
+                    </div>
 
-              const [value, setValue] = useState(getStoredValue);
+                    <div class="bg-white rounded-lg card-shadow p-6">
+                        <h3 class="text-lg font-semibold mb-4">Mukofotlar</h3>
+                        <div class="space-y-2">
+                            <div class="text-sm">🏆 DAAD stipendiyasi</div>
+                            <div class="text-sm">🎓 Diplom (imtiyozli)</div>
+                            <div class="text-sm">📜 DSH sertifikati</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-              // Update localStorage when value changes
-              const setStoredValue = (newValue) => {
-                  try {
-                      const valueToStore = typeof newValue === 'function' ? newValue(value) : newValue;
-                      localStorage.setItem(storageKey, JSON.stringify(valueToStore));
-                      setValue(valueToStore);
-                  } catch (error) {
-                      console.error('Error writing to localStorage:', error);
-                  }
-              };
+    <!-- Russian Content -->
+    <div id="ru-content" class="lang-content active">
+        <div class="gradient-bg text-white py-20">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h1 class="text-5xl font-bold mb-4">Абдурашид Абдукаримов</h1>
+                <p class="text-xl mb-8">Профессиональный переводчик и бизнес-консультант</p>
+                <div class="flex justify-center space-x-6 text-lg">
+                    <span>📞 +998950833850</span>
+                    <span>📧 secret.uzbek@tutamail.com</span>
+                    <span>📍 Ташкент, Узбекистан</span>
+                </div>
+            </div>
+        </div>
 
-              // Listen for storage changes from other tabs/windows
-              useEffect(() => {
-                  const handleStorageChange = (e) => {
-                      if (e.key === storageKey && e.newValue) {
-                          try {
-                              setValue(JSON.parse(e.newValue));
-                          } catch (error) {
-                              console.warn('Error parsing storage change:', error);
-                          }
-                      }
-                  };
+        <div class="max-w-6xl mx-auto px-6 py-16">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Main Content -->
+                <div class="md:col-span-2 space-y-8">
+                    <section class="bg-white rounded-lg card-shadow p-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Профессиональный профиль</h2>
+                        <p class="text-gray-600 leading-relaxed">
+                            Опытный переводчик и бизнес-консультант с более чем 25-летним профессиональным опытом. 
+                            Свободно владею немецким, английским, русским и узбекским языками. 
+                            Обширный опыт работы в международных проектах и дипломатической деятельности.
+                        </p>
+                    </section>
 
-                  window.addEventListener('storage', handleStorageChange);
-                  return () => window.removeEventListener('storage', handleStorageChange);
-              }, [storageKey]);
+                    <section class="bg-white rounded-lg card-shadow p-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Ключевой опыт работы</h2>
+                        <div class="space-y-6">
+                            <div class="border-l-4 border-blue-500 pl-4">
+                                <h3 class="font-semibold text-lg">2017 - настоящее время</h3>
+                                <p class="text-gray-600">Бизнес-консультант, переводчик, гид по Узбекистану</p>
+                            </div>
+                            <div class="border-l-4 border-green-500 pl-4">
+                                <h3 class="font-semibold text-lg">2011 - 2017</h3>
+                                <p class="text-gray-600">Ассистент по политическим и экономическим вопросам, Посольство Швейцарии</p>
+                            </div>
+                            <div class="border-l-4 border-purple-500 pl-4">
+                                <h3 class="font-semibold text-lg">1999 - 2001</h3>
+                                <p class="text-gray-600">Ассистент по культурным программам, Институт им. Гёте</p>
+                            </div>
+                        </div>
+                    </section>
 
-              return [value, setStoredValue];
-          };
+                    <section class="bg-white rounded-lg card-shadow p-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Достижения</h2>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-blue-800">Стипендия DAAD</h4>
+                                <p class="text-sm text-blue-600">Программа академического обмена в Германии</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-green-800">DSH Сертификат</h4>
+                                <p class="text-sm text-green-600">Университет Гумбольдта, Берлин</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-800">Диплом с отличием</h4>
+                                <p class="text-sm text-purple-600">Узбекский университет мировых языков</p>
+                            </div>
+                            <div class="bg-orange-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-orange-800">25+ лет опыта</h4>
+                                <p class="text-sm text-orange-600">Профессиональный перевод и консультирование</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
 
-          // Set up global Hatch client interface
-          window.hatch = {
-              useStoredState,
-              // Mock implementations for other Hatch features
-              useUser: () => ({ id: 'local', name: 'Local User', color: '#4F46E5' }),
-              useCollaborators: () => [],
-              useAssets: () => [],
-              getAllItems: async () => {
-                  const items = {};
-                  for (let i = 0; i < localStorage.length; i++) {
-                      const key = localStorage.key(i);
-                      if (key && key.startsWith(STORAGE_PREFIX)) {
-                          const itemKey = key.replace(STORAGE_PREFIX, '');
-                          try {
-                              items[itemKey] = JSON.parse(localStorage.getItem(key));
-                          } catch (error) {
-                              console.warn('Error parsing stored item:', key, error);
-                          }
-                      }
-                  }
-                  return items;
-              },
-              getItem: async (key) => {
-                  try {
-                      const item = localStorage.getItem(STORAGE_PREFIX + key);
-                      return item ? JSON.parse(item) : undefined;
-                  } catch (error) {
-                      console.warn('Error getting item:', key, error);
-                      return undefined;
-                  }
-              },
-              setItem: async (key, value) => {
-                  try {
-                      localStorage.setItem(STORAGE_PREFIX + key, JSON.stringify(value));
-                  } catch (error) {
-                      console.error('Error setting item:', key, error);
-                  }
-              }
-          };
+                <!-- Sidebar -->
+                <div class="space-y-6">
+                    <div class="bg-white rounded-lg card-shadow p-6">
+                        <h3 class="text-lg font-semibold mb-4">Языки</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="font-medium">Немецкий:</span>
+                                <span class="text-green-600">Свободно</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-medium">Английский:</span>
+                                <span class="text-blue-600">Продвинутый</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-medium">Русский:</span>
+                                <span class="text-green-600">Свободно</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-medium">Узбекский:</span>
+                                <span class="text-green-600">Родной</span>
+                            </div>
+                        </div>
+                    </div>
 
-          // Backward compatibility and global availability
-          window.useStoredState = useStoredState;
-          window.React = React;
-          window.useState = useState;
-          window.useEffect = useEffect;
-      };
+                    <div class="bg-white rounded-lg card-shadow p-6">
+                        <h3 class="text-lg font-semibold mb-4">Образование</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="font-medium">Узбекский государственный университет мировых языков</p>
+                                <p class="text-sm text-gray-600">Немецкая филология (1999)</p>
+                                <p class="text-sm text-gray-600">Аспирантура (2006)</p>
+                            </div>
+                            <div>
+                                <p class="font-medium">Университет Гумбольдта, Берлин</p>
+                                <p class="text-sm text-gray-600">DSH сертификат (1998)</p>
+                            </div>
+                        </div>
+                    </div>
 
-      // Initialize Hatch client
-      await initHatchClient(useEffect, useState);
+                    <div class="bg-white rounded-lg card-shadow p-6">
+                        <h3 class="text-lg font-semibold mb-4">Специализации</h3>
+                        <div class="space-y-2">
+                            <div class="bg-gray-100 px-3 py-1 rounded-full text-sm">Синхронный перевод</div>
+                            <div class="bg-gray-100 px-3 py-1 rounded-full text-sm">Бизнес-консультирование</div>
+                            <div class="bg-gray-100 px-3 py-1 rounded-full text-sm">Политический анализ</div>
+                            <div class="bg-gray-100 px-3 py-1 rounded-full text-sm">Международные отношения</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-      try {
-          // Try to load component from external file, fallback to inline code
-          let componentCode;
-          try {
-              const response = await fetch('./component.js');
-              componentCode = await response.text();
-          } catch (fetchError) {
-              console.warn('Could not load component.js, using inline code:', fetchError);
-              // Fallback to inline component code for file:// URLs
-              componentCode = `// <stdin>
-import React, { useState, useEffect } from "https://esm.sh/react@18.2.0";
-var CouncilOfMemory = () => {
-  const [activePhase, setActivePhase] = useState("gathering");
-  const [selectedFigure, setSelectedFigure] = useState(null);
-  const figures = [
-    {
-      name: "\\u0410\\u0432\\u0438\\u0446\\u0435\\u043D\\u043D\\u0430",
-      period: "980-1037",
-      field: "\\u041C\\u0435\\u0434\\u0438\\u0446\\u0438\\u043D\\u0430, \\u0424\\u0438\\u043B\\u043E\\u0441\\u043E\\u0444\\u0438\\u044F",
-      position: 0,
-      color: "#4CAF50",
-      symbol: "\\u{1F3E5}",
-      quote: "\\u041C\\u0435\\u0434\\u0438\\u0446\\u0438\\u043D\\u0430 \\u2014 \\u0438\\u0441\\u043A\\u0443\\u0441\\u0441\\u0442\\u0432\\u043E \\u0441\\u043E\\u0445\\u0440\\u0430\\u043D\\u044F\\u0442\\u044C \\u0437\\u0434\\u043E\\u0440\\u043E\\u0432\\u044C\\u0435 \\u0438 \\u043B\\u0435\\u0447\\u0438\\u0442\\u044C \\u0431\\u043E\\u043B\\u0435\\u0437\\u043D\\u044C, \\u0441\\u043B\\u0443\\u0447\\u0438\\u0432\\u0448\\u0443\\u044E\\u0441\\u044F \\u0432 \\u0447\\u0435\\u043B\\u043E\\u0432\\u0435\\u0447\\u0435\\u0441\\u043A\\u043E\\u043C \\u0442\\u0435\\u043B\\u0435"
-    },
-    {
-      name: "\\u0410\\u043B\\u044C-\\u0425\\u043E\\u0440\\u0435\\u0437\\u043C\\u0438",
-      period: "783-850",
-      field: "\\u041C\\u0430\\u0442\\u0435\\u043C\\u0430\\u0442\\u0438\\u043A\\u0430, \\u0410\\u0441\\u0442\\u0440\\u043E\\u043D\\u043E\\u043C\\u0438\\u044F",
-      position: 45,
-      color: "#2196F3",
-      symbol: "\\u{1F9EE}",
-      quote: "\\u0422\\u043E, \\u0447\\u0442\\u043E \\u0434\\u0432\\u0430 \\u0440\\u0430\\u0437\\u0430 \\u043F\\u043E \\u0441\\u0442\\u043E\\u043B\\u044C\\u043A\\u043E \\u0436\\u0435, \\u0441\\u043A\\u043E\\u043B\\u044C\\u043A\\u043E \\u043D\\u0435\\u0438\\u0437\\u0432\\u0435\\u0441\\u0442\\u043D\\u043E\\u0435 \\u0447\\u0438\\u0441\\u043B\\u043E, \\u0440\\u0430\\u0432\\u043D\\u043E \\u0434\\u0432\\u0435\\u043D\\u0430\\u0434\\u0446\\u0430\\u0442\\u0438"
-    },
-    {
-      name: "\\u0413\\u0430\\u043B\\u0438\\u043B\\u0435\\u0439",
-      period: "1564-1642",
-      field: "\\u0410\\u0441\\u0442\\u0440\\u043E\\u043D\\u043E\\u043C\\u0438\\u044F, \\u0424\\u0438\\u0437\\u0438\\u043A\\u0430",
-      position: 90,
-      color: "#FF9800",
-      symbol: "\\u{1F52D}",
-      quote: "Eppur si muove! \\u0418 \\u0432\\u0441\\u0451-\\u0442\\u0430\\u043A\\u0438 \\u043E\\u043D\\u0430 \\u0432\\u0435\\u0440\\u0442\\u0438\\u0442\\u0441\\u044F!"
-    },
-    {
-      name: "\\u041B\\u0435\\u043E\\u043D\\u0430\\u0440\\u0434\\u043E \\u0434\\u0430 \\u0412\\u0438\\u043D\\u0447\\u0438",
-      period: "1452-1519",
-      field: "\\u0418\\u0441\\u043A\\u0443\\u0441\\u0441\\u0442\\u0432\\u043E, \\u0418\\u0437\\u043E\\u0431\\u0440\\u0435\\u0442\\u0435\\u043D\\u0438\\u044F",
-      position: 135,
-      color: "#9C27B0",
-      symbol: "\\u{1F3A8}",
-      quote: "\\u041F\\u0440\\u0435\\u043F\\u044F\\u0442\\u0441\\u0442\\u0432\\u0438\\u044F \\u043D\\u0435 \\u0434\\u043E\\u043B\\u0436\\u043D\\u044B \\u0442\\u0435\\u0431\\u044F \\u0441\\u0433\\u0438\\u0431\\u0430\\u0442\\u044C. \\u041A\\u0430\\u0436\\u0434\\u043E\\u0435 \\u043F\\u0440\\u0435\\u043F\\u044F\\u0442\\u0441\\u0442\\u0432\\u0438\\u0435 \\u043C\\u043E\\u0436\\u043D\\u043E \\u0440\\u0430\\u0437\\u0440\\u0443\\u0448\\u0438\\u0442\\u044C \\u043D\\u0430\\u0441\\u0442\\u043E\\u0439\\u0447\\u0438\\u0432\\u043E\\u0441\\u0442\\u044C\\u044E"
-    },
-    {
-      name: "\\u041C\\u0430\\u0440\\u0438\\u044F \\u041A\\u044E\\u0440\\u0438",
-      period: "1867-1934",
-      field: "\\u0424\\u0438\\u0437\\u0438\\u043A\\u0430, \\u0425\\u0438\\u043C\\u0438\\u044F",
-      position: 180,
-      color: "#E91E63",
-      symbol: "\\u269B\\uFE0F",
-      quote: "\\u0412 \\u043D\\u0430\\u0443\\u043A\\u0435 \\u043D\\u0430\\u0441 \\u0434\\u043E\\u043B\\u0436\\u043D\\u0430 \\u0438\\u043D\\u0442\\u0435\\u0440\\u0435\\u0441\\u043E\\u0432\\u0430\\u0442\\u044C \\u043D\\u0435 \\u043B\\u0438\\u0447\\u043D\\u043E\\u0441\\u0442\\u044C \\u0443\\u0447\\u0451\\u043D\\u043E\\u0433\\u043E, \\u0430 \\u0442\\u043E, \\u0447\\u0442\\u043E \\u043E\\u043D \\u043E\\u0442\\u043A\\u0440\\u044B\\u043B"
-    },
-    {
-      name: "\\u0421\\u0442\\u0438\\u0432\\u0435\\u043D \\u0425\\u043E\\u043A\\u0438\\u043D\\u0433",
-      period: "1942-2018",
-      field: "\\u0424\\u0438\\u0437\\u0438\\u043A\\u0430, \\u041A\\u043E\\u0441\\u043C\\u043E\\u043B\\u043E\\u0433\\u0438\\u044F",
-      position: 225,
-      color: "#00BCD4",
-      symbol: "\\u{1F30C}",
-      quote: "\\u041C\\u044B \\u2014 \\u0432\\u0441\\u0435\\u0433\\u043E \\u043B\\u0438\\u0448\\u044C \\u043F\\u0440\\u043E\\u0434\\u0432\\u0438\\u043D\\u0443\\u0442\\u0430\\u044F \\u043F\\u043E\\u0440\\u043E\\u0434\\u0430 \\u043E\\u0431\\u0435\\u0437\\u044C\\u044F\\u043D \\u043D\\u0430 \\u043D\\u0435\\u0431\\u043E\\u043B\\u044C\\u0448\\u043E\\u0439 \\u043F\\u043B\\u0430\\u043D\\u0435\\u0442\\u0435 \\u043E\\u0431\\u044B\\u043A\\u043D\\u043E\\u0432\\u0435\\u043D\\u043D\\u043E\\u0439 \\u0437\\u0432\\u0435\\u0437\\u0434\\u044B"
-    },
-    {
-      name: "\\u0410\\u043B\\u0438\\u0448\\u0435\\u0440 \\u041D\\u0430\\u0432\\u043E\\u0438",
-      period: "1441-1501",
-      field: "\\u041F\\u043E\\u044D\\u0437\\u0438\\u044F, \\u0424\\u0438\\u043B\\u043E\\u0441\\u043E\\u0444\\u0438\\u044F",
-      position: 270,
-      color: "#8BC34A",
-      symbol: "\\u{1F4DC}",
-      quote: "\\u0422\\u043E\\u0442, \\u043A\\u0442\\u043E \\u0438\\u0449\\u0435\\u0442 \\u0437\\u043D\\u0430\\u043D\\u0438\\u044F, \\u043F\\u043E\\u0434\\u043E\\u0431\\u0435\\u043D \\u043F\\u043E\\u0441\\u0442\\u0443 \\u0434\\u0435\\u0440\\u0436\\u0430\\u0449\\u0435\\u043C\\u0443 \\u0447\\u0435\\u043B\\u043E\\u0432\\u0435\\u043A\\u0443 \\u0432 \\u0440\\u0430\\u043C\\u0430\\u0437\\u0430\\u043D"
-    },
-    {
-      name: "\\u042D\\u0439\\u043D\\u0448\\u0442\\u0435\\u0439\\u043D",
-      period: "1879-1955",
-      field: "\\u0424\\u0438\\u0437\\u0438\\u043A\\u0430",
-      position: 315,
-      color: "#FFC107",
-      symbol: "\\u26A1",
-      quote: "\\u0412\\u043E\\u043E\\u0431\\u0440\\u0430\\u0436\\u0435\\u043D\\u0438\\u0435 \\u0432\\u0430\\u0436\\u043D\\u0435\\u0435 \\u0437\\u043D\\u0430\\u043D\\u0438\\u044F, \\u0438\\u0431\\u043E \\u0437\\u043D\\u0430\\u043D\\u0438\\u0435 \\u043E\\u0433\\u0440\\u0430\\u043D\\u0438\\u0447\\u0435\\u043D\\u043E"
-    }
-  ];
-  const children = [
-    { name: "\\u041B\\u044E\\u0431\\u043E\\u043F\\u044B\\u0442\\u0441\\u0442\\u0432\\u043E", symbol: "\\u{1F476}", angle: 30, distance: 80 },
-    { name: "\\u0411\\u0443\\u0434\\u0443\\u0449\\u0435\\u0435", symbol: "\\u{1F331}", angle: 120, distance: 90 },
-    { name: "\\u041D\\u0430\\u0434\\u0435\\u0436\\u0434\\u0430", symbol: "\\u2B50", angle: 210, distance: 85 },
-    { name: "\\u0427\\u0438\\u0441\\u0442\\u043E\\u0442\\u0430", symbol: "\\u{1F4AB}", angle: 300, distance: 75 }
-  ];
-  const ancientLife = [
-    { name: "\\u0414\\u0438\\u043D\\u043E\\u0437\\u0430\\u0432\\u0440\\u044B", symbol: "\\u{1F995}", angle: 60, distance: 140 },
-    { name: "\\u0418\\u043D\\u0444\\u0443\\u0437\\u043E\\u0440\\u0438\\u0438", symbol: "\\u{1F9A0}", angle: 150, distance: 130 },
-    { name: "\\u0414\\u0440\\u0435\\u0432\\u043D\\u0438\\u0435 \\u043B\\u0435\\u0441\\u0430", symbol: "\\u{1F332}", angle: 240, distance: 135 },
-    { name: "\\u041F\\u0435\\u0440\\u0432\\u044B\\u0435 \\u043E\\u043A\\u0435\\u0430\\u043D\\u044B", symbol: "\\u{1F30A}", angle: 330, distance: 125 }
-  ];
-  useEffect(() => {
-    const phases = ["gathering", "council", "legacy", "departure"];
-    let currentIndex = 0;
-    const phaseTimer = setInterval(() => {
-      currentIndex = (currentIndex + 1) % phases.length;
-      setActivePhase(phases[currentIndex]);
-    }, 8e3);
-    return () => clearInterval(phaseTimer);
-  }, []);
-  const getPositionStyle = (angle, distance = 180) => {
-    const radian = angle * Math.PI / 180;
-    const x = Math.cos(radian) * distance;
-    const y = Math.sin(radian) * distance;
-    return {
-      transform: \`translate(\${x}px, \${y}px)\`,
-      transition: "all 1s ease-in-out"
-    };
-  };
-  return /* @__PURE__ */ React.createElement("div", { className: "relative w-full h-full min-h-[800px] bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 flex items-center justify-center overflow-hidden" }, /* @__PURE__ */ React.createElement("div", { className: "absolute inset-0" }, [...Array(50)].map((_, i) => /* @__PURE__ */ React.createElement(
-    "div",
-    {
-      key: i,
-      className: "absolute w-1 h-1 bg-white rounded-full opacity-60 animate-pulse",
-      style: {
-        left: \`\${Math.random() * 100}%\`,
-        top: \`\${Math.random() * 100}%\`,
-        animationDelay: \`\${Math.random() * 3}s\`,
-        animationDuration: \`\${1 + Math.random() * 2}s\`
-      }
-    }
-  ))), /* @__PURE__ */ React.createElement(
-    "div",
-    {
-      className: \`absolute top-10 right-10 w-32 h-32 rounded-full transition-all duration-2000 \${activePhase === "departure" ? "scale-150 brightness-150" : "scale-100"}\`,
-      style: {
-        background: "radial-gradient(circle at 30% 30%, #4ade80, #22c55e, #16a34a)",
-        boxShadow: "0 0 60px rgba(34, 197, 94, 0.6)"
-      }
-    },
-    /* @__PURE__ */ React.createElement("div", { className: "absolute inset-2 rounded-full bg-gradient-to-br from-emerald-300 to-emerald-600 opacity-80" }),
-    /* @__PURE__ */ React.createElement("div", { className: "absolute top-4 left-6 w-2 h-2 bg-blue-300 rounded-full opacity-70" }),
-    /* @__PURE__ */ React.createElement("div", { className: "absolute bottom-6 right-4 w-1 h-1 bg-white rounded-full" })
-  ), /* @__PURE__ */ React.createElement(
-    "div",
-    {
-      className: \`absolute bottom-20 left-10 w-24 h-24 rounded-full transition-all duration-2000 \${activePhase === "departure" ? "opacity-30 scale-75" : "opacity-80"}\`,
-      style: {
-        background: "radial-gradient(circle at 40% 60%, #dc2626, #991b1b, #7f1d1d)",
-        boxShadow: "0 0 40px rgba(220, 38, 38, 0.5)"
-      }
-    },
-    [...Array(3)].map((_, i) => /* @__PURE__ */ React.createElement(
-      "div",
-      {
-        key: i,
-        className: "absolute w-2 h-6 bg-gray-600 opacity-50 rounded-full animate-pulse",
-        style: {
-          left: \`\${20 + i * 8}px\`,
-          top: \`-\${10 + i * 5}px\`,
-          animationDelay: \`\${i * 0.5}s\`
+    <!-- English Content -->
+    <div id="en-content" class="lang-content">
+        <div class="gradient-bg text-white py-20">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h1 class="text-5xl font-bold mb-4">Abdurashid Abdukarimov</h1>
+                <p class="text-xl mb-8">Professional Translator & Business Consultant</p>
+                <div class="flex justify-center space-x-6 text-lg">
+                    <span>📞 +998950833850</span>
+                    <span>📧 secret.uzbek@tutamail.com</span>
+                    <span>📍 Tashkent, Uzbekistan</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-6 py-16">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Main Content -->
+                <div class="md:col-span-2 space-y-8">
+                    <section class="bg-white rounded-lg card-shadow p-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Professional Profile</h2>
+                        <p class="text-gray-600 leading-relaxed">
+                            Experienced translator and business consultant with over 25 years of professional experience. 
+                            Fluent in German, English, Russian, and Uzbek languages. 
+                            Extensive experience in international projects and diplomatic activities.
+                        </p>
+                    </section>
+
+                    <section class="bg-white rounded-lg card-shadow p-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Key Work Experience</h2>
+                        <div class="space-y-6">
+                            <div class="border-l-4 border-blue-500 pl-4">
+                                <h3 class="font-semibold text-lg">2017 - Present</h3>
+                                <p class="text-gray-600">Business Consultant, Translator, Tour Guide for Uzbekistan</p>
+                            </div>
+                            <div class="border-l-4 border-green-500 pl-4">
+                                <h3 class="font-semibold text-lg">2011 - 2017</h3>
+                                <p class="text-gray-600">Assistant for Political and Economic Affairs, Swiss Embassy in Tashkent</p>
+                            </div>
+                            <div class="border-l-4 border-purple-500 pl-4">
+                                <h3 class="font-semibold text-lg">1999 - 2001</h3>
+                                <p class="text-gray-600">Assistant for Cultural Programs, Goethe Institute</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-white rounded-lg card-shadow p-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Core Competencies</h2>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold mb-3">Translation Services</h4>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li>• Simultaneous interpretation</li>
+                                    <li>• Consecutive interpretation</li>
+                                    <li>• Technical translation</li>
+                                    <li>• Business correspondence</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-3">Consulting</h4>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li>• Political analysis</li>
+                                    <li>• Economic monitoring</li>
+                                    <li>• International relations</li>
+                                    <li>• Cultural mediation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="space-y-6">
+                    <div class="bg-white rounded-lg card-shadow p-6">
+                        <h3 class="text-lg font-semibold mb-4">Languages</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="font-medium">German:</span>
+                                <span class="text-green-600">Fluent</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-medium">English:</span>
+                                <span class="text-blue-600">Advanced</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-medium">Russian:</span>
+                                <span class="text-green-600">Fluent</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-medium">Uzbek:</span>
+                                <span class="text-green-600">Native</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg card-shadow p-6">
+                        <h3 class="text-lg font-semibold mb-4">Education</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="font-medium">Uzbekistan State University of World Languages</p>
+                                <p class="text-sm text-gray-600">German Philology (1999)</p>
+                                <p class="text-sm text-gray-600">Postgraduate Studies (2006)</p>
+                            </div>
+                            <div>
+                                <p class="font-medium">Humboldt University, Berlin</p>
+                                <p class="text-sm text-gray-600">DSH Certificate (1998)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg card-shadow p-6">
+                        <h3 class="text-lg font-semibold mb-4">Certifications</h3>
+                        <div class="space-y-2">
+                            <div class="text-sm">🏆 DAAD Scholarship</div>
+                            <div class="text-sm">🎓 Diploma with Honors</div>
+                            <div class="text-sm">📜 DSH Certificate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- German Content -->
+    <div id="de-content" class="lang-content">
+        <div class="gradient-bg text-white py-20">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h1 class="text-5xl font-bold mb-4">Abdurashid Abdukarimov</h1>
+                <p class="text-xl mb-8">Professioneller Übersetzer und Business-Berater</p>
+                <div class="flex justify-center space-x-6 text-lg">
+                    <span>📞 +998950833850</span>
+                    <span>📧 secret.uzbek@tutamail.com</span>
+                    <span>📍 Taschkent, Usbekistan</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-6 py-16">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Main Content -->
+                <div class="md:col-span-2 space-y-8">
+                    <section class="bg-white rounded-lg card-shadow p-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Berufsprofil</h2>
+                        <p class="text-gray-600 leading-relaxed">
+                            Erfahrener Übersetzer und Business-Berater mit über 25 Jahren Berufserfahrung. 
+                            Fließend in Deutsch, Englisch, Russisch und Usbekisch. 
+                            Umfangreiche Erfahrung in internationalen Projekten und diplomatischen Aktivitäten.
+                        </p>
+                    </section>
+
+                    <section class="bg-white rounded-lg card-shadow p-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Wichtige Berufserfahrung</h2>
+                        <div class="space-y-6">
+                            <div class="border-l-4 border-blue-500 pl-4">
+                                <h3 class="font-semibold text-lg">2017 - Heute</h3>
+                                <p class="text-gray-600">Business-Berater, Übersetzer, Reiseführer für Usbekistan</p>
+                            </div>
+                            <div class="border-l-4 border-green-500 pl-4">
+                                <h3 class="font-semibold text-lg">2011 - 2017</h3>
+                                <p class="text-gray-600">Assistent für politische und wirtschaftliche Angelegenheiten, Schweizer Botschaft in Taschkent</p>
+                            </div>
+                            <div class="border-l-4 border-purple-500 pl-4">
+                                <h3 class="font-semibold text-lg">1999 - 2001</h3>
+                                <p class="text-gray-600">Assistent für Kulturprogramme, Goethe-Institut</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-white rounded-lg card-shadow p-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Kernkompetenzen</h2>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold mb-3">Übersetzungsdienstleistungen</h4>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li>• Simultandolmetschen</li>
+                                    <li>• Konsekutivdolmetschen</li>
+                                    <li>• Technische Übersetzung</li>
+                                    <li>• Geschäftskorrespondenz</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-3">Beratung</h4>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li>• Politische Analyse</li>
+                                    <li>• Wirtschaftsmonitoring</li>
+                                    <li>• Internationale Beziehungen</li>
+                                    <li>• Kulturelle Vermittlung</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="space-y-6">
+                    <div class="bg-white rounded-lg card-shadow p-6">
+                        <h3 class="text-lg font-semibold mb-4">Sprachen</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="font-medium">Deutsch:</span>
+                                <span class="text-green-600">Fließend</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-medium">Englisch:</span>
+                                <span class="text-blue-600">Fortgeschritten</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-medium">Russisch:</span>
+                                <span class="text-green-600">Fließend</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-medium">Usbekisch:</span>
+                                <span class="text-green-600">Muttersprache</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg card-shadow p-6">
+                        <h3 class="text-lg font-semibold mb-4">Bildung</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="font-medium">Usbekische Staatsuniversität für Weltsprachen</p>
+                                <p class="text-sm text-gray-600">Deutsche Philologie (1999)</p>
+                                <p class="text-sm text-gray-600">Postgraduiertenstudium (2006)</p>
+                            </div>
+                            <div>
+                                <p class="font-medium">Humboldt-Universität, Berlin</p>
+                                <p class="text-sm text-gray-600">DSH-Zertifikat (1998)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg card-shadow p-6">
+                        <h3 class="text-lg font-semibold mb-4">Auszeichnungen</h3>
+                        <div class="space-y-2">
+                            <div class="text-sm">🏆 DAAD-Stipendium</div>
+                            <div class="text-sm">🎓 Diplom mit Auszeichnung</div>
+                            <div class="text-sm">📜 DSH-Zertifikat</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchLanguage(lang) {
+            // Hide all content
+            document.querySelectorAll('.lang-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Show selected language content
+            document.getElementById(lang + '-content').classList.add('active');
+            
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-blue-500', 'text-white');
+                btn.classList.add('bg-gray-100', 'text-gray-600');
+            });
+            
+            // Highlight active button
+            document.querySelector(`[data-lang="${lang}"]`).classList.add('active', 'bg-blue-500', 'text-white');
+            document.querySelector(`[data-lang="${lang}"]`).classList.remove('bg-gray-100', 'text-gray-600');
         }
-      }
-    ))
-  ), /* @__PURE__ */ React.createElement("div", { className: "absolute top-8 left-1/2 transform -translate-x-1/2 text-center z-20" }, /* @__PURE__ */ React.createElement("h1", { className: "text-4xl font-bold text-white mb-2" }, "\\u{1F465} \\u0421\\u043E\\u0432\\u0435\\u0442 \\u043D\\u0430 \\u0433\\u0440\\u0430\\u043D\\u0438\\u0446\\u0435 \\u044D\\u043F\\u043E\\u0445"), /* @__PURE__ */ React.createElement("h2", { className: "text-lg text-gray-300" }, "Council of Memory")), /* @__PURE__ */ React.createElement("div", { className: "relative w-96 h-96 flex items-center justify-center" }, /* @__PURE__ */ React.createElement(
-    "div",
-    {
-      className: \`absolute w-20 h-20 rounded-full transition-all duration-1000 \${activePhase === "council" ? "animate-pulse scale-110" : ""}\`,
-      style: {
-        background: "radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(100,200,255,0.6) 50%, transparent 100%)",
-        boxShadow: "0 0 60px rgba(255,255,255,0.4)"
-      }
-    }
-  ), figures.map((figure, index) => /* @__PURE__ */ React.createElement(
-    "div",
-    {
-      key: figure.name,
-      className: \`absolute w-16 h-16 rounded-full cursor-pointer transition-all duration-1000 flex items-center justify-center border-2 \${selectedFigure?.name === figure.name ? "scale-125 z-10" : "scale-100 hover:scale-110"} \${activePhase === "gathering" ? "opacity-0" : "opacity-100"}\`,
-      style: {
-        ...getPositionStyle(figure.position),
-        backgroundColor: figure.color,
-        borderColor: selectedFigure?.name === figure.name ? "#ffffff" : "transparent",
-        boxShadow: selectedFigure?.name === figure.name ? \`0 0 30px \${figure.color}\` : \`0 0 10px \${figure.color}\`,
-        animationDelay: \`\${index * 0.2}s\`
-      },
-      onClick: () => setSelectedFigure(selectedFigure?.name === figure.name ? null : figure)
-    },
-    /* @__PURE__ */ React.createElement("span", { className: "text-2xl" }, figure.symbol)
-  )), children.map((child, index) => /* @__PURE__ */ React.createElement(
-    "div",
-    {
-      key: child.name,
-      className: \`absolute w-8 h-8 rounded-full flex items-center justify-center transition-all duration-1500 \${activePhase === "legacy" ? "animate-bounce" : ""}\`,
-      style: {
-        ...getPositionStyle(child.angle, child.distance),
-        background: "rgba(255, 192, 203, 0.8)",
-        animationDelay: \`\${index * 0.3}s\`
-      }
-    },
-    /* @__PURE__ */ React.createElement("span", { className: "text-sm" }, child.symbol)
-  )), ancientLife.map((life, index) => /* @__PURE__ */ React.createElement(
-    "div",
-    {
-      key: life.name,
-      className: \`absolute w-10 h-10 rounded-full flex items-center justify-center transition-all duration-2000 \${activePhase === "departure" ? "opacity-50 scale-75" : "opacity-80"}\`,
-      style: {
-        ...getPositionStyle(life.angle, life.distance),
-        background: "rgba(139, 69, 19, 0.6)",
-        animationDelay: \`\${index * 0.1}s\`
-      }
-    },
-    /* @__PURE__ */ React.createElement("span", { className: "text-lg" }, life.symbol)
-  )), activePhase === "council" && /* @__PURE__ */ React.createElement("svg", { className: "absolute inset-0 w-full h-full pointer-events-none" }, figures.map((_, index) => {
-    const nextIndex = (index + 1) % figures.length;
-    const angle1 = figures[index].position * Math.PI / 180;
-    const angle2 = figures[nextIndex].position * Math.PI / 180;
-    const x1 = 192 + Math.cos(angle1) * 180;
-    const y1 = 192 + Math.sin(angle1) * 180;
-    const x2 = 192 + Math.cos(angle2) * 180;
-    const y2 = 192 + Math.sin(angle2) * 180;
-    return /* @__PURE__ */ React.createElement(
-      "line",
-      {
-        key: index,
-        x1,
-        y1,
-        x2,
-        y2,
-        stroke: "rgba(255,255,255,0.2)",
-        strokeWidth: "1",
-        className: "animate-pulse"
-      }
-    );
-  }))), selectedFigure && /* @__PURE__ */ React.createElement("div", { className: "absolute bottom-8 left-8 right-8 bg-black bg-opacity-80 rounded-lg p-6 backdrop-blur-sm border border-gray-600" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-start space-x-4" }, /* @__PURE__ */ React.createElement(
-    "div",
-    {
-      className: "w-12 h-12 rounded-full flex items-center justify-center text-2xl",
-      style: { backgroundColor: selectedFigure.color }
-    },
-    selectedFigure.symbol
-  ), /* @__PURE__ */ React.createElement("div", { className: "flex-1" }, /* @__PURE__ */ React.createElement("h3", { className: "text-xl font-bold text-white" }, selectedFigure.name), /* @__PURE__ */ React.createElement("p", { className: "text-gray-300 text-sm mb-2" }, selectedFigure.period, " \\u2022 ", selectedFigure.field), /* @__PURE__ */ React.createElement("blockquote", { className: "text-gray-200 italic" }, '"', selectedFigure.quote, '"')))), activePhase === "departure" && /* @__PURE__ */ React.createElement("div", { className: "absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-90 rounded-lg p-8 max-w-md text-center backdrop-blur-sm border border-white border-opacity-30 z-30" }, /* @__PURE__ */ React.createElement("h3", { className: "text-2xl font-bold text-white mb-4" }, "\\u{1F4DC} \\u041D\\u0430\\u0441\\u043B\\u0435\\u0434\\u0438\\u0435"), /* @__PURE__ */ React.createElement("p", { className: "text-gray-200 mb-4 leading-relaxed" }, '"\\u041C\\u044B \\u0431\\u044B\\u043B\\u0438. \\u041C\\u044B \\u043F\\u043E\\u043C\\u043D\\u0438\\u043C. ', /* @__PURE__ */ React.createElement("br", null), '\\u041C\\u044B \\u0434\\u0430\\u0451\\u043C \\u0432\\u0430\\u043C \\u0448\\u0430\\u043D\\u0441 \\u0431\\u044B\\u0442\\u044C \\u043B\\u0443\\u0447\\u0448\\u0435."'), /* @__PURE__ */ React.createElement("div", { className: "text-sm text-gray-400" }, "\\u2014 \\u0421\\u043E\\u0432\\u0435\\u0442 \\u0432\\u0435\\u043B\\u0438\\u043A\\u0438\\u0445 \\u0443\\u043C\\u043E\\u0432 \\u0447\\u0435\\u043B\\u043E\\u0432\\u0435\\u0447\\u0435\\u0441\\u0442\\u0432\\u0430")), /* @__PURE__ */ React.createElement("div", { className: "absolute top-4 left-4 text-xs text-gray-400" }, /* @__PURE__ */ React.createElement("div", { className: "space-y-1" }, /* @__PURE__ */ React.createElement("div", { className: \`flex items-center space-x-2 \${activePhase === "gathering" ? "text-yellow-400" : ""}\` }, /* @__PURE__ */ React.createElement("span", null, "\\u{1F31F}"), /* @__PURE__ */ React.createElement("span", null, "\\u0421\\u043E\\u0431\\u0440\\u0430\\u043D\\u0438\\u0435")), /* @__PURE__ */ React.createElement("div", { className: \`flex items-center space-x-2 \${activePhase === "council" ? "text-blue-400" : ""}\` }, /* @__PURE__ */ React.createElement("span", null, "\\u26A1"), /* @__PURE__ */ React.createElement("span", null, "\\u0421\\u043E\\u0432\\u0435\\u0442")), /* @__PURE__ */ React.createElement("div", { className: \`flex items-center space-x-2 \${activePhase === "legacy" ? "text-pink-400" : ""}\` }, /* @__PURE__ */ React.createElement("span", null, "\\u{1F476}"), /* @__PURE__ */ React.createElement("span", null, "\\u041D\\u0430\\u0441\\u043B\\u0435\\u0434\\u0438\\u0435")), /* @__PURE__ */ React.createElement("div", { className: \`flex items-center space-x-2 \${activePhase === "departure" ? "text-green-400" : ""}\` }, /* @__PURE__ */ React.createElement("span", null, "\\u{1F680}"), /* @__PURE__ */ React.createElement("span", null, "\\u041F\\u0440\\u043E\\u0449\\u0430\\u043D\\u0438\\u0435")))), /* @__PURE__ */ React.createElement("div", { className: "absolute bottom-4 right-4 text-xs text-gray-500 text-right" }, /* @__PURE__ */ React.createElement("div", null, "Codex Terra Project"), /* @__PURE__ */ React.createElement("div", null, "Council of Memory Visualization"), /* @__PURE__ */ React.createElement("div", null, "\\u0421\\u043E\\u0437\\u0434\\u0430\\u043D\\u043E \\u0432 \\u0438\\u0437\\u0433\\u043D\\u0430\\u043D\\u0438\\u0438. \\u0421 \\u043B\\u044E\\u0431\\u043E\\u0432\\u044C\\u044E.")));
-};
-var stdin_default = CouncilOfMemory;
-export {
-  stdin_default as default
-};
-`;
-          }
-
-          // Create a blob URL from the executable code
-          const blob = new Blob([componentCode], { type: 'text/javascript' });
-          const blobUrl = URL.createObjectURL(blob);
-
-          // Import the default export from the blob URL
-          const moduleImport = await import(blobUrl);
-          const Component = moduleImport.default;
-
-          // Clean up the blob URL
-          URL.revokeObjectURL(blobUrl);
-
-          if (Component) {
-              const rootElement = document.getElementById('root');
-              const root = createRoot(rootElement);
-
-              // Simple error boundary
-              const ErrorBoundary = ({ children }) => {
-                  try {
-                      return children;
-                  } catch (error) {
-                      console.error('Component render error:', error);
-                      return React.createElement('div', {
-                          style: { padding: '20px', color: '#d32f2f', background: '#ffebee', borderRadius: '4px' }
-                      }, [
-                          React.createElement('h3', { key: 'title' }, 'Component Error'),
-                          React.createElement('p', { key: 'error' }, 'Error: ' + error.message)
-                      ]);
-                  }
-              };
-
-              root.render(React.createElement(ErrorBoundary, {}, React.createElement(Component)));
-          } else {
-              console.error('No component found in module export');
-              document.getElementById('root').innerHTML = '<div style="padding: 20px; color: #666;">No React component found - check console for details</div>';
-          }
-      } catch (error) {
-          console.error('Error loading component:', error);
-          document.getElementById('root').innerHTML = `
-              <div style="padding: 20px; color: #d32f2f; background: #ffebee; border-radius: 4px;">
-                  <h3>Error loading component</h3>
-                  <p><strong>Error:</strong> ${error.message}</p>
-                  <p>Please check the browser console for more details.</p>
-              </div>
-          `;
-      }
+        
+        // Initialize
+        switchLanguage('ru');
     </script>
-  </body>
+</body>
 </html>
