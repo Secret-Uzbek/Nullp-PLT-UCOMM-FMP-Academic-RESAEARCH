@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSR Hub - Pitch Deck</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.deck {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.slide {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+    position: relative;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    margin-bottom: 2px;
+}
+
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+}
+
+.slide-number {
+    position: absolute;
+    top: 30px;
+    right: 60px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 72px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+h3 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #f093fb;
+}
+
+.subtitle {
+    font-size: 28px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 40px;
+    line-height: 1.5;
+}
+
+.big-stat {
+    font-size: 96px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+}
+
+.stat-label {
+    font-size: 24px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 50px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 30px;
+    transition: all 0.3s;
+}
+
+.card:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.card-text {
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+}
+
+.bullet-list {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.bullet-list li {
+    font-size: 22px;
+    padding: 15px 0;
+    padding-left: 40px;
+    position: relative;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.5;
+}
+
+.bullet-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #10b981;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+table {
+    width: 100%;
+    margin-top: 30px;
+    border-collapse: collapse;
+}
+
+th {
+    background: rgba(102,126,234,0.2);
+    padding: 15px;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 600;
+    border-bottom: 2px solid #667eea;
+}
+
+td {
+    padding: 15px;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+tr:hover {
+    background: rgba(255,255,255,0.03);
+}
+
+.highlight {
+    color: #10b981;
+    font-weight: 700;
+}
+
+.highlight-pink {
+    color: #f093fb;
+    font-weight: 700;
+}
+
+.timeline {
+    margin-top: 40px;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    align-items: flex-start;
+}
+
+.timeline-quarter {
+    min-width: 80px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.timeline-content {
+    flex: 1;
+}
+
+.timeline-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.timeline-desc {
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+}
+
+.cta {
+    margin-top: 60px;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(102,126,234,0.3) 0%, rgba(118,75,162,0.3) 100%);
+    border: 2px solid rgba(102,126,234,0.5);
+    border-radius: 20px;
+    text-align: center;
+}
+
+.cta-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.cta-text {
+    font-size: 20px;
+    color: rgba(255,255,255,0.8);
+}
+
+.logo-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo-icon {
+    font-size: 120px;
+    margin-bottom: 20px;
+}
+
+.contact {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 18px;
+    color: rgba(255,255,255,0.6);
+}
+
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.metric-box {
+    text-align: center;
+    padding: 30px 20px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.metric-value {
+    font-size: 48px;
+    font-weight: 900;
+    color: #10b981;
+    margin-bottom: 10px;
+}
+
+.metric-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .slide {
+        padding: 60px 30px;
+    }
+    
+    h1 {
+        font-size: 48px;
+    }
+    
+    h2 {
+        font-size: 36px;
+    }
+    
+    .grid-2, .grid-3, .metric-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+<!-- Slide 1: Cover -->
+<div class="slide">
+    <div class="slide-number">01</div>
+    <div class="logo-section">
+        <div class="logo-icon">🌍</div>
+        <h1>Fractal Silk Route Hub</h1>
+        <div class="subtitle">Connecting $180B in USA-EU-Central Asia Trade</div>
+    </div>
+    <div style="text-align: center; margin-top: 60px;">
+        <div style="font-size: 20px; color: rgba(255,255,255,0.5); margin-bottom: 10px;">Investment Proposal for</div>
+        <div style="font-size: 32px; font-weight: 700; color: #667eea;">Lion Projects GmbH</div>
+        <div style="font-size: 16px; color: rgba(255,255,255,0.4); margin-top: 30px;">October 2025</div>
+    </div>
+</div>
+
+<!-- Slide 2: The Problem -->
+<div class="slide">
+    <div class="slide-number">02</div>
+    <h2>The $180B Problem</h2>
+    <div class="subtitle">USA-EU-Central Asia trade corridor is broken</div>
+    
+    <div class="grid-2">
+        <div class="card">
+            <div class="card-icon">😤</div>
+            <div class="card-title">For Shippers</div>
+            <div class="card-text">
+                • No unified platform<br>
+                • 30-40% markup from brokers<br>
+                • Zero visibility during transit<br>
+                • Currency exchange nightmare<br>
+                • 7-14 day customs delays
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">📉</div>
+            <div class="card-title">For Carriers</div>
+            <div class="card-text">
+                • 40-60% empty return trips<br>
+                • Fragmented client acquisition<br>
+                • Payment delays and risks<br>
+                • No route optimization tools<br>
+                • Manual, paper-based processes
+            </div>
+        </div>
+    </div>
+    
+    <div style="margin-top: 60px; text-align: center;">
+        <div style="font-size: 28px; color: #f093fb; font-weight: 600;">
+            Market Gap: No integrated digital platform for this specific corridor
+        </div>
+    </div>
+</div>
+
+<!-- Slide 3: The Solution -->
+<div class="slide">
+    <div class="slide-number">03</div>
+    <h2>Our Solution: Digital Marketplace</h2>
+    <div class="subtitle">End-to-end platform for USA ↔ Germany ↔ Central Asia</div>
+    
+    <div class="grid-3">
+        <div class="card">
+            <div class="card-icon">🎯</div>
+            <div class="card-title">Smart Routing</div>
+            <div class="card-text">AI-powered multi-modal optimization: sea, rail, road, air combinations</div>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">📱</div>
+            <div class="card-title">Real-Time Tracking</div>
+            <div class="card-text">GPS integration, milestone alerts, predictive ETAs</div>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">⚡</div>
+            <div class="card-title">Auto Customs</div>
+            <div class="card-text">Digital paperwork, pre-clearance, 2-3 day processing</div>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">💱</div>
+            <div class="card-title">Multi-Currency</div>
+            <div class="card-text">USD/EUR/UZS/KZT operations, instant conversion</div>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">✅</div>
+            <div class="card-title">Verified Network</div>
+            <div class="card-text">3-tier quality certification, insurance, guarantees</div>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">📊</div>
+            <div class="card-title">Market Intelligence</div>
+            <div class="card-text">Analytics, pricing trends, capacity forecasts</div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 4: Market Opportunity -->
+<div class="slide">
+    <div class="slide-number">04</div>
+    <h2>Massive Market Opportunity</h2>
+    
+    <div style="text-align: center; margin: 60px 0;">
+        <div class="big-stat">$180B</div>
+        <div class="stat-label">Annual Trade Volume Across Corridor</div>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Segment</th>
+                <th>Volume</th>
+                <th>Our Target</th>
+                <th>Year 3 Revenue</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Machinery & Equipment</td>
+                <td>$45B</td>
+                <td>0.5%</td>
+                <td class="highlight">$9M</td>
+            </tr>
+            <tr>
+                <td>Textiles & Apparel</td>
+                <td>$28B</td>
+                <td>1.0%</td>
+                <td class="highlight">$11.2M</td>
+            </tr>
+            <tr>
+                <td>Agricultural Products</td>
+                <td>$22B</td>
+                <td>0.8%</td>
+                <td class="highlight">$7M</td>
+            </tr>
+            <tr>
+                <td>Automotive Parts</td>
+                <td>$18B</td>
+                <td>0.4%</td>
+                <td class="highlight">$2.9M</td>
+            </tr>
+            <tr>
+                <td>Electronics</td>
+                <td>$15B</td>
+                <td>0.6%</td>
+                <td class="highlight">$3.6M</td>
+            </tr>
+            <tr style="font-weight: 700; background: rgba(102,126,234,0.1);">
+                <td>TOTAL</td>
+                <td>$128B</td>
+                <td>0.66%</td>
+                <td class="highlight">$33.7M</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Slide 5: Business Model -->
+<div class="slide">
+    <div class="slide-number">05</div>
+    <h2>Revenue Model</h2>
+    <div class="subtitle">4 complementary revenue streams</div>
+    
+    <div class="grid-2">
+        <div class="card">
+            <div class="card-icon">💰</div>
+            <div class="card-title">Transaction Fees (60%)</div>
+            <div class="card-text">
+                3-5% of shipment value<br>
+                <span class="highlight">€4,500 avg per shipment</span>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">📅</div>
+            <div class="card-title">Subscriptions (15%)</div>
+            <div class="card-text">
+                €99 - €2,999/month plans<br>
+                <span class="highlight">€499 average</span>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">⭐</div>
+            <div class="card-title">Premium Services (15%)</div>
+            <div class="card-text">
+                Customs, insurance, warehousing<br>
+                <span class="highlight">€500-2,000 per service</span>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-icon">📈</div>
+            <div class="card-title">Data & Analytics (10%)</div>
+            <div class="card-text">
+                Market reports, API access<br>
+                <span class="highlight">€5K-100K per contract</span>
+            </div>
+        </div>
+    </div>
+    
+    <div style="margin-top: 60px; text-align: center;">
+        <div style="font-size: 24px; color: rgba(255,255,255,0.7);">
+            Customer Lifetime Value: <span class="highlight">€85,000</span> | 
+            Acquisition Cost: <span class="highlight">€500</span> | 
+            LTV/CAC Ratio: <span class="highlight">170:1</span>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6: Financial Projections -->
+<div class="slide">
+    <div class="slide-number">06</div>
+    <h2>Financial Projections</h2>
+    <div class="subtitle">Path to €36M revenue in 3 years</div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Metric</th>
+                <th>Year 1 (2026)</th>
+                <th>Year 2 (2027)</th>
+                <th>Year 3 (2028)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Shipments</td>
+                <td>850</td>
+                <td class="highlight">3,200</td>
+                <td class="highlight">8,500</td>
+            </tr>
+            <tr>
+                <td>GMV</td>
+                <td>€85M</td>
+                <td>€320M</td>
+                <td>€850M</td>
+            </tr>
+            <tr>
+                <td>Revenue</td>
+                <td>€3.8M</td>
+                <td class="highlight">€14.1M</td>
+                <td class="highlight-pink">€36.6M</td>
+            </tr>
+            <tr>
+                <td>Gross Margin</td>
+                <td>70%</td>
+                <td>75%</td>
+                <td>78%</td>
+            </tr>
+            <tr>
+                <td>EBITDA</td>
+                <td>(€0.3M)</td>
+                <td class="highlight">€4.9M</td>
+                <td class="highlight-pink">€17.6M</td>
+            </tr>
+            <tr style="font-weight: 700; background: rgba(16,185,129,0.1);">
+                <td>Net Margin</td>
+                <td>-11%</td>
+                <td class="highlight">26%</td>
+                <td class="highlight-pink">36%</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="metric-grid" style="margin-top: 50px;">
+        <div class="metric-box">
+            <div class="metric-value">14</div>
+            <div class="metric-label">Months to Break-Even</div>
+        </div>
+        <div class="metric-box">
+            <div class="metric-value">€2.5M</div>
+            <div class="metric-label">Capital Needed</div>
+        </div>
+        <div class="metric-box">
+            <div class="metric-value">22%</div>
+            <div class="metric-label">3-Year IRR</div>
+        </div>
+        <div class="metric-box">
+            <div class="metric-value">5-20x</div>
+            <div class="metric-label">Exit Multiple</div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 7: Competitive Advantage -->
+<div class="slide">
+    <div class="slide-number">07</div>
+    <h2>Why We Win</h2>
+    <div class="subtitle">6 unfair advantages</div>
+    
+    <ul class="bullet-list">
+        <li><span class="highlight">First-mover:</span> Only platform purpose-built for USA-Germany-CA corridor</li>
+        <li><span class="highlight">Fractal architecture:</span> Proven in Terra ecosystem = natural scalability</li>
+        <li><span class="highlight">Local expertise:</span> Founder based in Central Asia (Tashkent)</li>
+        <li><span class="highlight">Capital efficient:</span> €2.5M to break-even vs. €50M+ for competitors</li>
+        <li><span class="highlight">Multi-currency native:</span> Built-in from day 1, not bolted on</li>
+        <li><span class="highlight">Network effects:</span> More carriers → better prices → more shippers → more carriers</li>
+    </ul>
+    
+    <div style="margin-top: 60px; padding: 30px; background: rgba(102,126,234,0.1); border-left: 4px solid #667eea; border-radius: 8px;">
+        <div style="font-size: 20px; color: rgba(255,255,255,0.9); line-height: 1.8;">
+            <strong>2-3 year head start</strong> before DHL, Kuehne+Nagel, or Flexport notice this niche. By then, we'll have network effects and local expertise they can't replicate.
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8: Fractal Architecture -->
+<div class="slide">
+    <div class="slide-number">08</div>
+    <h2>Secret Weapon: Fractal Architecture</h2>
+    <div class="subtitle">Proven in Terra Ecosystem, now applied to logistics</div>
+    
+    <div class="grid-2">
+        <div>
+            <h3>What is it?</h3>
+            <div style="font-size: 18px; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 30px;">
+                Based on <strong>Fractal Metascience Paradigm (FMP)</strong> - a mathematical framework where systems scale naturally through self-similar patterns. Same organizational logic from micro (single shipment) to macro (entire trade corridor).
+            </div>
+            
+            <h3>Proven Track Record:</h3>
+            <div class="card" style="margin-top: 20px;">
+                <div class="card-title">AIUZ Terra Codex</div>
+                <div class="card-text">Knowledge management system (operational)</div>
+            </div>
+            <div class="card" style="margin-top: 15px;">
+                <div class="card-title">TerraMemoryDNA</div>
+                <div class="card-text">AI context management (88% fidelity across 4 languages)</div>
+            </div>
+            <div class="card" style="margin-top: 15px;">
+                <div class="card-title">Qariya</div>
+                <div class="card-text">Planetary care protocols (scaling framework)</div>
+            </div>
+        </div>
+        
+        <div>
+            <h3>What this means for FSR Hub:</h3>
+            <ul class="bullet-list" style="margin-top: 0;">
+                <li style="font-size: 18px;">System scales 10x with same core platform</li>
+                <li style="font-size: 18px;">Self-correcting algorithms improve with each transaction</li>
+                <li style="font-size: 18px;">Distributed resilience (no single point of failure)</li>
+                <li style="font-size: 18px;">Recursive optimization across all scales</li>
+                <li style="font-size: 18px;">Competitors need rebuild at each growth stage</li>
+            </ul>
+            
+            <div style="margin-top: 40px; padding: 25px; background: rgba(16,185,129,0.1); border-radius: 12px; border: 1px solid rgba(16,185,129,0.3);">
+                <div style="font-size: 18px; font-weight: 600; color: #10b981; margin-bottom: 10px;">Result:</div>
+                <div style="font-size: 16px; color: rgba(255,255,255,0.8);">
+                    While competitors hire 200 engineers to handle complexity, we maintain 15-person tech team through architectural elegance.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 9: Roadmap 2026 -->
+<div class="slide">
+    <div class="slide-number">09</div>
+    <h2>2026 Roadmap</h2>
+    <div class="subtitle">Launch to scale in 12 months</div>
+    
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-quarter">Q1</div>
+            <div class="timeline-content">
+                <div class="timeline-title">Foundation (Jan-Mar)</div>
+                <div class="timeline-desc">
+                    Platform MVP • Team hired • Lion partnership finalized • Legal entities • Banking relationships • 3 beta customers
+                    <br><strong style="color: #10b981;">Budget: €850K | Team: 8 people</strong>
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-quarter">Q2</div>
+            <div class="timeline-content">
+                <div class="timeline-title">Pilot Launch (Apr-Jun)</div>
+                <div class="timeline-desc">
+                    First 50 shipments • €5M GMV • 15 carriers onboarded • Customs integration • Marketing campaign • 20 subscriptions
+                    <br><strong style="color: #10b981;">Budget: €680K | Team: 12 people</strong>
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-quarter">Q3-Q4</div>
+            <div class="timeline-content">
+                <div class="timeline-title">Scale-Up (Jul-Dec)</div>
+                <div class="timeline-desc">
+                    800 total shipments • €80M+ GMV • 40 carriers • 200+ shippers • Poland-CA corridor • Trade finance • Series A prep
+                    <br><strong style="color: #10b981;">Budget: €1,420K | Team: 18 people</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="cta" style="margin-top: 50px;">
+        <div class="cta-title">Target Launch: January 1, 2026</div>
+        <div class="cta-text">8 weeks from today</div>
+    </div>
+</div>
+
+<!-- Slide 10: Investment Ask -->
+<div class="slide">
+    <div class="slide-number">10</div>
+    <h2>Investment Proposition</h2>
+    <div class="subtitle">€2.5M Seed Round</div>
+    
+    <div class="grid-2" style="margin-bottom: 40px;">
+        <div>
+            <h3>Use of Funds</h3>
+            <div class="card" style="margin-top: 20px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                    <span>Platform & Infrastructure</span>
+                    <span class="highlight">€1.625M (65%)</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                    <span>Operations & Pilot</span>
+                    <span class="highlight">€500K (20%)</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                    <span>Marketing & Sales</span>
+                    <span class="highlight">€250K (10%)</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.2);">
+                    <span>Legal & Admin</span>
+                    <span class="highlight">€125K (5%)</span>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <h3>Terms</h3>
+            <div class="card" style="margin-top: 20px;">
+                <div style="margin-bottom: 20px;">
+                    <div style="font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 5px;">Pre-money Valuation</div>
+                    <div style="font-size: 28px; font-weight: 700; color: #667eea;">€8M</div>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <div style="font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 5px;">Post-money Valuation</div>
+                    <div style="font-size: 28px; font-weight: 700; color: #667eea;">€10.5M</div>
+                </div>
+                <div>
+                    <div style="font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 5px;">Equity Offered</div>
+                    <div style="font-size: 28px; font-weight: 700; color: #10b981;">24%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div style="background: rgba(240,147,251,0.1); border: 2px solid rgba(240,147,251,0.3); border-radius: 16px; padding: 30px;">
+        <h3 style="color: #f093fb; margin-bottom: 25px;">For Lion Projects Specifically:</h3>
+        <div class="grid-2" style="gap: 20px; margin-top: 0;">
+            <div>
+                <div style="font-size: 16px; color: rgba(255,255,255,0.7); margin-bottom: 8px;">Investment</div>
+                <div style="font-size: 32px; font-weight: 700; color: #fff;">€500K - €1M</div>
+            </div>
+            <div>
+                <div style="font-size: 16px; color: rgba(255,255,255,0.7); margin-bottom: 8px;">Equity Stake</div>
+                <div style="font-size: 32px; font-weight: 700; color: #10b981;">15-25%</div>
+            </div>
+            <div>
+                <div style="font-size: 16px; color: rgba(255,255,255,0.7); margin-bottom: 8px;">Board Seat</div>
+                <div style="font-size: 32px; font-weight: 700; color: #fff;">Yes ✓</div>
+            </div>
+            <div>
+                <div style="font-size: 16px; color: rgba(255,255,255,0.7); margin-bottom: 8px;">Strategic Role</div>
+                <div style="font-size: 32px; font-weight: 700; color: #667eea;">European Lead</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 11: Return Scenarios -->
+<div class="slide">
+    <div class="slide-number">11</div>
+    <h2>Return Scenarios</h2>
+    <div class="subtitle">Multiple paths to 5-20x returns</div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Exit Scenario</th>
+                <th>Timeline</th>
+                <th>Valuation</th>
+                <th>Lion ROI (on €1M)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Strategic Acquisition</strong><br><span style="font-size: 14px; color: rgba(255,255,255,0.6);">DHL, Kuehne+Nagel, Maersk</span></td>
+                <td>2028-2030</td>
+                <td class="highlight">€50-100M</td>
+                <td class="highlight-pink">5-10x (€5-10M)</td>
+            </tr>
+            <tr>
+                <td><strong>Series B → IPO</strong><br><span style="font-size: 14px; color: rgba(255,255,255,0.6);">Public markets, NASDAQ/Euronext</span></td>
+                <td>2030-2032</td>
+                <td class="highlight">€200M+</td>
+                <td class="highlight-pink">20x+ (€20M+)</td>
+            </tr>
+            <tr>
+                <td><strong>Dividend Flow</strong><br><span style="font-size: 14px; color: rgba(255,255,255,0.6);">Profitable from 2027+</span></td>
+                <td>2027 onward</td>
+                <td>—</td>
+                <td class="highlight-pink">15-25% annual yield</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div style="margin-top: 50px;">
+        <h3>Comparable Exits:</h3>
+        <div class="grid-3" style="margin-top: 20px;">
+            <div class="card">
+                <div class="card-title">Flexport</div>
+                <div class="card-text">
+                    Founded: 2013<br>
+                    Valuation: <span class="highlight">$8.0B (2022)</span><br>
+                    Revenue: $3.3B (2022)
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Freightos</div>
+                <div class="card-text">
+                    Founded: 2012<br>
+                    IPO: <span class="highlight">$800M (2022)</span><br>
+                    Revenue: $120M (2022)
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Forto</div>
+                <div class="card-text">
+                    Founded: 2016<br>
+                    Valuation: <span class="highlight">$1.2B (2021)</span><br>
+                    Revenue: €400M (2022)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 12: Why Lion Projects -->
+<div class="slide">
+    <div class="slide-number">12</div>
+    <h2>Why Lion Projects?</h2>
+    <div class="subtitle">Perfect strategic fit for mutual success</div>
+    
+    <div class="grid-2">
+        <div>
+            <h3>What Lion Brings:</h3>
+            <ul class="bullet-list" style="margin-top: 20px;">
+                <li style="font-size: 18px;">German logistics expertise & credibility</li>
+                <li style="font-size: 18px;">Established carrier relationships</li>
+                <li style="font-size: 18px;">European market access</li>
+                <li style="font-size: 18px;">Operational know-how</li>
+                <li style="font-size: 18px;">Initial customer pipeline</li>
+                <li style="font-size: 18px;">Office/warehouse infrastructure</li>
+            </ul>
+        </div>
+        
+        <div>
+            <h3>What FSR Hub Brings:</h3>
+            <ul class="bullet-list" style="margin-top: 20px;">
+                <li style="font-size: 18px;">Platform technology & development</li>
+                <li style="font-size: 18px;">Central Asia market access</li>
+                <li style="font-size: 18px;">Fractal scalability architecture</li>
+                <li style="font-size: 18px;">AI/ML optimization capabilities</li>
+                <li style="font-size: 18px;">Multi-currency native operations</li>
+                <li style="font-size: 18px;">Brand & marketing execution</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="cta" style="margin-top: 60px;">
+        <div class="cta-title">🤝 1 + 1 = 10</div>
+        <div class="cta-text">
+            Your network becomes our foundation.<br>
+            Our platform scales your business.<br>
+            Together, we dominate USA-EU-CA corridor.
+        </div>
+    </div>
+</div>
+
+<!-- Slide 13: Team -->
+<div class="slide">
+    <div class="slide-number">13</div>
+    <h2>Team</h2>
+    <div class="subtitle">Founder + key hires in Q1 2026</div>
+    
+    <div class="card" style="margin-bottom: 30px; background: rgba(102,126,234,0.1);">
+        <div style="display: flex; align-items: center; gap: 30px;">
+            <div style="font-size: 80px;">👤</div>
+            <div style="flex: 1;">
+                <div style="font-size: 28px; font-weight: 700; margin-bottom: 10px;">Abdurashid Abdukarimov</div>
+                <div style="font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 15px;">Founder & CEO</div>
+                <div style="font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.6;">
+                    • Independent researcher, FMP architect<br>
+                    • Terra Ecosystem creator (AIUZ, TerraMemoryDNA, Qariya)<br>
+                    • Deep Central Asia expertise (based in Tashkent)<br>
+                    • 10+ years in knowledge systems and AI<br>
+                    • Languages: English, Russian, Uzbek, German
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h3 style="margin-bottom: 20px;">Key Hires (Q1 2026):</h3>
+    <div class="grid-3">
+        <div class="card">
+            <div class="card-icon">💻</div>
+            <div class="card-title">CTO</div>
+            <div class="card-text">Platform architecture, dev team leadership</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">⚙️</div>
+            <div class="card-title">COO</div>
+            <div class="card-text">Operations, carrier relations, logistics</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">🇩🇪</div>
+            <div class="card-title">Head of Sales (EU)</div>
+            <div class="card-text">European market, Lion liaison</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">🇺🇿</div>
+            <div class="card-title">Head of Sales (CA)</div>
+            <div class="card-text">Central Asia partnerships</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">💼</div>
+            <div class="card-title">CFO</div>
+            <div class="card-text">Finance, fundraising (part-time)</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">⚖️</div>
+            <div class="card-title">Legal Counsel</div>
+            <div class="card-text">Trade law, compliance (part-time)</div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 14: Risks & Mitigation -->
+<div class="slide">
+    <div class="slide-number">14</div>
+    <h2>Risk Management</h2>
+    <div class="subtitle">We've thought this through</div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Risk</th>
+                <th>Probability</th>
+                <th>Mitigation Strategy</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Slow carrier adoption</td>
+                <td>Medium</td>
+                <td>6-month commission-free trial; Lion's network guarantees initial capacity</td>
+            </tr>
+            <tr>
+                <td>Technical delays</td>
+                <td>High</td>
+                <td>Agile/MVP approach; experienced CTO hire as priority #1</td>
+            </tr>
+            <tr>
+                <td>Regulatory barriers</td>
+                <td>Medium</td>
+                <td>Legal counsel in each jurisdiction; phased compliance rollout</td>
+            </tr>
+            <tr>
+                <td>Competition from giants</td>
+                <td>Medium</td>
+                <td>Niche focus; 2-3 year head start; superior architecture</td>
+            </tr>
+            <tr>
+                <td>Geopolitical disruption</td>
+                <td>Low</td>
+                <td>Alternative routes (South Caucasus, Turkey); route flexibility built-in</td>
+            </tr>
+            <tr>
+                <td>High CAC</td>
+                <td>High</td>
+                <td>Partnership model (Lion); referral programs; content marketing</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div style="margin-top: 50px; padding: 30px; background: rgba(16,185,129,0.1); border-radius: 12px; border: 1px solid rgba(16,185,129,0.3);">
+        <div style="font-size: 22px; font-weight: 600; color: #10b981; margin-bottom: 15px;">Conservative Assumptions:</div>
+        <div style="font-size: 18px; color: rgba(255,255,255,0.8); line-height: 1.7;">
+            Our model assumes only <strong>850 shipments</strong> in Year 1 and <strong>0.66% market capture</strong> by Year 3. 
+            This is 5-10x more conservative than comparable platforms achieved. Even if we hit only 50% of projections, we're still profitable by Month 18.
+        </div>
+    </div>
+</div>
+
+<!-- Slide 15: Next Steps -->
+<div class="slide">
+    <div class="slide-number">15</div>
+    <h2>Next Steps</h2>
+    <div class="subtitle">Let's move fast</div>
+    
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-quarter">Week 1-2</div>
+            <div class="timeline-content">
+                <div class="timeline-title">Review & Due Diligence</div>
+                <div class="timeline-desc">
+                    Lion reviews materials • Internal discussions • Initial questions answered • Due diligence materials provided
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-quarter">Week 3</div>
+            <div class="timeline-content">
+                <div class="timeline-title">Partnership Discussion</div>
+                <div class="timeline-desc">
+                    Video meeting • Terms negotiation • Role clarification • Investment structure agreed
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-quarter">Week 4</div>
+            <div class="timeline-content">
+                <div class="timeline-title">Term Sheet</div>
+                <div class="timeline-desc">
+                    Draft prepared • Legal review • Final adjustments • Agreement in principle
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-quarter">Week 5-6</div>
+            <div class="timeline-content">
+                <div class="timeline-title">Legal Documentation</div>
+                <div class="timeline-desc">
+                    Shareholder agreement • Investment contracts • IP assignments • Governance structure
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-quarter">Week 7-8</div>
+            <div class="timeline-content">
+                <div class="timeline-title">Closing</div>
+                <div class="timeline-desc">
+                    Signature • Fund transfer • Press release • Operational kickoff
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="cta" style="margin-top: 50px;">
+        <div class="cta-title">Target Close: December 2025</div>
+        <div class="cta-text">Launch: January 1, 2026</div>
+    </div>
+</div>
+
+<!-- Slide 16: The Ask -->
+<div class="slide">
+    <div class="slide-number">16</div>
+    <div style="text-align: center;">
+        <h1 style="font-size: 96px; margin-bottom: 40px;">The Ask</h1>
+        
+        <div style="font-size: 42px; color: rgba(255,255,255,0.9); margin-bottom: 60px; line-height: 1.5;">
+            €500K - €1M investment<br>
+            15-25% equity stake<br>
+            Co-build the future of global trade
+        </div>
+        
+        <div style="font-size: 28px; color: #f093fb; font-weight: 600; margin-bottom: 80px;">
+            Market window: 12-18 months<br>
+            Decision window: 8 weeks<br>
+        </div>
+        
+        <div style="font-size: 56px; font-weight: 800; background: linear-gradient(135deg, #10b981 0%, #059669 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            Are you in?
+        </div>
+    </div>
+</div>
+
+<!-- Slide 17: Contact -->
+<div class="slide">
+    <div class="slide-number">17</div>
+    <div style="text-align: center;">
+        <div class="logo-icon">🌍</div>
+        <h2 style="margin-bottom: 20px;">Let's Talk</h2>
+        
+        <div style="font-size: 24px; color: rgba(255,255,255,0.8); margin-bottom: 60px;">
+            <strong>Abdurashid Abdukarimov</strong><br>
+            Founder & CEO, Fractal Silk Route Hub
+        </div>
+        
+        <div style="font-size: 28px; margin-bottom: 20px;">
+            📧 <a href="mailto:a.a.abdukarimov@tutamail.com" style="color: #667eea; text-decoration: none;">a.a.abdukarimov@tutamail.com</a>
+        </div>
+        
+        <div style="font-size: 20px; color: rgba(255,255,255,0.6); margin-bottom: 60px;">
+            🔗 ORCID: 0009-0000-6394-4912<br>
+            📍 Tashkent, Uzbekistan
+        </div>
+        
+        <div class="cta">
+            <div class="cta-title">Ready to build something extraordinary?</div>
+            <div class="cta-text" style="font-size: 24px; margin-top: 20px;">
+                📞 Schedule a call • 📄 Request materials • 🤝 Let's partner
+            </div>
+        </div>
+        
+        <div class="contact" style="margin-top: 80px;">
+            <div style="font-size: 16px; font-style: italic; color: rgba(255,255,255,0.5);">
+                "The universe is recursive, and so must be our understanding of it."<br>
+                — FMP Codex, §L0.5
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<script>
+// Add smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Add slide navigation with arrow keys
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        if (currentSlide < slides.length - 1) {
+            currentSlide++;
+            slides[currentSlide].scrollIntoView({ behavior: 'smooth' });
+        }
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        if (currentSlide > 0) {
+            currentSlide--;
+            slides[currentSlide].scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+});
+
+// Update current slide on scroll
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            currentSlide = Array.from(slides).indexOf(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+slides.forEach(slide => observer.observe(slide));
+</script>
+
+</body>
+</html>
