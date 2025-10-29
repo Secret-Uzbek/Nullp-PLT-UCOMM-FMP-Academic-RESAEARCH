@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terra Silk Route - Investment Platform</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    color: #fff;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+}
+
+.logo-text h1 {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.logo-text p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+}
+
+.lang-selector {
+    display: flex;
+    gap: 8px;
+    background: rgba(255,255,255,0.1);
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.lang-btn {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.lang-btn:hover, .lang-btn.active {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, rgba(102,126,234,0.2) 0%, rgba(118,75,162,0.2) 100%);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);
+    max-width: 800px;
+    margin: 0 auto 25px;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 15px 35px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Calculator Section */
+.calculator {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 35px;
+    margin-bottom: 30px;
+}
+
+.calc-title {
+    font-size: 28px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.calc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+}
+
+.input-group select,
+.input-group input {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.05);
+    color: white;
+    font-size: 14px;
+}
+
+.result-box {
+    background: linear-gradient(135deg, rgba(16,185,129,0.2) 0%, rgba(5,150,105,0.2) 100%);
+    border: 2px solid rgba(16,185,129,0.3);
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 25px;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.result-item {
+    text-align: center;
+}
+
+.result-value {
+    font-size: 32px;
+    font-weight: bold;
+    color: #10b981;
+}
+
+.result-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    margin-top: 5px;
+}
+
+/* Investment Flow */
+.investment-flow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.flow-card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 15px;
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+.flow-number {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.flow-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.flow-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.flow-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+}
+
+/* Project Pipeline */
+.pipeline {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 35px;
+    margin-bottom: 30px;
+}
+
+.pipeline-title {
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.pipeline-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.pipeline-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.pipeline-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.pipeline-content {
+    flex: 1;
+}
+
+.pipeline-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.pipeline-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+}
+
+.pipeline-funding {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.funding-amount {
+    font-size: 24px;
+    font-weight: bold;
+    color: #10b981;
+}
+
+.funding-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+}
+
+/* Stats Dashboard */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+}
+
+.stat-icon {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.stat-value {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+}
+
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 28px;
+    }
+    
+    .calc-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="header-flex">
+            <div class="logo">
+                <div class="logo-icon">🌍</div>
+                <div class="logo-text">
+                    <h1 id="title">Fractal Silk Route Hub</h1>
+                    <p id="subtitle">USA - Europe - Central Asia Investment Platform</p>
+                </div>
+            </div>
+            <div class="lang-selector">
+                <button class="lang-btn active" onclick="setLang('en')">EN</button>
+                <button class="lang-btn" onclick="setLang('ru')">RU</button>
+                <button class="lang-btn" onclick="setLang('uz')">UZ</button>
+                <button class="lang-btn" onclick="setLang('de')">DE</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <div class="hero">
+        <h2 id="hero-title">$180B Trade Routes Ready for Investment</h2>
+        <p id="hero-desc">Multi-currency logistics platform connecting USA-EU-Central Asia with real-time tracking, automated customs, and verified providers. Revenue flows fund Terra ecosystem projects.</p>
+        <div class="cta-buttons">
+            <button class="btn btn-primary" id="btn-calculate" onclick="scrollToCalc()">Calculate Route Cost</button>
+            <button class="btn btn-secondary" id="btn-invest" onclick="showInvestment()">Investment Opportunities</button>
+        </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">💰</div>
+            <div class="stat-value">$180B</div>
+            <div class="stat-label" id="stat1">Trade Volume</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">🚚</div>
+            <div class="stat-value">3</div>
+            <div class="stat-label" id="stat2">Main Routes</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">🌐</div>
+            <div class="stat-value">5</div>
+            <div class="stat-label" id="stat3">Countries</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">📊</div>
+            <div class="stat-value">22%</div>
+            <div class="stat-label" id="stat4">Projected ROI</div>
+        </div>
+    </div>
+
+    <!-- Calculator -->
+    <div class="calculator" id="calculator">
+        <div class="calc-title">
+            <span>🧮</span>
+            <span id="calc-title">Fractal Route Calculator</span>
+        </div>
+        
+        <div class="calc-grid">
+            <div class="input-group">
+                <label id="label-origin">Origin</label>
+                <select id="origin">
+                    <option value="usa">USA (New York)</option>
+                    <option value="germany">Germany (Hamburg)</option>
+                    <option value="uzbekistan">Uzbekistan (Tashkent)</option>
+                    <option value="kazakhstan">Kazakhstan (Almaty)</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label id="label-dest">Destination</label>
+                <select id="destination">
+                    <option value="uzbekistan">Uzbekistan (Tashkent)</option>
+                    <option value="usa">USA (New York)</option>
+                    <option value="germany">Germany (Hamburg)</option>
+                    <option value="kazakhstan">Kazakhstan (Almaty)</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label id="label-weight">Weight</label>
+                <input type="number" id="weight" value="1000" placeholder="1000">
+            </div>
+            
+            <div class="input-group">
+                <label id="label-unit">Unit</label>
+                <select id="unit">
+                    <option value="kg">Kilograms (kg)</option>
+                    <option value="lb">Pounds (lb)</option>
+                    <option value="ton">Tons (t)</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label id="label-currency">Currency</label>
+                <select id="currency">
+                    <option value="usd">USD ($)</option>
+                    <option value="eur">EUR (€)</option>
+                    <option value="uzs">UZS (сўм)</option>
+                    <option value="rub">RUB (₽)</option>
+                </select>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary" onclick="calculate()" id="btn-calc-action">Calculate Route & Cost</button>
+        
+        <div class="result-box" id="results" style="display: none;">
+            <div class="result-grid">
+                <div class="result-item">
+                    <div class="result-value" id="result-cost">$1,275</div>
+                    <div class="result-label" id="result-cost-label">Total Cost</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value" id="result-time">11 days</div>
+                    <div class="result-label" id="result-time-label">Transit Time</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value" id="result-distance">8,500 km</div>
+                    <div class="result-label" id="result-dist-label">Distance</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value" id="result-route">USA→DE→UZ</div>
+                    <div class="result-label" id="result-route-label">Route</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Investment Flow -->
+    <div class="investment-flow">
+        <div class="flow-card">
+            <div class="flow-number">1</div>
+            <div class="flow-icon">💵</div>
+            <div class="flow-title" id="flow1-title">Revenue Generation</div>
+            <div class="flow-desc" id="flow1-desc">Platform generates income from logistics fees, subscriptions, and verified provider commissions.</div>
+        </div>
+        
+        <div class="flow-card">
+            <div class="flow-number">2</div>
+            <div class="flow-icon">📊</div>
+            <div class="flow-title" id="flow2-title">Smart Allocation</div>
+            <div class="flow-desc" id="flow2-desc">Funds distributed across Terra projects based on ROI, social impact, and strategic priority.</div>
+        </div>
+        
+        <div class="flow-card">
+            <div class="flow-number">3</div>
+            <div class="flow-icon">🚀</div>
+            <div class="flow-title" id="flow3-title">Project Launch</div>
+            <div class="flow-desc" id="flow3-desc">Terrapedia, Hub Network, Ubique, and Civilization projects funded sequentially.</div>
+        </div>
+        
+        <div class="flow-card">
+            <div class="flow-number">4</div>
+            <div class="flow-icon">🌍</div>
+            <div class="flow-title" id="flow4-title">Ecosystem Growth</div>
+            <div class="flow-desc" id="flow4-desc">Each project creates additional revenue streams, accelerating entire ecosystem expansion.</div>
+        </div>
+    </div>
+
+    <!-- Project Pipeline -->
+    <div class="pipeline">
+        <div class="pipeline-title" id="pipeline-title">Funded Projects Pipeline</div>
+        
+        <div class="pipeline-items">
+            <div class="pipeline-item">
+                <div class="pipeline-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">🚚</div>
+                <div class="pipeline-content">
+                    <div class="pipeline-name" id="pipe1-name">Silk Route Hub (Active)</div>
+                    <div class="pipeline-desc" id="pipe1-desc">Primary revenue generator - logistics platform operational</div>
+                </div>
+                <div class="pipeline-funding">
+                    <div class="funding-amount">$2.5M</div>
+                    <div class="funding-label" id="pipe1-label">CAPEX</div>
+                </div>
+            </div>
+            
+            <div class="pipeline-item">
+                <div class="pipeline-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">📚</div>
+                <div class="pipeline-content">
+                    <div class="pipeline-name" id="pipe2-name">Terrapedia (Next)</div>
+                    <div class="pipeline-desc" id="pipe2-desc">Knowledge system - ready for MVP funding</div>
+                </div>
+                <div class="pipeline-funding">
+                    <div class="funding-amount">$1.8M</div>
+                    <div class="funding-label" id="pipe2-label">Phase 1</div>
+                </div>
+            </div>
+            
+            <div class="pipeline-item">
+                <div class="pipeline-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">🛰️</div>
+                <div class="pipeline-content">
+                    <div class="pipeline-name" id="pipe3-name">Hub Network (Planned)</div>
+                    <div class="pipeline-desc" id="pipe3-desc">Physical infrastructure - station rollout</div>
+                </div>
+                <div class="pipeline-funding">
+                    <div class="funding-amount">$5.2M</div>
+                    <div class="funding-label" id="pipe3-label">Pilot</div>
+                </div>
+            </div>
+            
+            <div class="pipeline-item">
+                <div class="pipeline-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">🏪</div>
+                <div class="pipeline-content">
+                    <div class="pipeline-name" id="pipe4-name">Terra Ubique (Q3 2026)</div>
+                    <div class="pipeline-desc" id="pipe4-desc">Local services aggregation - Uzbekistan launch</div>
+                </div>
+                <div class="pipeline-funding">
+                    <div class="funding-amount">$800K</div>
+                    <div class="funding-label" id="pipe4-label">Launch</div>
+                </div>
+            </div>
+            
+            <div class="pipeline-item">
+                <div class="pipeline-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">🇺🇿</div>
+                <div class="pipeline-content">
+                    <div class="pipeline-name" id="pipe5-name">Uzbek Civilization 2.0 (2027+)</div>
+                    <div class="pipeline-desc" id="pipe5-desc">National transformation - phased implementation</div>
+                </div>
+                <div class="pipeline-funding">
+                    <div class="funding-amount">$50M+</div>
+                    <div class="funding-label" id="pipe5-label">10-year</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let currentLang = 'en';
+
+const translations = {
+    en: {
+        title: "Fractal Silk Route Hub",
+        subtitle: "USA - Europe - Central Asia Investment Platform",
+        heroTitle: "$180B Trade Routes Ready for Investment",
+        heroDesc: "Multi-currency logistics platform connecting USA-EU-Central Asia with real-time tracking, automated customs, and verified providers. Revenue flows fund Terra ecosystem projects.",
+        btnCalculate: "Calculate Route Cost",
+        btnInvest: "Investment Opportunities",
+        stat1: "Trade Volume",
+        stat2: "Main Routes",
+        stat3: "Countries",
+        stat4: "Projected ROI",
+        calcTitle: "Fractal Route Calculator",
+        labelOrigin: "Origin",
+        labelDest: "Destination",
+        labelWeight: "Weight",
+        labelUnit: "Unit",
+        labelCurrency: "Currency",
+        btnCalcAction: "Calculate Route & Cost",
+        resultCostLabel: "Total Cost",
+        resultTimeLabel: "Transit Time",
+        resultDistLabel: "Distance",
+        resultRouteLabel: "Route",
+        flow1Title: "Revenue Generation",
+        flow1Desc: "Platform generates income from logistics fees, subscriptions, and verified provider commissions.",
+        flow2Title: "Smart Allocation",
+        flow2Desc: "Funds distributed across Terra projects based on ROI, social impact, and strategic priority.",
+        flow3Title: "Project Launch",
+        flow3Desc: "Terrapedia, Hub Network, Ubique, and Civilization projects funded sequentially.",
+        flow4Title: "Ecosystem Growth",
+        flow4Desc: "Each project creates additional revenue streams, accelerating entire ecosystem expansion.",
+        pipelineTitle: "Funded Projects Pipeline",
+        pipe1Name: "Silk Route Hub (Active)",
+        pipe1Desc: "Primary revenue generator - logistics platform operational",
+        pipe1Label: "CAPEX",
+        pipe2Name: "Terrapedia (Next)",
+        pipe2Desc: "Knowledge system - ready for MVP funding",
+        pipe2Label: "Phase 1",
+        pipe3Name: "Hub Network (Planned)",
+        pipe3Desc: "Physical infrastructure - station rollout",
+        pipe3Label: "Pilot",
+        pipe4Name: "Terra Ubique (Q3 2026)",
+        pipe4Desc: "Local services aggregation - Uzbekistan launch",
+        pipe4Label: "Launch",
+        pipe5Name: "Uzbek Civilization 2.0 (2027+)",
+        pipe5Desc: "National transformation - phased implementation",
+        pipe5Label: "10-year"
+    },
+    ru: {
+        title: "Фрактальный шёлковый путь",
+        subtitle: "Инвестиционная платформа США - Европа - ЦА",
+        heroTitle: "Торговые маршруты $180 млрд готовы к инвестициям",
+        heroDesc: "Мультивалютная логистическая платформа США-ЕС-ЦА с отслеживанием в реальном времени, автоматизированной таможней и проверенными поставщиками. Доход финансирует проекты экосистемы Terra.",
+        btnCalculate: "Рассчитать стоимость",
+        btnInvest: "Инвестиционные возможности",
+        stat1: "Объём торговли",
+        stat2: "Основных маршрутов",
+        stat3: "Стран",
+        stat4: "Прогноз ROI",
+        calcTitle: "Фрактальный калькулятор маршрутов",
+        labelOrigin: "Откуда",
+        labelDest: "Куда",
+        labelWeight: "Вес",
+        labelUnit: "Единица",
+        labelCurrency: "Валюта",
+        btnCalcAction: "Рассчитать маршрут и стоимость",
+        resultCostLabel: "Общая стоимость",
+        resultTimeLabel: "Время доставки",
+        resultDistLabel: "Расстояние",
+        resultRouteLabel: "Маршрут",
+        flow1Title: "Генерация дохода",
+        flow1Desc: "Платформа генерирует доход от логистических сборов, подписок и комиссий проверенных поставщиков.",
+        flow2Title: "Умное распределение",
+        flow2Desc: "Средства распределяются между проектами Terra на основе ROI, социального воздействия и стратегического приоритета.",
+        flow3Title: "Запуск проектов",
+        flow3Desc: "Террапедия, Сеть хабов, Ubique и цивилизационные проекты финансируются последовательно.",
+        flow4Title: "Рост экосистемы",
+        flow4Desc: "Каждый проект создаёт дополнительные потоки дохода, ускоряя расширение всей экосистемы.",
+        pipelineTitle: "Конвейер финансируемых проектов",
+        pipe1Name: "Silk Route Hub (Активен)",
+        pipe1Desc: "Основной генератор дохода - логистическая платформа работает",
+        pipe1Label: "CAPEX",
+        pipe2Name: "Террапедия (Следующий)",
+        pipe2Desc: "Система знаний - готова к финансированию MVP",
+        pipe2Label: "Фаза 1",
+        pipe3Name: "Сеть хабов (Планируется)",
+        pipe3Desc: "Физическая инфраструктура - развёртывание станций",
+        pipe3Label: "Пилот",
+        pipe4Name: "Terra Ubique (3кв 2026)",
+        pipe4Desc: "Агрегация локальных услуг - запуск в Узбекистане",
+        pipe4Label: "Запуск",
+        pipe5Name: "Узбекская цивилизация 2.0 (2027+)",
+        pipe5Desc: "Национальная трансформация - поэтапная реализация",
+        pipe5Label: "10 лет"
+    },
+    uz: {
+        title: "Fraktal ipak yo'li markazi",
+        subtitle: "AQSH - Yevropa - Markaziy Osiyo investitsiya platformasi",
+        heroTitle: "$180 mlrd savdo yo'llari investitsiyaga tayyor",
+        heroDesc: "AQSH-Yevropa-Markaziy Osiyo ni real vaqtda kuzatuv, avtomatlashtirilgan bojxona va tasdiqlangan provayderlar bilan bog'lovchi ko'p valyutali logistika platformasi. Daromad Terra ekotizim loyihalarini moliyalashtiradi.",
+        btnCalculate: "Yo'l narxini hisoblash",
+        btnInvest: "Investitsiya imkoniyatlari",
+        stat1: "Savdo hajmi",
+        stat2: "Asosiy yo'llar",
+        stat3: "Davlatlar",
+        stat4: "Prognoz ROI",
+        calcTitle: "Fraktal yo'l kalkulyatori",
+        labelOrigin: "Qayerdan",
+        labelDest: "Qayerga",
+        labelWeight: "Og'irlik",
+        labelUnit: "Birlik",
+        labelCurrency: "Valyuta",
+        btnCalcAction: "Yo'l va narxni hisoblash",
+        resultCostLabel: "Umumiy narx",
+        resultTimeLabel: "Yetkazish vaqti",
+        resultDistLabel: "Masofa",
+        resultRouteLabel: "Yo'l",
+        flow1Title: "Daromad yaratish",
+        flow1Desc: "Plat
