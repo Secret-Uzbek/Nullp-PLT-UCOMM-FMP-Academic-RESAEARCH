@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Zenodo Helper — AIUZ Terra Publish Assistant</title>
+<style>
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#f6f8fb;color:#111;margin:0;padding:20px}
+  .card{background:#fff;border-radius:10px;padding:18px;box-shadow:0 6px 18px rgba(0,0,0,.06);max-width:980px;margin:18px auto}
+  h1{margin:0 0 8px;font-size:20px}
+  label{display:block;margin:12px 0 6px;font-weight:600}
+  input[type=text], textarea, select{width:100%;padding:8px;border:1px solid #d9e2ef;border-radius:6px}
+  textarea{min-height:90px}
+  .row{display:flex;gap:12px}
+  .col{flex:1}
+  .files{border:2px dashed #d0d7e6;padding:12px;border-radius:8px;text-align:center;color:#334155}
+  button{background:#0b79ff;color:#fff;border:0;padding:10px 14px;border-radius:8px;font-weight:700;cursor:pointer}
+  small{color:#64748b}
+  .success{background:#ecfdf5;color:#064e3b;padding:10px;border-radius:8px}
+  .danger{background:#fff1f2;color:#7f1d1d;padding:10px;border-radius:8px}
+  .meta-sample{background:#f8fafc;padding:8px;border-radius:6px;border:1px solid #eef2ff;font-family:monospace;font-size:13px}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Zenodo Helper — AIUZ Terra Publish Assistant</h1>
+  <p><small>Open this file in your browser (double-click). Fill the form, drop the prepared ZIP or PDF file(s) and paste your Zenodo token only when you are ready. Your token stays in your browser session and is not sent to any third party by this page.</small></p>
+
+  <label for="package">Choose package (prefilled metadata)</label>
+  <select id="package">
+    <option value="monograph">Fractal Metascience Monograph (FMP_Monograph_v1.0)</option>
+    <option value="tcpp">TCPP v1.0 (Protocol)</option>
+    <option value="codex">AIUZ TerraCodex Archive v1.0</option>
+  </select>
+
+  <div class="row">
+    <div class="col">
+      <label for="title">Title</label>
+      <input id="title" type="text" />
+    </div>
+    <div class="col">
+      <label for="creators">Creators (comma-separated; use "Name | ORCID" to include ORCID)</label>
+      <input id="creators" type="text"/>
+    </div>
+  </div>
+
+  <label for="description">Description / Abstract</label>
+  <textarea id="description"></textarea>
+
+  <div class="row">
+    <div class="col">
+      <label for="keywords">Keywords (comma separated)</label>
+      <input id="keywords" type="text" />
+    </div>
+    <div class="col">
+      <label for="license">License</label>
+      <select id="license">
+        <option value="CC-BY-4.0">Creative Commons Attribution 4.0 (CC-BY-4.0)</option>
+        <option value="GPL-3.0">GPL-3.0</option>
+        <option value="CC0-1.0">CC0 1.0</option>
+      </select>
+    </div>
+  </div>
+
+  <label>Files to upload</label>
+  <div id="drop" class="files">Drag & drop files here or click to choose<br><small>Recommended: single ZIP file that contains the package (manifest, README_publish.md, PDF, ledger)</small></div>
+  <input id="fileinput" type="file" multiple style="display:none" />
+  <div id="filelist" style="margin-top:10px"></div>
+
+  <label for="token">Zenodo token (paste here when ready)</label>
+  <input id="token" type="text" placeholder="Paste your Zenodo token here — stays in your browser only" />
+
+  <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+    <button id="publish">Create deposition & Upload</button>
+    <button id="preview" style="background:#0f172a">Preview JSON</button>
+    <div style="flex:1"></div>
+    <small>Zenodo API endpoint: <code>https://zenodo.org/api/deposit/depositions</code></small>
+  </div>
+
+  <div id="status" style="margin-top:12px"></div>
+
+  <h3 style="margin-top:18px">Notes & Fallback</h3>
+  <p><small>This helper attempts to create a Zenodo deposition and upload your files via the Zenodo REST API using your token. If your browser blocks the request (CORS) or the upload fails, use the "curl" command provided in the Preview JSON step — paste your token there and run locally. Your token is never transmitted to me; it stays in your browser session.</small></p>
+</div>
+
+<script>
+const samples = {
+  monograph: {
+    title: 'Fractal Metascience Paradigm — Terra Clean Core (Complete Monograph)',
+    creators: 'Abdurashid A. Abdukarimov | 0009-0000-6394-4912',
+    description: 'The Fractal Metascience Paradigm (FMP) presents a recursive framework for planetary-scale, reproducible science. This monograph (Terra Clean Core) formalizes NULLO, PLT and the operational FMP stack within the AIUZ Terra ecosystem. Includes canonical text, provenance manifests, Terra Proof Ledger recipes and reproducible environment specs (June–October 2025).',
+    keywords: 'Fractal Metascience, Nullo, Post-Lingua Trace, Reproducibility, AIUZ Terra, Ledger',
+    license: 'CC-BY-4.0'
+  },
+  tcpp: {
+    title: 'Terra Challenge Proof Protocol (TCPP) v1.0',
+    creators: 'Abdurashid A. Abdukarimov | 0009-0000-6394-4912',
+    description: 'TCPP v1.0 prescribes a reproducible pipeline to convert FMP outputs into citable artifacts: ingestion templates, Fractal Problem Graph (FPG JSON-LD) examples, container environment specs and Terra Proof Ledger integration for DOI-anchored verification.',
+    keywords: 'TCPP, reproducible research, provenance, Fractal Metascience, Terra',
+    license: 'CC-BY-4.0'
+  },
+  codex: {
+    title: 'AIUZ Terra Codex Archive v1.0 — TerraMemoryDNA & Documentation Suite',
+    creators: 'Abdurashid A. Abdukarimov | 0009-0000-6394-4912',
+    description: 'Planetary archive unifying educational, ethical and scientific documentation of the AIUZ Terra Ecosystem and TerraMemoryDNA. Includes documentation standards, microkernel specs, pitch materials, and archival manifests — ready for reuse and verification.',
+    keywords: 'AIUZ Terra, TerraMemoryDNA, documentation, education, ethics, Fractal Metascience',
+    license: 'GPL-3.0'
+  }
+}
+
+const packageSelect = document.getElementById('package');
+const titleEl = document.getElementById('title');
+const creatorsEl = document.getElementById('creators');
+const descEl = document.getElementById('description');
+const keywordsEl = document.getElementById('keywords');
+const licenseEl = document.getElementById('license');
+const drop = document.getElementById('drop');
+const fileinput = document.getElementById('fileinput');
+const filelist = document.getElementById('filelist');
+const tokenEl = document.getElementById('token');
+const status = document.getElementById('status');
+let files = [];
+
+function setSample(key){
+  const s = samples[key];
+  titleEl.value = s.title;
+  creatorsEl.value = s.creators;
+  descEl.value = s.description;
+  keywordsEl.value = s.keywords;
+  licenseEl.value = s.license;
+}
+
+packageSelect.addEventListener('change', e=> setSample(e.target.value));
+setSample(packageSelect.value);
+
+function renderFiles(){
+  if(files.length===0) filelist.innerHTML = '<small>No files selected</small>';
+  else filelist.innerHTML = '<ul>'+files.map(f=>'<li>'+f.name+' ('+Math.round(f.size/1024)+' KB)</li>').join('')+'</ul>';
+}
+
+drop.addEventListener('click', ()=> fileinput.click());
+fileinput.addEventListener('change', e=>{ files = Array.from(e.target.files); renderFiles(); });
+
+drop.addEventListener('dragover', e=>{ e.preventDefault(); drop.style.borderColor='#0b79ff'; });
+drop.addEventListener('dragleave', e=>{ e.preventDefault(); drop.style.borderColor=''; });
+drop.addEventListener('drop', e=>{ e.preventDefault(); files = Array.from(e.dataTransfer.files); renderFiles(); drop.style.borderColor=''; });
+
+async function createDeposition(metadata, token){
+  const endpoint = 'https://zenodo.org/api/deposit/depositions';
+  const res = await fetch(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer '+token },
+    body: JSON.stringify({ metadata })
+  });
+  if(!res.ok) throw new Error('Create deposition failed: '+res.status+' '+res.statusText);
+  return res.json();
+}
+
+async function uploadFile(depId, file, token){
+  const uploadUrl = `https://zenodo.org/api/deposit/depositions/${depId}/files`;
+  const fd = new FormData();
+  fd.append('file', file, file.name);
+  const res = await fetch(uploadUrl, { method: 'POST', headers: { 'Authorization': 'Bearer '+token }, body: fd });
+  if(!res.ok) throw new Error('Upload file failed: '+res.status+' '+res.statusText);
+  return res.json();
+}
+
+async function publishDeposition(depId, token){
+  const publishUrl = `https://zenodo.org/api/deposit/depositions/${depId}/actions/publish`;
+  const res = await fetch(publishUrl, { method: 'POST', headers: { 'Authorization': 'Bearer '+token } });
+  if(!res.ok) throw new Error('Publish failed: '+res.status+' '+res.statusText);
+  return res.json();
+}
+
+function getMetadataFromForm(){
+  const creators = creatorsEl.value.split(',').map(s=>{
+    const parts = s.trim().split('|').map(p=>p.trim());
+    return { name: parts[0], orcid: parts[1] ? 'https://orcid.org/'+parts[1] : undefined };
+  });
+  return {
+    title: titleEl.value,
+    upload_type: packageSelect.value==='tcpp' ? 'software' : packageSelect.value==='codex' ? 'dataset' : 'publication',
+    publication_type: packageSelect.value==='monograph' ? 'book' : 'other',
+    description: descEl.value,
+    creators: creators,
+    keywords: keywordsEl.value.split(',').map(k=>k.trim()).filter(Boolean),
+    license: licenseEl.value,
+    access_right: 'open'
+  };
+}
+
+document.getElementById('preview').addEventListener('click', ()=>{
+  const md = getMetadataFromForm();
+  const pretty = JSON.stringify({ metadata: md }, null, 2);
+  const win = window.open('', '_blank');
+  win.document.body.innerHTML = '<pre class="meta-sample">'+escapeHtml(pretty)+'</pre>';
+});
+
+function escapeHtml(s){ return s.replace(/[&<>'"`]/g, c=>('&#'+c.charCodeAt(0)+';')); }
+
+document.getElementById('publish').addEventListener('click', async ()=>{
+  status.innerHTML = '';
+  const token = tokenEl.value.trim();
+  if(!token){ status.innerHTML = '<div class="danger">Paste your Zenodo token into the token field before publishing.</div>'; return; }
+  if(files.length===0){ status.innerHTML = '<div class="danger">Select at least one file to upload (recommend a single ZIP).</div>'; return; }
+  const metadata = getMetadataFromForm();
+
+  try{
+    status.innerHTML = '<div class="success">Creating deposition...</div>';
+    const dep = await createDeposition(metadata, token);
+    const depId = dep.id;
+    status.innerHTML = '<div class="success">Deposition created (id: '+depId+'). Uploading files...</div>';
+
+    for(const f of files){
+      status.innerHTML = '<div class="success">Uploading '+f.name+' ...</div>';
+      await uploadFile(depId, f, token);
+    }
+
+    status.innerHTML = '<div class="success">All files uploaded. Publishing deposition...</div>';
+    const published = await publishDeposition(depId, token);
+    status.innerHTML = '<div class="success">Published — DOI: '+published.doi+'</div>';
+
+  }catch(err){
+    console.error(err);
+    status.innerHTML = '<div class="danger">Error: '+err.message+'<br><small>If CORS blocks the request, use the fallback curl command in Preview JSON.</small></div>';
+  }
+});
+
+</script>
+</body>
+</html>

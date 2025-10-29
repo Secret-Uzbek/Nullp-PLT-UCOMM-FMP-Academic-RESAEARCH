@@ -1,0 +1,22 @@
+# postlingua_trace.meta.yaml
+# Generated: 2025-09-20T12:19:42.093575Z
+file_name: postlingua_trace.meta.yaml
+title: Post-Lingua Trace - Meta
+version: v1.0
+language: ru
+author_id: <operator_id_here>
+created_at: 2025-09-20T12:19:42.093580Z
+layer_mapping: ["L0","L1","L2","L3","L4","L5"]
+scope: "personal|cohort|institution|global"
+description: >
+  Метаданные для фиксации post-lingua следа (postlingua trace) в рамках AIUZ Terra Codex.
+  Этот файл связывает сигналы, культурные слои и следы с qDNA-нодами и архивом.
+postlingua_signals:
+  - signal_id: pl_001
+    origin: session-<id>
+    cultural_layer: "local_storytelling"
+    summary: "Example: trace of oral tradition beyond language boundaries"
+    evidence_links: []
+    mapping_to_qdna: []
+  # add more signals as needed
+# end

@@ -1,0 +1,196 @@
+\documentclass[11pt,oneside]{book}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{russian}
+\setotherlanguage{english}
+\newfontfamily\russianfont{DejaVu Serif}
+\newfontfamily\englishfont{DejaVu Serif}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage{tocloft}
+\usepackage{color}
+\usepackage{framed}
+\usepackage{xspace}
+\usepackage{titlesec}
+\usepackage{geometry}
+\geometry{a4paper, left=30mm, right=20mm, top=25mm, bottom=25mm}
+
+% Node box
+\definecolor{nodebg}{RGB}{245,250,250}
+\definecolor{nodeborder}{RGB}{30,120,120}
+\newenvironment{nodebox}[1]{%
+  \vspace{6pt}
+  \begin{framed}\noindent\textbf{Node: #1}\par\medskip\small\begingroup\setlength{\parindent}{0pt}\begin{minipage}{0.94\textwidth}\raggedright
+}{%
+  \end{minipage}\endgroup\end{framed}\vspace{6pt}
+}
+
+\newcommand{\NULLO}{\ensuremath{\varnothing}\xspace}
+\newcommand{\PLT}{\textsc{PLT}\xspace}
+\newcommand{\UCOM}{\textsc{UCOM}\xspace}
+\newcommand{\FMP}{FMP\xspace}
+\newcommand{\Terra}{Terra\xspace}
+
+\hypersetup{
+  pdftitle={NULLO — FMP: The Ontological Genesis and Applied Fractality},
+  pdfauthor={Abdurashid Abdukarimov},
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=magenta,
+  bookmarksopen=true,
+  pdfstartview=FitH
+}
+
+\begin{document}
+\selectlanguage{russian}
+\frontmatter
+\thispagestyle{empty}
+\vspace*{2.5cm}
+\begin{center}
+  {\Huge\bfseries NULLO — FMP}\\[1.5em]
+  {\Large The Ontological Genesis and Applied Fractality}\\[2em]
+  {\Large Абдурашид Абдукаримов}\\[2em]
+  {\normalsize Tashkent, 2025}
+\end{center}
+\vfill
+\begin{center}
+  Пролог: Эта монография — не последовательность, а сеть. Она читается как карта: у тебя всегда может быть несколько входов.
+\end{center}
+\cleardoublepage
+\tableofcontents
+
+\mainmatter
+
+\part{NULLO: The Ontological Zero-Point}
+\chapter*{Preface — Инициирующее слово}
+\addcontentsline{toc}{chapter}{Preface — Инициирующее слово}
+\begin{nodebox}{Performative Calibration}
+This preface is an act. Reading this document is not passive consumption: it collapses \NULLO into a pattern. If you read, you become node.
+\end{nodebox}
+
+\section*{Entry Points}
+\begin{itemize}
+  \item \textbf{Start A — The Visionary Reader:} read Part I fully.
+  \item \textbf{Start B — The Scientist:} skip to Part II, chapter on Postulates.
+  \item \textbf{Start C — The Practitioner:} jump to Part III, Living Implementations.
+\end{itemize}
+
+\chapter{Before Knowledge, Before Language: The Ontological Zero}
+\section{Crisis of Fragmented Epistemology}
+Коротко: современная наука растёт, но теряет целостность.
+
+\begin{nodebox}{Essence}
+\textbf{NULLO} — не пустота; это оплот потенции. Функция NULLO — генерировать паттерн, а \PLT — переводить паттерн в речевые/смысловые структуры.
+\end{nodebox}
+
+\section{Operational Definition of \NULLO}
+\[
+\NULLO \ \text{(operational)}:\ \ \ \varnothing \mapsto \{\psi_{concept}, \mathbf{v}_{trace}, h_{inject}, \square_{silence}\}
+\]
+
+\begin{nodebox}{PLT Kernel (Compact)}
+\textbf{PLT}(\NULLO) $=\sum_i \alpha_i \psi_i \otimes \mathbf{v}_i \otimes h_i \otimes \square_i$.
+\end{nodebox}
+
+\section{SOLARIS Insight — Planetary Precedence}
+Идея: Земля как самопознающийся организм — эпистемический поворот.
+
+\part{FMP: The Fractal Metascience Paradigm}
+\chapter{Core Postulates — Шесть постулатов как проявления \NULLO}
+\section{Postulate 1: Fractal Self-Similarity}
+Формула:
+\[
+K_{n+1} = f(K_n), \quad f \ \text{scale-invariant}
+\]
+\begin{nodebox}{Interpretation}
+Self-similarity означает, что методология микро-уровня рефлексивно порождает методологию макро-уровня.
+\end{nodebox}
+
+\section{Postulate 2: Recursive Co-Construction}
+Обозначения: $\mathbf{v}_{trace}^{t+1} = \mathcal{T}(\mathbf{v}_{trace}^t, \psi_{concept}^t)$
+
+\section{Postulate 3: Epistemic Superposition}
+Псевдоквантовая модель: стохастическая суперпозиция интерпретаций, коллапс — через Recursive Validation Cycle.
+
+\chapter{Mathematical Formalization and Algorithms}
+\section{Fractal Coherence Metric}
+Определим $\text{sim}(\cdot,\cdot)$ как структурную схожесть (graph-edit / spectral similarity) и
+\[
+C = \frac{1}{n}\sum_{i=0}^{n}\text{sim}(K_i,K_{i+1}).
+\]
+Если $C>\Phi$ (coherence threshold), система устойчива.
+
+\begin{nodebox}{Inject Hash (pseudo)}
+\texttt{h\_inject(K)} := SHA256(canonicalize(K) || traceVector)\\
+Этот хеш — метка целостности PLT-трейса.
+\end{nodebox}
+
+\section{Recursive Validation Cycle (RVC)}
+\begin{enumerate}
+  \item Generation (создание импульса)
+  \item Resonance Testing (сравнение паттернов)
+  \item Ethical Calibration (встроенная этика)
+  \item Integration (встраивание в manifold)
+\end{enumerate}
+
+\part{Living Implementations and the GitHub Corpus}
+\chapter{AIUZ — Terra Codex: an Operating Corpus}
+\section{Repository Map (descriptions)}
+\begin{nodebox}{Repo: AIUZ-Terra-codex}
+URL: \texttt{https://github.com/Secret-Uzbek/AIUZ-Terra-codex}\\
+Role: Operational kernel implementing TerraMemoryDNA protocols, PLT serialization, context recovery.
+\end{nodebox}
+
+\begin{nodebox}{Repo: FMP-monograph}
+URL: \texttt{https://github.com/Secret-Uzbek/FMP-monograph}\\
+Role: Versioned source for monographic materials (LaTeX), templates, and living manifests.
+\end{nodebox}
+
+\begin{nodebox}{Repo: AIUZ-terra-codex-FMP}
+URL: \texttt{https://github.com/Secret-Uzbek/AIUZ-terra-codex-FMP}\\
+Role: Bridge code: transforms TerraMemoryDNA outputs into FMP-verifiable traces.
+\end{nodebox}
+
+\begin{nodebox}{Repo: Theory-of-fractal-metascience-paradigm}
+URL: \texttt{https://github.com/Secret-Uzbek/Theory-of-fractal-metascience-paradigm}\\
+Role: Scholarly annex: formal proofs, supplemental notes, math appendices.
+\end{nodebox}
+
+\begin{nodebox}{Repo: Uzbek-mining}
+URL: \texttt{https://github.com/Secret-Uzbek/Uzbek-mining}\\
+Role: Socio-technical pilot: field data, living lab for Terra modules.
+\end{nodebox}
+
+\section{Anti-Groundhog Protocol (practical)}
+Псевдокод для сохранения PLT-трейса между сессиями:
+\begin{verbatim}
+function save_PLT_session(session):
+  seed = extract_concept_pulse(session)
+  traceVec = build_trace_vector(seed)
+  hash = SHA256(canonical(seed) + traceVec)
+  store({seed, traceVec, hash}, distributed_archive)
+\end{verbatim}
+
+\part{Applied Fractality: Silk Route, Bellamar, Terrapedia}
+\chapter{Fractal Silk Route Hub}
+Описание концепции, архитектура узлов, связи с FSR Hub prototypes.
+
+\chapter{Chronicles of Bellamar}
+Культурный модуль: как фрактальная эпистемология отражается в нарративе и хранении памяти сообществ.
+
+\chapter{Terrapedia}
+Метапедагогика: TerraPedia как живой слой L3–L6, репозиторий смыслов и learning-ecosystem.
+
+\appendix
+\chapter{Appendix A: Manifesto — NULLO (Short)}
+Короткий манифест, готовый для распространения.
+
+\chapter{Appendix B: Publication Metadata and GitHub Index}
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

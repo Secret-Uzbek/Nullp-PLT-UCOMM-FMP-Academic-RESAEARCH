@@ -1,0 +1,86 @@
+{
+  "generated_at": "2025-09-20T12:19:42.093634Z",
+  "comment": "Initial qDNA node map (proposed). Each strand -> candidate files. Use defragmentation protocol to create sequences.",
+  "dna_strands": {
+    "governance": [
+      "AIUZ-TERRA ECOSYSTEM - º▒º░º¡º»º╜º½ ºíº▓º╖º¬ºú ºúº│ºªº╖ º«ºíº┤ºªº▓º¬ºíº¡º░ºú 1.md",
+      "aiuz2025_archive_complete.md.md",
+      "AIUZ-TERRA ECOSYSTEM - º▒º░º¡º»º╜º½ ºíº▓º╖º¬ºú ºúº│ºªº╖ º«ºíº┤ºªº▓º¬ºíº¡º░ºú.md",
+      "contributing.md-ºΓºσº▄ºαº╙ºαº╒ºπºΣº╙ºα-ºßºα-ºσºΘº╤ºπºΣº┌º≡.md",
+      "security.md-ºßºαº▌º┌ºΣº┌º▄º╤-º╥º╓º┘ºαºßº╤ºπº▀ºαºπºΣº┌.md",
+      "readme.md-terra-ecosystem-v4.0.md",
+      "terramemorydna-v5.0-organic-evolution-system.md",
+      "terramemorydna_specification_v1.0.md"
+    ],
+    "aiuz_evolution": [
+      "terramemorydna-v5.0-organic-evolution-system.md",
+      "terramemorydna-v5.0-organic-evolution-system_20250730_212250.md",
+      "TerraMemoryDNA/terramemorydna-v5.0-integrated-compact-system-1.js",
+      "TerraMemoryDNA/terramemorydna-v5.0-organic-evolution-system.js",
+      "TerraMemoryDNA/terramemorydna-v5.0-integrated-compact-system.js",
+      "TerraMemoryDNA/terramemorydna-v5.1-compact-context-injection.js",
+      "TerraMemoryDNA/terramemorydna-v5.1-finalized-quantum-organic-system.js",
+      "TerraMemoryDNA/TerraMemoryDNA_v5.0_Organic.js"
+    ],
+    "terra_ecosystem": [
+      "AIUZ-TERRA ECOSYSTEM - º▒º░º¡º»º╜º½ ºíº▓º╖º¬ºú ºúº│ºªº╖ º«ºíº┤ºªº▓º¬ºíº¡º░ºú 1.md",
+      "AIUZ-TERRA ECOSYSTEM - º▒º░º¡º»º╜º½ ºíº▓º╖º¬ºú ºúº│ºªº╖ º«ºíº┤ºªº▓º¬ºíº¡º░ºú.md",
+      "terramemorydna-v5.0-organic-evolution-system.md",
+      "TerraMemoryDNA_v4.3.md",
+      "AIUZ-TERRA ECOSYSTEM - º▒º░º¡º»º╜º½ ºíº▓º╖º¬ºú ºúº│ºªº╖ º«ºíº┤ºªº▓º¬ºíº¡º░ºú_20250730_212210.md",
+      "AIUZ-TERRA ECOSYSTEM - º▒º░º¡º»º╜º½ ºíº▓º╖º¬ºú ºúº│ºªº╖ º«ºíº┤ºªº▓º¬ºíº¡º░ºú 1_20250730_212210.md",
+      "terramemorydna-v5.0-organic-evolution-system_20250730_212250.md",
+      "TerraMemoryDNA_v4.3_20250730_212256.md"
+    ],
+    "technical_protocols": [
+      "terramemorydna-v5.0-organic-evolution-system.md",
+      "terramemorydna-v5.0-organic-evolution-system_20250730_212250.md",
+      "TerraMemoryDNA/terramemorydna-v5.0-integrated-compact-system-1.js",
+      "TerraMemoryDNA/terramemorydna-v5.0-organic-evolution-system.js",
+      "TerraMemoryDNA/terramemorydna-v5.0-integrated-compact-system.js",
+      "TerraMemoryDNA/terramemorydna-v5.1-compact-context-injection.js",
+      "TerraMemoryDNA/terramemorydna-v5.1-finalized-quantum-organic-system.js",
+      "TerraMemoryDNA/TerraMemoryDNA_v5.0_Organic.js"
+    ],
+    "academic_materials": [
+      "terramemorydna-v5.0-organic-evolution-system.md",
+      "terramemorydna-v5.0-organic-evolution-system_20250730_212250.md",
+      "TerraMemoryDNA/terramemorydna-v5.0-integrated-compact-system-1.js",
+      "TerraMemoryDNA/terramemorydna-v5.0-organic-evolution-system.js",
+      "TerraMemoryDNA/terramemorydna-v5.0-integrated-compact-system.js",
+      "TerraMemoryDNA/terramemorydna-v5.1-compact-context-injection.js",
+      "TerraMemoryDNA/terramemorydna-v5.1-finalized-quantum-organic-system.js",
+      "TerraMemoryDNA/TerraMemoryDNA_v5.0_Organic.js"
+    ],
+    "true_concept": [
+      "terramemorydna-v5.0-organic-evolution-system.md",
+      "terramemorydna-v5.0-organic-evolution-system_20250730_212250.md",
+      "TerraMemoryDNA/terramemorydna-v5.0-integrated-compact-system-1.js",
+      "TerraMemoryDNA/terramemorydna-v5.0-organic-evolution-system.js",
+      "TerraMemoryDNA/terramemorydna-v5.0-integrated-compact-system.js",
+      "TerraMemoryDNA/terramemorydna-v5.1-compact-context-injection.js",
+      "TerraMemoryDNA/terramemorydna-v5.1-finalized-quantum-organic-system.js",
+      "TerraMemoryDNA/TerraMemoryDNA_v5.0_Organic.js"
+    ],
+    "chronology": [
+      "terramemorydna-v5.0-organic-evolution-system.md",
+      "terramemorydna-v5.0-organic-evolution-system_20250730_212250.md",
+      "TerraMemoryDNA/terramemorydna-v5.0-integrated-compact-system-1.js",
+      "TerraMemoryDNA/terramemorydna-v5.0-organic-evolution-system.js",
+      "TerraMemoryDNA/terramemorydna-v5.0-integrated-compact-system.js",
+      "TerraMemoryDNA/terramemorydna-v5.1-compact-context-injection.js",
+      "TerraMemoryDNA/terramemorydna-v5.1-finalized-quantum-organic-system.js",
+      "TerraMemoryDNA/TerraMemoryDNA_v5.0_Organic.js"
+    ],
+    "security_legal": [
+      "terramemorydna-v5.0-organic-evolution-system.md",
+      "terramemorydna-v5.0-organic-evolution-system_20250730_212250.md",
+      "TerraMemoryDNA/terramemorydna-v5.0-integrated-compact-system-1.js",
+      "TerraMemoryDNA/terramemorydna-v5.0-organic-evolution-system.js",
+      "TerraMemoryDNA/terramemorydna-v5.0-integrated-compact-system.js",
+      "TerraMemoryDNA/terramemorydna-v5.1-compact-context-injection.js",
+      "TerraMemoryDNA/terramemorydna-v5.1-finalized-quantum-organic-system.js",
+      "TerraMemoryDNA/TerraMemoryDNA_v5.0_Organic.js"
+    ]
+  }
+}

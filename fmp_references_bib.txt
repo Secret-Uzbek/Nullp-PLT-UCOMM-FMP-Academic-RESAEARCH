@@ -1,0 +1,287 @@
+@book{mandelbrot1982fractal,
+  title={The Fractal Geometry of Nature},
+  author={Mandelbrot, Beno{\^\i}t B.},
+  year={1982},
+  publisher={W. H. Freeman and Company},
+  address={New York}
+}
+
+@book{bateson1972steps,
+  title={Steps to an Ecology of Mind},
+  author={Bateson, Gregory},
+  year={1972},
+  publisher={Chandler Publishing Company},
+  address={San Francisco}
+}
+
+@book{maturana1980autopoiesis,
+  title={Autopoiesis and Cognition: The Realization of the Living},
+  author={Maturana, Humberto R. and Varela, Francisco J.},
+  year={1980},
+  publisher={D. Reidel Publishing Company},
+  address={Dordrecht}
+}
+
+@book{vonfoerster2003understanding,
+  title={Understanding Understanding: Essays on Cybernetics and Cognition},
+  author={von Foerster, Heinz},
+  year={2003},
+  publisher={Springer},
+  address={New York}
+}
+
+@book{kuhn1962structure,
+  title={The Structure of Scientific Revolutions},
+  author={Kuhn, Thomas S.},
+  year={1962},
+  publisher={University of Chicago Press},
+  address={Chicago}
+}
+
+@book{prigogine1980being,
+  title={From Being to Becoming: Time and Complexity in the Physical Sciences},
+  author={Prigogine, Ilya},
+  year={1980},
+  publisher={W. H. Freeman},
+  address={San Francisco}
+}
+
+@book{bertalanffy1968general,
+  title={General System Theory: Foundations, Development, Applications},
+  author={von Bertalanffy, Ludwig},
+  year={1968},
+  publisher={George Braziller},
+  address={New York}
+}
+
+@book{wiener1948cybernetics,
+  title={Cybernetics: Or Control and Communication in the Animal and the Machine},
+  author={Wiener, Norbert},
+  year={1948},
+  publisher={MIT Press},
+  address={Cambridge, MA}
+}
+
+@article{bruza2015quantum,
+  title={Quantum cognition: A new theoretical approach to psychology},
+  author={Bruza, Peter D. and Wang, Zheng and Busemeyer, Jerome R.},
+  journal={Trends in Cognitive Sciences},
+  volume={19},
+  number={7},
+  pages={383--393},
+  year={2015},
+  publisher={Elsevier}
+}
+
+@article{pothos2013quantum,
+  title={Can quantum probability provide a new direction for cognitive modeling?},
+  author={Pothos, Emmanuel M. and Busemeyer, Jerome R.},
+  journal={Behavioral and Brain Sciences},
+  volume={36},
+  number={3},
+  pages={255--274},
+  year={2013},
+  publisher={Cambridge University Press}
+}
+
+@book{morin2008method,
+  title={On Complexity},
+  author={Morin, Edgar},
+  year={2008},
+  publisher={Hampton Press},
+  address={Cresskill, NJ}
+}
+
+@book{kauffman1995origins,
+  title={At Home in the Universe: The Search for Laws of Self-Organization and Complexity},
+  author={Kauffman, Stuart A.},
+  year={1995},
+  publisher={Oxford University Press},
+  address={New York}
+}
+
+@book{latour2005reassembling,
+  title={Reassembling the Social: An Introduction to Actor-Network-Theory},
+  author={Latour, Bruno},
+  year={2005},
+  publisher={Oxford University Press},
+  address={Oxford}
+}
+
+@book{haraway1991simians,
+  title={Simians, Cyborgs, and Women: The Reinvention of Nature},
+  author={Haraway, Donna J.},
+  year={1991},
+  publisher={Routledge},
+  address={New York}
+}
+
+@book{thompson2007mind,
+  title={Mind in Life: Biology, Phenomenology, and the Sciences of Mind},
+  author={Thompson, Evan},
+  year={2007},
+  publisher={Harvard University Press},
+  address={Cambridge, MA}
+}
+
+@book{varela1991embodied,
+  title={The Embodied Mind: Cognitive Science and Human Experience},
+  author={Varela, Francisco J. and Thompson, Evan and Rosch, Eleanor},
+  year={1991},
+  publisher={MIT Press},
+  address={Cambridge, MA}
+}
+
+@article{luhmann1995social,
+  title={Social Systems},
+  author={Luhmann, Niklas},
+  journal={Stanford University Press},
+  year={1995}
+}
+
+@book{stengers1997power,
+  title={Power and Invention: Situating Science},
+  author={Stengers, Isabelle},
+  year={1997},
+  publisher={University of Minnesota Press},
+  address={Minneapolis}
+}
+
+@article{barabasi1999emergence,
+  title={Emergence of scaling in random networks},
+  author={Barab{\'a}si, Albert-L{\'a}szl{\'o} and Albert, R{\'e}ka},
+  journal={Science},
+  volume={286},
+  number={5439},
+  pages={509--512},
+  year={1999},
+  publisher={American Association for the Advancement of Science}
+}
+
+@book{hofstadter1979godel,
+  title={G{\"o}del, Escher, Bach: An Eternal Golden Braid},
+  author={Hofstadter, Douglas R.},
+  year={1979},
+  publisher={Basic Books},
+  address={New York}
+}
+
+@article{floridi2011philosophy,
+  title={The philosophy of information},
+  author={Floridi, Luciano},
+  journal={Oxford University Press},
+  year={2011}
+}
+
+@article{tegmark2015consciousness,
+  title={Consciousness as a state of matter},
+  author={Tegmark, Max},
+  journal={Chaos, Solitons \& Fractals},
+  volume={76},
+  pages={238--270},
+  year={2015},
+  publisher={Elsevier}
+}
+
+@book{west2017scale,
+  title={Scale: The Universal Laws of Growth, Innovation, Sustainability, and the Pace of Life in Organisms, Cities, Economies, and Companies},
+  author={West, Geoffrey},
+  year={2017},
+  publisher={Penguin Press},
+  address={New York}
+}
+
+@article{mitchell2009complexity,
+  title={Complexity: A guided tour},
+  author={Mitchell, Melanie},
+  journal={Oxford University Press},
+  year={2009}
+}
+
+@book{meadows2008thinking,
+  title={Thinking in Systems: A Primer},
+  author={Meadows, Donella H.},
+  year={2008},
+  publisher={Chelsea Green Publishing},
+  address={White River Junction, VT}
+}
+
+@article{heylighen2001science,
+  title={The science of self-organization and adaptivity},
+  author={Heylighen, Francis},
+  journal={The Encyclopedia of Life Support Systems},
+  volume={5},
+  number={3},
+  pages={253--280},
+  year={2001}
+}
+
+@book{capra1996web,
+  title={The Web of Life: A New Scientific Understanding of Living Systems},
+  author={Capra, Fritjof},
+  year={1996},
+  publisher={Anchor Books},
+  address={New York}
+}
+
+@article{bak1987self,
+  title={Self-organized criticality: An explanation of the 1/f noise},
+  author={Bak, Per and Tang, Chao and Wiesenfeld, Kurt},
+  journal={Physical Review Letters},
+  volume={59},
+  number={4},
+  pages={381},
+  year={1987},
+  publisher={APS}
+}
+
+@book{waldrop1992complexity,
+  title={Complexity: The Emerging Science at the Edge of Order and Chaos},
+  author={Waldrop, M. Mitchell},
+  year={1992},
+  publisher={Simon and Schuster},
+  address={New York}
+}
+
+@article{sole2016liquid,
+  title={Liquid brains, solid brains},
+  author={Sol{\'e}, Ricard and Moses, Melanie and Forrest, Stephanie},
+  journal={Philosophical Transactions of the Royal Society B: Biological Sciences},
+  volume={371},
+  number={1701},
+  pages={20150539},
+  year={2016},
+  publisher={The Royal Society}
+}
+
+@article{abdukarimov2025fmp_theory,
+  title={The Fractal Metascience Paradigm: Foundations, Models, and Implications for Complex Knowledge Systems},
+  author={Abdukarimov, Abdurashid},
+  journal={arXiv preprint},
+  year={2025},
+  note={Companion theoretical paper}
+}
+
+@misc{terra_codex_2025,
+  title={Terra Codex: Planetary Framework for Ethical Knowledge Architecture},
+  author={Abdukarimov, Abdurashid},
+  year={2025},
+  howpublished={\url{https://github.com/Secret-Uzbek/AIUZ-terra-codex-FMP}},
+  note={Accessed: 2025-01-07}
+}
+
+@misc{aiuz_ecosystem_2025,
+  title={AIUZ Ecosystem: Fractal Lexicographic System},
+  author={Abdukarimov, Abdurashid},
+  year={2025},
+  howpublished={\url{https://github.com/Secret-Uzbek/AIUZ}},
+  note={Accessed: 2025-01-07}
+}
+
+@misc{fmp_monograph_2025,
+  title={Fractal Metascience Paradigm: Complete Monograph},
+  author={Abdukarimov, Abdurashid},
+  year={2025},
+  howpublished={\url{https://github.com/Secret-Uzbek/FMP-monograph}},
+  note={Accessed: 2025-01-07}
+}
