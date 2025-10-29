@@ -1,0 +1,230 @@
+# ============================================================
+# TERRA UNIVERSAL .GITIGNORE
+# ============================================================
+# Use this for both Theory and Practice repositories
+# ============================================================
+
+# ==================== OS FILES ====================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+
+# ==================== EDITORS ====================
+# VSCode
+.vscode/
+*.code-workspace
+
+# JetBrains (PyCharm, IntelliJ, etc)
+.idea/
+*.iml
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ==================== LATEX ====================
+# Compilation files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.xdv
+*.nav
+*.snm
+*.vrb
+
+# LaTeX build directories
+_build/
+_minted-*/
+
+# BibTeX
+*.bib.bak
+*.bib.sav
+
+# ==================== PYTHON ====================
+# Byte-compiled
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ==================== NODE.JS ====================
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ==================== DOCKER ====================
+# Docker build cache
+.dockerignore
+
+# ==================== DATABASES ====================
+*.db
+*.sqlite
+*.sqlite3
+
+# ==================== LOGS ====================
+*.log
+logs/
+*.log.*
+
+# ==================== TEMPORARY FILES ====================
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+tmp/
+temp/
+
+# ==================== ARCHIVES ====================
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# ==================== SENSITIVE ====================
+# API keys and secrets
+.env
+.env.*
+secrets/
+*.key
+*.pem
+*.p12
+
+# Credentials
+credentials.json
+token.json
+
+# ==================== PROJECT SPECIFIC ====================
+# Old versions (from migration)
+old-versions/
+archive/
+backup-*/
+
+# Terra specific
+.terra-cache/
+*.terra-temp
+
+# ==================== LARGE FILES ====================
+# Models and datasets (use Git LFS if needed)
+*.h5
+*.pkl
+*.model
+*.weights
+
+# Videos and large media
+*.mp4
+*.avi
+*.mov
+
+# ==================== BUILD ARTIFACTS ====================
+# Compiled binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# ==================== TESTING ====================
+coverage/
+.nyc_output/
+test-results/
+
+# ==================== DEPLOYMENT ====================
+# Kubernetes secrets
+secrets.yaml
+*-secret.yaml
+
+# Terraform
+*.tfstate
+*.tfstate.backup
+.terraform/
+
+# ==================== DOCUMENTATION ====================
+# Generated docs (keep source, ignore built)
+docs/_build/
+site/
+
+# ==================== ALLOWED EXCEPTIONS ====================
+# Force include certain files even if they match patterns above
+!.gitkeep
+!.github/
+!docs/*.md
+
+# ============================================================
+# END OF .GITIGNORE
+# ============================================================
+# Last updated: 2025-10-22
+# For Terra Ecosystem repositories
+# ============================================================
