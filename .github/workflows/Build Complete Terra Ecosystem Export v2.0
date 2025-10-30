@@ -1,0 +1,3 @@
+git add .
+git commit -m "🚀 Complete documentation: README, Living Map, Quick Start, CITATION.cff, Badges, Fixed workflow"
+git push
