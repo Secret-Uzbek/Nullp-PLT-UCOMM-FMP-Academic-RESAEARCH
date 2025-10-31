@@ -30,7 +30,7 @@ APA (auto-generated from CITATION.cff):
 
 ## 🛡️ Badges
 ![Status](https://img.shields.io/badge/status-active-brightgreen)
-![License](https://img.shields.io/badge/license-CC0-1.0-lightgrey)
+[![License: Terra Public v1.0](https://img.shields.io/badge/license-Terra%20Public%20v1.0-4cc61e)](https://github.com/Secret-Uzbek/AIUZ-terra-codex-FMP/blob/main/LICENSE.md)
 ![ORCID](https://img.shields.io/badge/ORCID-0009--0000--6394--4912-green)
 
 ---
@@ -43,5 +43,6 @@ APA (auto-generated from CITATION.cff):
 ⭐ **Star this project if you believe in planetary knowledge commons!**
 
 🚀 Обновил README: полная навигация по экосистеме Terra
+
 
 
