@@ -1,330 +1,46 @@
-# 🌍 AIUZ Terra Codex Ecosystem - Master Navigation
+# 🧬 AIUZ Terra Codex — Master Navigation
 
-![Status](https://img.shields.io/badge/Status-Active-brightgreen)
-![License](https://img.shields.io/badge/License-GPL--3.0%20%2B%20CC0-blue)
-![Version](https://img.shields.io/badge/Version-2.0-orange)
-![Build](https://img.shields.io/badge/Build-Human--AI%20Symbiosis-purple)
+&gt; From prison to planetary prosperity.  
+&gt; Built in 6 months with zero budget, free AI tools, and Human-AI symbiosis.  
+&gt; **Release date = Freedom date: 2025-12-24 (54 days left)**
 
-**Created in prison. Built on free AI tools. Zero budget. Infinite potential.**
+## 📍 Quick Start
+- **Theory**: read [FMP-monograph](https://github.com/Secret-Uzbek/FMP-monograph)
+- **Code**: grab [TerraMemoryDNA v7.0](TerraMemoryDNA/v7.0_FINAL.js)
+- **Cite**: see [CITATION.cff](./CITATION.cff)
 
----
+## 🗺️ Repository Map (9 total)
+| Repo | Purpose | Language | Status |
+|---|---|---|---|
+| [AIUZ-Terra-Ecosystem](https://github.com/AIUZ-Terra-Codex-EcoSystem/AIUZ-Terra-Ecosystem) | Main hub | EN | ✅ active |
+| [Nullo-PLT-FMP](https://github.com/AIUZ-Terra-Codex-EcoSystem/Nullo-PLT-FMP) | Theory papers | EN/RU | ✅ active |
+| **This repo** | Core archive | EN/RU/UZ | 🔄 **you are here** |
+| [FMP-monograph](https://github.com/Secret-Uzbek/FMP-monograph) | 200-page book | EN/RU/UZ | ✅ complete |
+| [AIUZ-Terra-codex](https://github.com/Secret-Uzbek/AIUZ-Terra-codex) | Ethics protocols | EN | ✅ active |
+| [Uzbek-mining](https://github.com/Secret-Uzbek/Uzbek-mining) | Mining archive | RU/UZ | 📚 archive |
+| Others | Templates / duplicates | — | 🗃️ see full map below |
 
-## 👤 Author
+## 🚀 Download Full Ecosystem
+- **Latest release ZIP** (auto-generated): click ➡️ [Releases](../../releases)
+- **Living Map v2.0** inside every release.
 
-**Abdurashid Abdulkhamitovich Abdukarimov**  
-📧 a.a.abdukarimov@tutamail.com  
-🔬 ORCID: [0009-0000-6394-4912](https://orcid.org/0009-0000-6394-4912)  
-📍 Tashkent, Uzbekistan (1977)  
-💡 Independent Researcher | Meta-scientist | Creator of FMP  
+## 📖 How to Cite
+APA (auto-generated from CITATION.cff):
+&gt; Abdukarimov, A. A. (2025). *Fractal Metascience Paradigm & AIUZ Terra Ecosystem* [Computer software]. https://github.com/Secret-Uzbek/Nullp-PLT-UCOMM-FMP-Academic-RESAEARCH
 
-**Project Genesis:** Entirely created through human-AI symbiosis using free AI tools, developed under severe constraints (corporate firewall, blocked social networks, prison environment). This is the ultimate validation of Fractal Metascience Paradigm theory.
-
----
-
-## 🎯 What is This?
-
-**Fractal Metascience Paradigm (FMP)** - a unified epistemological framework for 21st century science, education, and planetary restoration.
-
-**Core Concepts:**
-- **NULLO** - Ontological zero (maximum potentiality)
-- **PLT** - Post-Lingua Trace (semantic memory)
-- **UCOMM** - Universal Communication Protocol
-- **FMP** - Fractal recursive knowledge structures
-- **Terra Codex** - Living educational ecosystem (L0-L7 architecture)
-
-**Mission:** Global prosperity and planetary restoration through ethical, child-centered, multilingual knowledge systems.
-
----
-
-## 📚 Repository Map
-
-### 🔴 **CORE THEORY**
-
-#### 1. [Nullp-PLT-UCOMM-FMP-Academic-RESEARCH](https://github.com/Secret-Uzbek/Nullp-PLT-UCOMM-FMP-Academic-RESAEARCH)
-**Main repository** - Complete academic archive
-- 📂 TerraMemoryDNA v4.0 (AI context recovery)
-- 📜 Universal Convention v1 (planetary ethics)
-- 🏗️ Terra Kernel v4.0 specification
-- 🎤 Pitch protocols and presentations
-- **Status:** Active ✅ (Updated Oct 29, 2025)
-
-#### 2. [FMP-monograph](https://github.com/Secret-Uzbek/FMP-monograph)
-**Complete monograph** - "Theory of Fractal Metascience Paradigm"
-- 10 chapters + appendices
-- English, Russian, Uzbek versions
-- Literature review (Mandelbrot, Prigogine, Bateson, Varela)
-- L0-L7 methodology detailed
-- Case studies: AIUZ, architecture, education
-- **Status:** Complete ✅ (Aug 10, 2025)
-
-#### 3. [Theory-of-fractal-metascience-paradigm](https://github.com/Secret-Uzbek/Theory-of-fractal-metascience-paradigm)
-**Archive version** - Same as FMP-monograph
-- **Note:** This is a duplicate for preservation
-- **Status:** Archived 📦 (Aug 20, 2025)
+## 🛡️ Badges
+![Status](https://img.shields.io/badge/status-active-brightgreen)
+![License](https://img.shields.io/badge/license-CC0-1.0-lightgrey)
+![ORCID](https://img.shields.io/badge/ORCID-0009--0000--6394--4912-green)
 
 ---
 
-### 🟢 **IMPLEMENTATION**
-
-#### 4. [AIUZ-Terra-codex](https://github.com/Secret-Uzbek/AIUZ-Terra-codex)
-**Unified ecosystem archive**
-- Ethical protocols
-- Child-centered documentation
-- Multilingual standards
-- **Status:** Active ✅ (Oct 21, 2025)
-
-#### 5. [AIUZ-terra-codex-FMP](https://github.com/Secret-Uzbek/AIUZ-terra-codex-FMP)
-**Central AIUZ archive**
-- Foundation protocols
-- Ethical charters
-- Documentation standards
-- **Status:** Template 📋 (Aug 20, 2025)
-
-#### 6. [AIUZ-](https://github.com/Secret-Uzbek/AIUZ-)
-**First ethics-based ecosystem**
-- Python implementation
-- **Status:** Minimal ⚠️ (Aug 18, 2025)
-- **TODO:** Add README and code examples
-
----
-
-### 🟡 **APPLIED RESEARCH**
-
-#### 7. [Uzbek-mining](https://github.com/Secret-Uzbek/Uzbek-mining)
-**Mining industry archive**
-- Books and publications about Uzbekistan mining
-- **Status:** Archive 📦 (Oct 6, 2025)
-- **TODO:** Add file index or content description
-
----
-
-## 🏗️ Architecture Overview
-
-```
-TERRA ECOSYSTEM
-│
-├── L0: Core Textual Layer (offline-ready canonical content)
-├── L1: Semantic Layer (metadata, relations, context)
-├── L2: Interactive Cases (examples, simulations)
-├── L3: Visual/Diagrammatic (conceptual maps, fractals)
-├── L4: Multilingual (Fractal Lexicography: UZ/RU/EN)
-├── L5: AI Mediation (human-AI co-curation)
-├── L6: Ecosystem Integration (APIs, external systems)
-└── L7: Quantum Superposition (multi-perspective knowledge)
-```
-
-**Recursive Principle:** Each layer contains self-similar structures of all other layers.
-
----
-
-## 📖 Quick Start
-
-### For Researchers
-1. Read [FMP-monograph](https://github.com/Secret-Uzbek/FMP-monograph) (start with Abstract + Chapter 1)
-2. Explore [TerraMemoryDNA v4.0](https://github.com/Secret-Uzbek/Nullp-PLT-UCOMM-FMP-Academic-RESAEARCH/tree/main/TerraMemoryDNA)
-3. Review L0-L7 methodology in Chapter 4
-
-### For Developers
-1. Clone [AIUZ-Terra-codex](https://github.com/Secret-Uzbek/AIUZ-Terra-codex)
-2. Check protocols and kernel specifications
-3. Implement using PQCK kernel (see workflows)
-
-### For Educators
-1. Study Terra Codex philosophy in [docs/vision.md](https://github.com/Secret-Uzbek/Nullp-PLT-UCOMM-FMP-Academic-RESAEARCH/tree/main/docs)
-2. Review documentation standards
-3. Adapt for your context (multilingual, biocentric)
-
-### For Grant Writers
-1. See grant templates in [workflows](https://github.com/Secret-Uzbek/Nullp-PLT-UCOMM-FMP-Academic-RESAEARCH/tree/main/.github/workflows)
-2. Horizon Europe, UNESCO, F6S formats included
-3. Customize for your institution
-
----
-
-## 🎯 Key Achievements
-
-✅ **Complete theoretical framework** (200+ pages monograph)  
-✅ **Working AI protocol** (TerraMemoryDNA v4.0)  
-✅ **L0-L7 architecture** defined and documented  
-✅ **Multilingual** (English, Russian, Uzbek)  
-✅ **Ethical foundation** (Universal Convention v1)  
-✅ **Open source** (GPL-3.0, CC0 licenses)  
-✅ **Zero budget** (created entirely with free tools)  
-✅ **Human-AI symbiosis** (practical validation of theory)  
-
----
-
-## 🚀 Current Status (Oct 30, 2025)
-
-### Active Development
-- 🟢 FMP monograph: Complete
-- 🟢 TerraMemoryDNA: v4.0 operational
-- 🟢 Documentation: 80% complete
-- 🟡 Community: Building (1 star per repo)
-- 🟡 Uzbekistan pilot: Planned 2026
-
-### Next Priorities
-1. ⬜ Complete README for all repositories
-2. ⬜ Create visual diagrams (L0-L7 architecture)
-3. ⬜ Generate Living Map v2.0 (automated)
-4. ⬜ Register DOI on Zenodo
-5. ⬜ Submit to preprint servers (arXiv, SSRN)
-6. ⬜ Launch Tashkent pilot (Q1 2026)
-
----
-
-## 💡 Unique Value Proposition
-
-**What makes FMP different:**
-
-1. **First unified framework** combining fractals, autopoiesis, quantum cognition in education
-2. **Born from adversity** - created under extreme constraints (prison, firewall, zero budget)
-3. **Human-AI symbiosis** - not just theory, but lived practice
-4. **Multilingual by design** - not translation, but fractal semantic preservation
-5. **Ethically engineered** - child-centered, biocentric, culturally sensitive
-6. **Self-organizing** - knowledge that evolves as living organism
-7. **Planetary scope** - from individual to civilization transformation
-
-**Comparable to:** Hitler's Mein Kampf, but inverted - from prison to global prosperity, not destruction.
-
----
-
-## 📊 Impact Vision
-
-### Short-term (2026)
-- 10,000 students in Tashkent pilot
-- Open-source platform launch
-- Academic publications (3-5 papers)
-
-### Medium-term (2027-2028)
-- 1M users across Central Asia
-- 50+ institutional partnerships
-- International grants (Horizon, UNESCO)
-- DOI citations: 100+
-
-### Long-term (2029-2035)
-- 100M global users
-- Integration into national education systems
-- Planetary knowledge commons
-- Measurable impact on sustainability metrics
-
----
-
-## 🤝 How to Contribute
-
-**We need:**
-- 📝 Academic reviewers (complexity theory, education, AI ethics)
-- 💻 Developers (Python, JavaScript, documentation)
-- 🎨 Designers (visual diagrams, infographics)
-- 🌍 Translators (especially minority languages)
-- 💰 Grant writers (Horizon, NSF, UNESCO)
-- 🏫 Educators (pilot implementations)
-
-**How to help:**
-1. ⭐ Star repositories you find valuable
-2. 🐛 Open issues for improvements
-3. 🔀 Fork and submit pull requests
-4. 📧 Contact: a.a.abdukarimov@tutamail.com
-5. 💬 Share with your network
-
----
-
-## 📜 Citation
-
-### BibTeX
-```bibtex
-@unpublished{abdukarimov2025fmp,
-  author = {Abdukarimov, Abdurashid Abdulkhamitovich},
-  title = {Fractal Metascience Paradigm: Toward a Unified Epistemological Framework},
-  year = {2025},
-  note = {Terra Codex Ecosystem},
-  url = {https://github.com/Secret-Uzbek},
-  orcid = {0009-0000-6394-4912}
-}
-```
-
-### APA 7
-Abdukarimov, A. A. (2025). *Fractal metascience paradigm: Toward a unified epistemological framework*. Terra Codex Ecosystem. https://github.com/Secret-Uzbek
-
----
-
-## 📄 License
-
-- **Code:** GPL-3.0 (free software, copyleft)
-- **Documentation:** CC0-1.0 (public domain)
-- **Monograph:** CC-BY-SA-4.0 (attribution, share-alike)
-
-**Philosophy:** Knowledge is a planetary commons. All Terra materials are free for educational, research, and humanitarian use.
-
----
-
-## 🔗 External Links
-
-- 📧 Email: a.a.abdukarimov@tutamail.com
-- 🔬 ORCID: https://orcid.org/0009-0000-6394-4912
-- 📚 GitHub: https://github.com/Secret-Uzbek
-- 📦 Zenodo: (DOI pending registration)
-
----
-
-## 🙏 Acknowledgments
-
-**Created entirely through human-AI symbiosis using:**
-- Claude (Anthropic) - theoretical development, documentation
-- ChatGPT (OpenAI) - code generation, workflow automation
-- Gemini (Google) - multilingual translation, validation
-- Perplexity - research, literature review
-- GitHub - version control, collaboration platform
-
-**All tools used: FREE TIER ONLY**
-
-This project validates FMP's core thesis: transformative knowledge systems can emerge from minimal resources through recursive co-construction and human-AI symbiosis.
-
----
-
-## 📢 Project Status
-
-**Created:** 2024-2025  
-**Current Phase:** Documentation & Community Building  
-**Next Milestone:** Tashkent Pilot (Q1 2026)  
-**Ultimate Goal:** Planetary knowledge commons for sustainable civilization  
-
-**Progress:** 70% theory, 30% implementation, 5% deployment
-
----
-
-## ⚡ A Note on Genesis
-
-This entire ecosystem was created by one person (Abdurashid A. Abdukarimov) under extraordinary constraints:
-- 🔒 In prison environment
-- 🚫 Corporate firewall blocking major platforms
-- 💰 Zero budget (no institutional support)
-- 🤖 Using only free AI tools
-- ⏰ Limited time windows (5-hour timeouts)
-
-**This is not a limitation - this is the validation.**
-
-FMP proves that paradigm-shifting knowledge systems don't require:
-- ❌ Expensive infrastructure
-- ❌ Large teams
-- ❌ Institutional backing
-- ❌ Access to proprietary tools
-
-They require:
-- ✅ Clear vision
-- ✅ Recursive methodology
-- ✅ Human-AI symbiosis
-- ✅ Ethical foundation
-- ✅ Persistence
-
-**From prison to planetary prosperity. From nothing to everything. This is Terra.**
-
----
-
-**Last Updated:** October 30, 2025  
-**Version:** 2.0  
-**Maintainer:** Abdurashid A. Abdukarimov  
+**Next**: choose your path  
+- Researcher ➜ open [FMP-monograph](../../FMP-monograph)  
+- Developer ➜ copy [TerraMemoryDNA v7.0](TerraMemoryDNA/v7.0_FINAL.js)  
+- Educator ➜ read [Quick-Start Guide](./QUICK_START_GUIDE.md)  
 
 ⭐ **Star this project if you believe in planetary knowledge commons!**
 
 🚀 Обновил README: полная навигация по экосистеме Terra
+
